@@ -1,10 +1,11 @@
 500
-64/home/chris/code/avatar/homeassistant-area-card/dist/card.js.map1723768158853213540 0
-52/home/chris/code/avatar/homeassistant-area-card/dist1723768158853213540 1
-57/home/chris/code/avatar/homeassistant-area-card/hacs.json1723767980452751708 0
+69/home/chris/code/avatar/homeassistant-area-card/dist/area-card.js.map1723772760953132371 0
+65/home/chris/code/avatar/homeassistant-area-card/dist/area-card.js1723772760949799107 0
+52/home/chris/code/avatar/homeassistant-area-card/dist1723772760953132371 1
+60/home/chris/code/avatar/homeassistant-area-card/package.json1723772749396707365 0
+57/home/chris/code/avatar/homeassistant-area-card/hacs.json1723772485769189732 0
 59/home/chris/code/avatar/homeassistant-area-card/src/card.ts1723767879227489172 0
 60/home/chris/code/avatar/homeassistant-area-card/src/index.ts1723767348774546823 0
-60/home/chris/code/avatar/homeassistant-area-card/package.json1723768154849943536 0
 61/home/chris/code/avatar/homeassistant-area-card/.editorconfig1723766836950620954 0
 159/home/chris/code/avatar/homeassistant-area-card/.yarn/unplugged/lightningcss-linux-x64-gnu-npm-1.26.0-dc01f3fc60/node_modules/lightningcss-linux-x64-gnu/.ready1723767122044041119 0
 184/home/chris/code/avatar/homeassistant-area-card/.yarn/unplugged/lightningcss-linux-x64-gnu-npm-1.26.0-dc01f3fc60/node_modules/lightningcss-linux-x64-gnu/lightningcss.linux-x64-gnu.node456789000000000000 0
@@ -281,7 +282,7 @@
 157/home/chris/code/avatar/homeassistant-area-card/.yarn/unplugged/@parcel-source-map-npm-2.1.1-09e4d79db4/node_modules/@parcel/source-map/dist/wasm-bindings.js456789000000000000 0
 149/home/chris/code/avatar/homeassistant-area-card/.yarn/unplugged/@parcel-source-map-npm-2.1.1-09e4d79db4/node_modules/@parcel/source-map/dist/utils.js456789000000000000 0
 127/home/chris/code/avatar/homeassistant-area-card/.yarn/unplugged/@swc-core-linux-x64-gnu-npm-1.7.11-7d2adf1c64/node_modules/@swc456789000000000000 1
-47/home/chris/code/avatar/homeassistant-area-card1723768158829880576 1
+47/home/chris/code/avatar/homeassistant-area-card1723772760943132579 1
 154/home/chris/code/avatar/homeassistant-area-card/.yarn/unplugged/@parcel-source-map-npm-2.1.1-09e4d79db4/node_modules/@parcel/source-map/dist/utils.js.flow456789000000000000 0
 135/home/chris/code/avatar/homeassistant-area-card/.yarn/unplugged/@parcel-rust-npm-2.12.0-0cf943f3e5/node_modules/@parcel/rust/index.d.ts456789000000000000 0
 140/home/chris/code/avatar/homeassistant-area-card/.yarn/unplugged/@parcel-source-map-npm-2.1.1-09e4d79db4/node_modules/@parcel/source-map/dist456789000000000000 1
@@ -441,7 +442,7 @@
 138/home/chris/code/avatar/homeassistant-area-card/.yarn/unplugged/lmdb-npm-2.8.5-e5fdd937dd/node_modules/lmdb/dependencies/lz4/lib/lz4file.h456789000000000000 0
 99/home/chris/code/avatar/homeassistant-area-card/.yarn/unplugged/node-addon-api-npm-7.1.1-bfb302df191723767119756999000 1
 131/home/chris/code/avatar/homeassistant-area-card/.yarn/unplugged/msgpackr-extract-npm-3.0.3-3594f14366/node_modules/msgpackr-extract1723767121857376707 1
-58/home/chris/code/avatar/homeassistant-area-card/.gitignore1723766836950620954 0
+58/home/chris/code/avatar/homeassistant-area-card/.gitignore1723772141101466771 0
 150/home/chris/code/avatar/homeassistant-area-card/.yarn/unplugged/node-gyp-npm-10.2.0-cad1109948/node_modules/node-gyp/gyp/pylib/packaging/_manylinux.py456789000000000000 0
 146/home/chris/code/avatar/homeassistant-area-card/.yarn/unplugged/lmdb-npm-2.8.5-e5fdd937dd/node_modules/lmdb/dependencies/lz4/lib/lz4frame_static.h456789000000000000 0
 134/home/chris/code/avatar/homeassistant-area-card/.yarn/unplugged/node-addon-api-npm-7.1.1-bfb302df19/node_modules/node-addon-api/.ready1723767122044041119 0
@@ -471,7 +472,6 @@
 112/home/chris/code/avatar/homeassistant-area-card/.yarn/unplugged/node-addon-api-npm-6.1.0-634c545b39/node_modules456789000000000000 1
 160/home/chris/code/avatar/homeassistant-area-card/.yarn/unplugged/@msgpackr-extract-msgpackr-extract-linux-x64-npm-3.0.3-76216d0983/node_modules/@msgpackr-extract456789000000000000 1
 116/home/chris/code/avatar/homeassistant-area-card/.yarn/unplugged/lmdb-npm-2.8.5-e5fdd937dd/node_modules/lmdb/index.js456789000000000000 0
-60/home/chris/code/avatar/homeassistant-area-card/dist/card.js1723768158843213698 0
 115/home/chris/code/avatar/homeassistant-area-card/.yarn/unplugged/lmdb-npm-2.8.5-e5fdd937dd/node_modules/lmdb/keys.js456789000000000000 0
 174/home/chris/code/avatar/homeassistant-area-card/.yarn/unplugged/@parcel-watcher-linux-x64-glibc-npm-2.4.1-e13cc4f7d9/node_modules/@parcel/watcher-linux-x64-glibc/watcher.node456789000000000000 0
 145/home/chris/code/avatar/homeassistant-area-card/.yarn/unplugged/node-gyp-npm-10.2.0-cad1109948/node_modules/node-gyp/gyp/pylib/gyp/common_test.py456789000000000000 0
