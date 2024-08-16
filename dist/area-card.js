@@ -1131,6 +1131,67 @@ const $7e21dc7b5ad8cb11$export$f5c524615a7708d6 = {
 
 
 
+
+/**
+ * @license
+ * Copyright 2017 Google LLC
+ * SPDX-License-Identifier: BSD-3-Clause
+ */ const $63995b5a8f5ed880$var$o = {
+    attribute: !0,
+    type: String,
+    converter: (0, $b746db33a10fb587$export$7312b35fbf521afb),
+    reflect: !1,
+    hasChanged: (0, $b746db33a10fb587$export$53a6892c50694894)
+}, $63995b5a8f5ed880$export$8d623b1670eb40f4 = (t = $63995b5a8f5ed880$var$o, e, r)=>{
+    const { kind: n, metadata: i } = r;
+    let s = globalThis.litPropertyMetadata.get(i);
+    if (void 0 === s && globalThis.litPropertyMetadata.set(i, s = new Map), s.set(r.name, t), "accessor" === n) {
+        const { name: o } = r;
+        return {
+            set (r) {
+                const n = e.get.call(this);
+                e.set.call(this, r), this.requestUpdate(o, n, t);
+            },
+            init (e) {
+                return void 0 !== e && this.P(o, void 0, t), e;
+            }
+        };
+    }
+    if ("setter" === n) {
+        const { name: o } = r;
+        return function(r) {
+            const n = this[o];
+            e.call(this, r), this.requestUpdate(o, n, t);
+        };
+    }
+    throw Error("Unsupported decorator location: " + n);
+};
+function $63995b5a8f5ed880$export$d541bacb2bda4494(t) {
+    return (e, o)=>"object" == typeof o ? $63995b5a8f5ed880$export$8d623b1670eb40f4(t, e, o) : ((t, e, o)=>{
+            const r = e.hasOwnProperty(o);
+            return e.constructor.createProperty(o, r ? {
+                ...t,
+                wrapped: !0
+            } : t), r ? Object.getOwnPropertyDescriptor(e, o) : void 0;
+        })(t, e, o);
+}
+
+
+/**
+ * @license
+ * Copyright 2017 Google LLC
+ * SPDX-License-Identifier: BSD-3-Clause
+ */ function $de0279ad1f91739c$export$ca000e230c0caa3e(r) {
+    return (0, $63995b5a8f5ed880$export$d541bacb2bda4494)({
+        ...r,
+        state: !0,
+        attribute: !1
+    });
+}
+
+
+
+
 class $a399cc6bbb0eb26a$export$179268f6da4a88b9 extends (0, $7e21dc7b5ad8cb11$export$3f2f9f5909897157) {
     static{
         this.styles = (0, $8b70d0323444ddea$export$dbf350e5966cf602)``;
@@ -1155,7 +1216,7 @@ class $a399cc6bbb0eb26a$export$179268f6da4a88b9 extends (0, $7e21dc7b5ad8cb11$ex
     }
 }
 (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
-    state()
+    (0, $de0279ad1f91739c$export$ca000e230c0caa3e)()
 ], $a399cc6bbb0eb26a$export$179268f6da4a88b9.prototype, "config", void 0);
 
 

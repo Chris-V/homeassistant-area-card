@@ -1,4 +1,5 @@
 import { css, html, LitElement } from "lit";
+import { state } from "lit/decorators/state";
 
 interface AreaCardConfig {
     area: string;
