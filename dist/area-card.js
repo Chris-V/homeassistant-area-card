@@ -1192,33 +1192,63 @@ function $63995b5a8f5ed880$export$d541bacb2bda4494(t) {
 
 
 
+
+var $120c5a859c012378$export$2e2bcd8739ae039 = (0, $8b70d0323444ddea$export$dbf350e5966cf602)``;
+
+
+const $a399cc6bbb0eb26a$var$UNKNOWN_AREA_ICON = "mdi:help-circle";
+const $a399cc6bbb0eb26a$var$UNKNOWN_AREA_NAME = "Unknown";
 class $a399cc6bbb0eb26a$export$179268f6da4a88b9 extends (0, $7e21dc7b5ad8cb11$export$3f2f9f5909897157) {
+    #config;
     #hass;
     static{
-        this.styles = (0, $8b70d0323444ddea$export$dbf350e5966cf602)``;
-    }
-    setConfig(config) {
-        this.config = config;
+        this.styles = (0, $120c5a859c012378$export$2e2bcd8739ae039);
     }
     set hass(hass) {
         this.#hass = hass;
     }
+    setConfig(config) {
+        if (!config.area) throw new Error("You need to define an area.");
+        this.#config = config;
+        const area = this.#hass.areas[this.#config.area];
+        const icon = area?.icon || $a399cc6bbb0eb26a$var$UNKNOWN_AREA_ICON;
+        const name = area?.name || $a399cc6bbb0eb26a$var$UNKNOWN_AREA_NAME;
+    }
+    getCardSize() {
+        return 6;
+    }
+    getLayoutOptions() {
+        return {
+            grid_rows: 6,
+            grid_columns: 5,
+            grid_min_rows: 6,
+            grid_max_rows: 6
+        };
+    }
     render() {
         return (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
       <ha-card>
-        <div class="card-content">HI</div>
+        <div class="card-content">
+          <ha-icon .icon="${this.icon}"></ha-icon>
+          ${this.name}
+        </div>
       </ha-card>
     `;
     }
     constructor(...args){
         super(...args);
-        this.config = null;
+        this.icon = $a399cc6bbb0eb26a$var$UNKNOWN_AREA_ICON;
+        this.name = $a399cc6bbb0eb26a$var$UNKNOWN_AREA_NAME;
+        this.#config = null;
         this.#hass = null;
     }
 }
 (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
     (0, $de0279ad1f91739c$export$ca000e230c0caa3e)()
-], $a399cc6bbb0eb26a$export$179268f6da4a88b9.prototype, "config", void 0);
+], $a399cc6bbb0eb26a$export$179268f6da4a88b9.prototype, "icon", void 0);
+(0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
+    (0, $de0279ad1f91739c$export$ca000e230c0caa3e)()
+], $a399cc6bbb0eb26a$export$179268f6da4a88b9.prototype, "name", void 0);
 
 
 customElements.define("area-card", (0, $a399cc6bbb0eb26a$export$179268f6da4a88b9));
