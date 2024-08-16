@@ -51,8 +51,8 @@ export class AreaCard extends LitElement {
     }
 
     const area = this.#hass.areas[this.#config.area];
-    const icon = area?.icon || UNKNOWN_AREA_ICON;
-    const name = area?.name || UNKNOWN_AREA_NAME;
+    this.icon = area?.icon || UNKNOWN_AREA_ICON;
+    this.name = area?.name || UNKNOWN_AREA_NAME;
   }
 
   render() {
