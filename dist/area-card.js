@@ -1206,13 +1206,12 @@ class $a399cc6bbb0eb26a$export$179268f6da4a88b9 extends (0, $7e21dc7b5ad8cb11$ex
     }
     set hass(hass) {
         this.#hass = hass;
+        this.updateState();
     }
     setConfig(config) {
         if (!config.area) throw new Error("You need to define an area.");
         this.#config = config;
-        const area = this.#hass.areas[this.#config.area];
-        const icon = area?.icon || $a399cc6bbb0eb26a$var$UNKNOWN_AREA_ICON;
-        const name = area?.name || $a399cc6bbb0eb26a$var$UNKNOWN_AREA_NAME;
+        this.updateState();
     }
     getCardSize() {
         return 6;
@@ -1224,6 +1223,12 @@ class $a399cc6bbb0eb26a$export$179268f6da4a88b9 extends (0, $7e21dc7b5ad8cb11$ex
             grid_min_rows: 6,
             grid_max_rows: 6
         };
+    }
+    updateState() {
+        if (!this.#config || !this.#hass) return;
+        const area = this.#hass.areas[this.#config.area];
+        const icon = area?.icon || $a399cc6bbb0eb26a$var$UNKNOWN_AREA_ICON;
+        const name = area?.name || $a399cc6bbb0eb26a$var$UNKNOWN_AREA_NAME;
     }
     render() {
         return (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
