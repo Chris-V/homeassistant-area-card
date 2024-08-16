@@ -1193,6 +1193,7 @@ function $63995b5a8f5ed880$export$d541bacb2bda4494(t) {
 
 
 class $a399cc6bbb0eb26a$export$179268f6da4a88b9 extends (0, $7e21dc7b5ad8cb11$export$3f2f9f5909897157) {
+    #hass;
     static{
         this.styles = (0, $8b70d0323444ddea$export$dbf350e5966cf602)``;
     }
@@ -1200,7 +1201,7 @@ class $a399cc6bbb0eb26a$export$179268f6da4a88b9 extends (0, $7e21dc7b5ad8cb11$ex
         this.config = config;
     }
     set hass(hass) {
-        this.hass = hass;
+        this.#hass = hass;
     }
     render() {
         return (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
@@ -1212,7 +1213,7 @@ class $a399cc6bbb0eb26a$export$179268f6da4a88b9 extends (0, $7e21dc7b5ad8cb11$ex
     constructor(...args){
         super(...args);
         this.config = null;
-        this.hass = null;
+        this.#hass = null;
     }
 }
 (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([

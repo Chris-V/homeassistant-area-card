@@ -8,7 +8,7 @@ interface AreaCardConfig {
 export class AreaCard extends LitElement {
   @state() private config: AreaCardConfig | null = null;
 
-  private hass: object | null = null;
+  #hass: object | null = null;
 
   static styles = css``;
 
@@ -17,7 +17,7 @@ export class AreaCard extends LitElement {
   }
 
   set hass(hass: object) {
-    this.hass = hass;
+    this.#hass = hass;
   }
 
   render() {
