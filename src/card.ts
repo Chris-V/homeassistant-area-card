@@ -20,6 +20,7 @@ export class AreaCard extends LitElement {
 
   set hass(hass: object) {
     this.#hass = hass;
+    this.updateState();
   }
 
   setConfig(config: AreaCardConfig) {
@@ -28,10 +29,7 @@ export class AreaCard extends LitElement {
     }
 
     this.#config = config;
-
-    const area = this.#hass.areas[this.#config.area];
-    const icon = area?.icon || UNKNOWN_AREA_ICON;
-    const name = area?.name || UNKNOWN_AREA_NAME;
+    this.updateState();
   }
 
   getCardSize(): number {
@@ -45,6 +43,16 @@ export class AreaCard extends LitElement {
       grid_min_rows: 6,
       grid_max_rows: 6,
     };
+  }
+
+  private updateState(): void {
+    if(!this.#config || !this.#hass) {
+      return;
+    }
+
+    const area = this.#hass.areas[this.#config.area];
+    const icon = area?.icon || UNKNOWN_AREA_ICON;
+    const name = area?.name || UNKNOWN_AREA_NAME;
   }
 
   render() {
