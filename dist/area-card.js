@@ -1336,7 +1336,7 @@ function $10cacb3edc9c9319$export$dcd0d083aa86c355(r) {
 
 
 var $120c5a859c012378$export$2e2bcd8739ae039 = (0, $8b70d0323444ddea$export$dbf350e5966cf602)`
-:host {
+ha-card {
   position: relative;
 
   overflow: hidden;
@@ -1369,7 +1369,7 @@ var $120c5a859c012378$export$2e2bcd8739ae039 = (0, $8b70d0323444ddea$export$dbf3
   --mdc-text-field-hover-line-color: #DADADB;
 }
 
-.wrapper {
+.root {
   position: absolute;
   inset: 0;
 
@@ -1496,7 +1496,7 @@ class $a399cc6bbb0eb26a$export$179268f6da4a88b9 extends (0, $7e21dc7b5ad8cb11$ex
       <ha-card>
         ${(0, $e723a6ede290d350$export$a55877ca9db47377)(picture, ()=>(0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`<hui-image .hass=${this.hass} .image="${picture}"></hui-image>`)}
 
-        <div class="wrapper">
+        <div class="root">
           <div class="section header">
             <div class="title">
               <ha-icon .icon="${icon}"></ha-icon>

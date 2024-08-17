@@ -1,7 +1,7 @@
 import { css } from "lit";
 
 export default css`
-:host {
+ha-card {
   position: relative;
 
   overflow: hidden;
@@ -34,7 +34,7 @@ export default css`
   --mdc-text-field-hover-line-color: #DADADB;
 }
 
-.wrapper {
+.root {
   position: absolute;
   inset: 0;
 
