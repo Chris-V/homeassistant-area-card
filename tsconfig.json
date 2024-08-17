@@ -4,6 +4,13 @@
     "moduleResolution": "node",
     "experimentalDecorators": true,
     "useDefineForClassFields": false,
-    "strict": true
-  }
+    "strict": true,
+    "lib": [
+      "DOM",
+      "ES2022",
+    ]
+  },
+  "include": [
+    "src/"
+  ]
 }

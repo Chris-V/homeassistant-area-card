@@ -9,8 +9,8 @@
     }
   },
   "scripts": {
-    "watch": "parcel watch",
-    "build": "parcel build"
+    "build": "parcel build",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "home-assistant-js-websocket": "^9.4.0",

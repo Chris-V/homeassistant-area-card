@@ -1,4 +1,4 @@
-import { AreaCard } from "./card";
+import './card';
 
 declare global {
   interface Window {

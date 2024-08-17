@@ -2,8 +2,7 @@ import { html, LitElement } from 'lit';
 import { customElement, property, state } from 'lit/decorators';
 import { when } from 'lit/directives/when';
 import styles from './card.styles';
-import { HomeAssistant, } from './homeassistant';
-import { LovelaceCard, LovelaceCardConfig } from './lovelace';
+import { HomeAssistant, LovelaceCard, LovelaceCardConfig, } from './types';
 
 const UNKNOWN_AREA_ICON = 'mdi:help-circle';
 const UNKNOWN_AREA_NAME = 'Unknown';
@@ -14,14 +13,13 @@ interface AreaCardConfig extends LovelaceCardConfig {
 
 @customElement('area-card')
 export class AreaCard extends LitElement implements LovelaceCard {
-  @property({attribute: false}) hass?: HomeAssistant
+  @property({ attribute: false }) hass?: HomeAssistant
 
   @state() private icon: string = UNKNOWN_AREA_ICON;
   @state() private name: string = UNKNOWN_AREA_NAME;
   @state() private picture: string | null = null;
 
   #config: AreaCardConfig | null = null;
-  #hass: HomeAssistant | null = null;
 
   static styles = styles;
 
@@ -32,6 +30,17 @@ export class AreaCard extends LitElement implements LovelaceCard {
 
     this.#config = config;
     this.refreshState();
+  }
+
+  private refreshState(): void {
+    if (!this.#config || !this.hass) {
+      return;
+    }
+
+    const area = this.hass.areas[this.#config.area];
+    this.icon = area?.icon || UNKNOWN_AREA_ICON;
+    this.name = area?.name || UNKNOWN_AREA_NAME;
+    this.picture = area?.picture || null;
   }
 
   getCardSize(): number {
@@ -47,17 +56,6 @@ export class AreaCard extends LitElement implements LovelaceCard {
     };
   }
 
-  private refreshState(): void {
-    if (!this.#config || !this.#hass) {
-      return;
-    }
-
-    const area = this.#hass.areas[this.#config.area];
-    this.icon = area?.icon || UNKNOWN_AREA_ICON;
-    this.name = area?.name || UNKNOWN_AREA_NAME;
-    this.picture = area?.picture || null;
-  }
-
   protected render() {
     return html`
       <ha-card>
@@ -65,7 +63,7 @@ export class AreaCard extends LitElement implements LovelaceCard {
           <ha-icon .icon="${this.icon}"></ha-icon>
           ${this.name}
 
-          ${when(this.picture, () => html`<hui-image .hass=${this.#hass} .image="${this.picture}"></ha-icon>`)}
+          ${when(this.picture, () => html`<hui-image .hass=${this.hass} .image="${this.picture}"></ha-icon>`)}
         </div>
       </ha-card>
     `;
