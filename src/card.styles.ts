@@ -5,26 +5,10 @@ ha-card {
   position: relative;
 
   overflow: hidden;
-}
 
-.root {
-  position: absolute;
-  inset: 0;
-
-  display: flex;
-  align-items: stretch;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  overflow: hidden;
-
-  --secondary-text-color: #DADADB;
   --primary-text-color: #DADADB;
+  --secondary-text-color: #DADADB;
   --paper-item-icon-color: #DADADB;
-
-  --ha-card-background: rgba(0, 0, 0, 0);
-  --ha-card-border-radius: 0;
-  --ha-card-box-shadow: none;
 
   --mdc-theme-primary: #DADADB;
 
@@ -44,6 +28,24 @@ ha-card {
   --mdc-text-field-label-ink-color: #DADADB;
   --mdc-text-field-idle-line-color: #DADADB;
   --mdc-text-field-hover-line-color: #DADADB;
+}
+
+.root {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  overflow: hidden;
+
+  color: var(--primary-text-color);
+
+  --ha-card-background: rgba(0, 0, 0, 0);
+  --ha-card-border-radius: 0;
+  --ha-card-box-shadow: none;
 }
 
 .section {
