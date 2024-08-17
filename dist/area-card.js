@@ -1341,7 +1341,7 @@ var $120c5a859c012378$export$2e2bcd8739ae039 = (0, $8b70d0323444ddea$export$dbf3
 }
 
 .content {
-  position: absolute'
+  position: absolute;
   top: 0;
   left: 0;
 }
