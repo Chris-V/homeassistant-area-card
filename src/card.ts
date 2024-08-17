@@ -1,4 +1,4 @@
-import { html, LitElement } from 'lit';
+import { html, LitElement, nothing } from 'lit';
 import { customElement, property, state } from 'lit/decorators';
 import { when } from 'lit/directives/when';
 import styles from './card.styles';
@@ -15,32 +15,16 @@ interface AreaCardConfig extends LovelaceCardConfig {
 export class AreaCard extends LitElement implements LovelaceCard {
   @property({ attribute: false }) hass?: HomeAssistant
 
-  @state() private icon: string = UNKNOWN_AREA_ICON;
-  @state() private name: string = UNKNOWN_AREA_NAME;
-  @state() private picture: string | null = null;
-
-  #config: AreaCardConfig | null = null;
+  @state() private config?: AreaCardConfig;
 
   static styles = styles;
 
-  setConfig(config: AreaCardConfig) {
+  setConfig(config: AreaCardConfig): void {
     if (!config.area) {
-      throw new Error("You need to define an area.");
+      throw new Error('Area required');
     }
 
-    this.#config = config;
-    this.refreshState();
-  }
-
-  private refreshState(): void {
-    if (!this.#config || !this.hass) {
-      return;
-    }
-
-    const area = this.hass.areas[this.#config.area];
-    this.icon = area?.icon || UNKNOWN_AREA_ICON;
-    this.name = area?.name || UNKNOWN_AREA_NAME;
-    this.picture = area?.picture || null;
+    this.config = config;
   }
 
   getCardSize(): number {
@@ -57,13 +41,22 @@ export class AreaCard extends LitElement implements LovelaceCard {
   }
 
   protected render() {
+    if (!this.config || !this.hass) {
+      return nothing;
+    }
+
+    const area = this.hass.areas[this.config.area];
+    const icon = area?.icon || UNKNOWN_AREA_ICON;
+    const name = area?.name || UNKNOWN_AREA_NAME;
+    const picture = area?.picture || null;
+
     return html`
       <ha-card>
         <div class="card-content">
-          <ha-icon .icon="${this.icon}"></ha-icon>
-          ${this.name}
+          <ha-icon .icon="${icon}"></ha-icon>
+          ${name}
 
-          ${when(this.picture, () => html`<hui-image .hass=${this.hass} .image="${this.picture}"></ha-icon>`)}
+          ${when(picture, () => html`<hui-image .hass=${this.hass} .image="${picture}"></ha-icon>`)}
         </div>
       </ha-card>
     `;

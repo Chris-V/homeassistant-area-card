@@ -1341,21 +1341,12 @@ var $120c5a859c012378$export$2e2bcd8739ae039 = (0, $8b70d0323444ddea$export$dbf3
 const $a399cc6bbb0eb26a$var$UNKNOWN_AREA_ICON = "mdi:help-circle";
 const $a399cc6bbb0eb26a$var$UNKNOWN_AREA_NAME = "Unknown";
 class $a399cc6bbb0eb26a$export$179268f6da4a88b9 extends (0, $7e21dc7b5ad8cb11$export$3f2f9f5909897157) {
-    #config;
     static{
         this.styles = (0, $120c5a859c012378$export$2e2bcd8739ae039);
     }
     setConfig(config) {
-        if (!config.area) throw new Error("You need to define an area.");
-        this.#config = config;
-        this.refreshState();
-    }
-    refreshState() {
-        if (!this.#config || !this.hass) return;
-        const area = this.hass.areas[this.#config.area];
-        this.icon = area?.icon || $a399cc6bbb0eb26a$var$UNKNOWN_AREA_ICON;
-        this.name = area?.name || $a399cc6bbb0eb26a$var$UNKNOWN_AREA_NAME;
-        this.picture = area?.picture || null;
+        if (!config.area) throw new Error("Area required");
+        this.config = config;
     }
     getCardSize() {
         return 6;
@@ -1369,23 +1360,21 @@ class $a399cc6bbb0eb26a$export$179268f6da4a88b9 extends (0, $7e21dc7b5ad8cb11$ex
         };
     }
     render() {
+        if (!this.config || !this.hass) return 0, $3046cc7e4ff866d4$export$45b790e32b2810ee;
+        const area = this.hass.areas[this.config.area];
+        const icon = area?.icon || $a399cc6bbb0eb26a$var$UNKNOWN_AREA_ICON;
+        const name = area?.name || $a399cc6bbb0eb26a$var$UNKNOWN_AREA_NAME;
+        const picture = area?.picture || null;
         return (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
       <ha-card>
         <div class="card-content">
-          <ha-icon .icon="${this.icon}"></ha-icon>
-          ${this.name}
+          <ha-icon .icon="${icon}"></ha-icon>
+          ${name}
 
-          ${(0, $e723a6ede290d350$export$a55877ca9db47377)(this.picture, ()=>(0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`<hui-image .hass=${this.hass} .image="${this.picture}"></ha-icon>`)}
+          ${(0, $e723a6ede290d350$export$a55877ca9db47377)(picture, ()=>(0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`<hui-image .hass=${this.hass} .image="${picture}"></ha-icon>`)}
         </div>
       </ha-card>
     `;
-    }
-    constructor(...args){
-        super(...args);
-        this.icon = $a399cc6bbb0eb26a$var$UNKNOWN_AREA_ICON;
-        this.name = $a399cc6bbb0eb26a$var$UNKNOWN_AREA_NAME;
-        this.picture = null;
-        this.#config = null;
     }
 }
 (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
@@ -1395,13 +1384,7 @@ class $a399cc6bbb0eb26a$export$179268f6da4a88b9 extends (0, $7e21dc7b5ad8cb11$ex
 ], $a399cc6bbb0eb26a$export$179268f6da4a88b9.prototype, "hass", void 0);
 (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
     (0, $de0279ad1f91739c$export$ca000e230c0caa3e)()
-], $a399cc6bbb0eb26a$export$179268f6da4a88b9.prototype, "icon", void 0);
-(0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
-    (0, $de0279ad1f91739c$export$ca000e230c0caa3e)()
-], $a399cc6bbb0eb26a$export$179268f6da4a88b9.prototype, "name", void 0);
-(0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
-    (0, $de0279ad1f91739c$export$ca000e230c0caa3e)()
-], $a399cc6bbb0eb26a$export$179268f6da4a88b9.prototype, "picture", void 0);
+], $a399cc6bbb0eb26a$export$179268f6da4a88b9.prototype, "config", void 0);
 $a399cc6bbb0eb26a$export$179268f6da4a88b9 = (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
     (0, $b291dcacc5787077$export$da64fc29f17f9d0e)("area-card")
 ], $a399cc6bbb0eb26a$export$179268f6da4a88b9);
