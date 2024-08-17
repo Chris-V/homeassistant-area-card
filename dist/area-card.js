@@ -1366,16 +1366,18 @@ class $a399cc6bbb0eb26a$export$179268f6da4a88b9 extends (0, $7e21dc7b5ad8cb11$ex
         const name = area?.name || $a399cc6bbb0eb26a$var$UNKNOWN_AREA_NAME;
         const picture = area?.picture || null;
         return (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
-      <ha-card class="type-picture-elements">
+      <ha-card>
         <div class="root">
           ${(0, $e723a6ede290d350$export$a55877ca9db47377)(picture, ()=>(0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`<hui-image .hass=${this.hass} .image="${picture}"></ha-icon>`)}
 
-          <div>
-            <ha-icon .icon="${icon}"></ha-icon>
-            ${name}
+          <div class="content">
+            <div class="header">
+              <ha-icon .icon="${icon}"></ha-icon>
+              <span>${name}</span>
+            </div>
+            <div class=""></div>
+            <div class="footer"></div>
           </div>
-          <div></div>
-          <div></div>
         </div>
       </ha-card>
     `;
