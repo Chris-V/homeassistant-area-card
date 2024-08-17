@@ -52,25 +52,23 @@ export class AreaCard extends LitElement implements LovelaceCard {
 
     return html`
       <ha-card>
-        <div class="root">
-          ${when(picture, () => html`<hui-image .hass=${this.hass} .image="${picture}"></ha-image>`)}
+        ${when(picture, () => html`<hui-image .hass=${this.hass} .image="${picture}"></hui-image>`)}
 
-          <div class="wrapper">
-            <div class="section header">
-              <div class="title">
-                <ha-icon .icon="${icon}"></ha-icon>
-                ${name}
-              </div>
-
-              <div class="sensors">
-
-              </div>
+        <div class="wrapper">
+          <div class="section header">
+            <div class="title">
+              <ha-icon .icon="${icon}"></ha-icon>
+              ${name}
             </div>
 
-            <div class="section content"></div>
+            <div class="sensors">
 
-            <div class="section footer"></div>
+            </div>
           </div>
+
+          <div class="section content"></div>
+
+          <div class="section footer"></div>
         </div>
       </ha-card>
     `;

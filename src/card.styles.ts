@@ -1,8 +1,10 @@
 import { css } from "lit";
 
 export default css`
-.root {
+:host {
   position: relative;
+
+  overflow: hidden;
 
   --secondary-text-color: #DADADB;
   --primary-text-color: #DADADB;
@@ -41,22 +43,21 @@ export default css`
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: space-between;
+  overflow: hidden;
 
   color: #DADADB;
 }
 
 .section {
   position: relative;
-  width: 100%;
 }
 
 .header {
   order: 1;
-  height: 2.25em;
 
   display: flex;
   align-items: center;
-  overflow: hidden;
+  padding: 5px;
 
   background-color: rgba(0, 96, 15, 0.9);
 }
@@ -89,7 +90,6 @@ export default css`
   display: flex;
   align-items: baseline;
   justify-content: center;
-  overflow: hidden;
 
   background-color: rgba(0, 0, 0, 0.55);
 

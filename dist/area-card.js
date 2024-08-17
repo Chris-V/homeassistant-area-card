@@ -1336,8 +1336,10 @@ function $10cacb3edc9c9319$export$dcd0d083aa86c355(r) {
 
 
 var $120c5a859c012378$export$2e2bcd8739ae039 = (0, $8b70d0323444ddea$export$dbf350e5966cf602)`
-.root {
+:host {
   position: relative;
+
+  overflow: hidden;
 
   --secondary-text-color: #DADADB;
   --primary-text-color: #DADADB;
@@ -1376,22 +1378,21 @@ var $120c5a859c012378$export$2e2bcd8739ae039 = (0, $8b70d0323444ddea$export$dbf3
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: space-between;
+  overflow: hidden;
 
   color: #DADADB;
 }
 
 .section {
   position: relative;
-  width: 100%;
 }
 
 .header {
   order: 1;
-  height: 2.25em;
 
   display: flex;
   align-items: center;
-  overflow: hidden;
+  padding: 5px;
 
   background-color: rgba(0, 96, 15, 0.9);
 }
@@ -1424,7 +1425,6 @@ var $120c5a859c012378$export$2e2bcd8739ae039 = (0, $8b70d0323444ddea$export$dbf3
   display: flex;
   align-items: baseline;
   justify-content: center;
-  overflow: hidden;
 
   background-color: rgba(0, 0, 0, 0.55);
 
@@ -1494,25 +1494,23 @@ class $a399cc6bbb0eb26a$export$179268f6da4a88b9 extends (0, $7e21dc7b5ad8cb11$ex
         const picture = area?.picture || null;
         return (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
       <ha-card>
-        <div class="root">
-          ${(0, $e723a6ede290d350$export$a55877ca9db47377)(picture, ()=>(0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`<hui-image .hass=${this.hass} .image="${picture}"></ha-image>`)}
+        ${(0, $e723a6ede290d350$export$a55877ca9db47377)(picture, ()=>(0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`<hui-image .hass=${this.hass} .image="${picture}"></hui-image>`)}
 
-          <div class="wrapper">
-            <div class="section header">
-              <div class="title">
-                <ha-icon .icon="${icon}"></ha-icon>
-                ${name}
-              </div>
-
-              <div class="sensors">
-
-              </div>
+        <div class="wrapper">
+          <div class="section header">
+            <div class="title">
+              <ha-icon .icon="${icon}"></ha-icon>
+              ${name}
             </div>
 
-            <div class="section content"></div>
+            <div class="sensors">
 
-            <div class="section footer"></div>
+            </div>
           </div>
+
+          <div class="section content"></div>
+
+          <div class="section footer"></div>
         </div>
       </ha-card>
     `;
