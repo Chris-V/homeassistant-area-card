@@ -1338,18 +1338,129 @@ function $10cacb3edc9c9319$export$dcd0d083aa86c355(r) {
 var $120c5a859c012378$export$2e2bcd8739ae039 = (0, $8b70d0323444ddea$export$dbf350e5966cf602)`
 .root {
   position: relative;
+
+  --secondary-text-color: #DADADB;
+  --primary-text-color: #DADADB;
+  --paper-item-icon-color: #DADADB;
+
+  --ha-card-background: rgba(0, 0, 0, 0);
+  --ha-card-border-radius: 0;
+  --ha-card-box-shadow: none;
+
+  --mdc-theme-primary: #DADADB;
+
+  --mdc-select-fill-color: transparent;
+  --mdc-select-outlined-idle-border-color: transparent;
+  --mdc-select-outlined-hover-border-color: transparent;
+  --mdc-select-dropdown-icon-color: #DADADB;
+  --mdc-select-label-ink-color: #DADADB;
+  --mdc-select-ink-color: #DADADB;
+  --mdc-select-idle-line-color: #DADADB;
+  --mdc-select-hover-line-color: #DADADB;
+
+  --mdc-text-field-fill-color: transparent;
+  --mdc-text-field-outlined-idle-border-color: transparent;
+  --mdc-text-field-outlined-hover-border-color: transparent;
+  --mdc-text-field-ink-color: #DADADB;
+  --mdc-text-field-label-ink-color: #DADADB;
+  --mdc-text-field-idle-line-color: #DADADB;
+  --mdc-text-field-hover-line-color: #DADADB;
 }
 
-.content {
+.wrapper {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
+
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+
+  color: #DADADB;
+}
+
+.section {
+  position: relative;
+  width: 100%;
 }
 
 .header {
+  order: 1;
+  height: 2.25em;
+
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+
+  background-color: rgba(0, 96, 15, 0.9);
+}
+
+.header .title {
+  font-size: 1.6em;
+  font-weight: 500;
+
+  --mdc-icon-size: 32px;
+}
+
+.header .sensors {
+  height: 100%;
+  flex-grow: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  font-size: 0.55em;
+
+  --mdc-icon-size: 24px;
 }
 
 .footer {
+  order: 3;
+  height: unset;
+  min-height: 1.75em;
+
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  overflow: hidden;
+
+  background-color: rgba(0, 0, 0, 0.55);
+
+  --mdc-icon-size: 32px;
+}
+
+.content {
+  order: 2;
+  flex-grow: 1;
+  flex-shrink: 1;
+
+  display: flex;
+  overflow: auto hidden;
+
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+
+  --mdc-icon-size: 24px;
+}
+
+.content ::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+
+.content ::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.content ::-webkit-scrollbar-thumb {
+  background: rgba(0, 96, 15, 0.55);
+}
+
+.content ::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 96, 15, 1);
 }
 `;
 
@@ -1384,15 +1495,23 @@ class $a399cc6bbb0eb26a$export$179268f6da4a88b9 extends (0, $7e21dc7b5ad8cb11$ex
         return (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
       <ha-card>
         <div class="root">
-          ${(0, $e723a6ede290d350$export$a55877ca9db47377)(picture, ()=>(0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`<hui-image .hass=${this.hass} .image="${picture}"></ha-icon>`)}
+          ${(0, $e723a6ede290d350$export$a55877ca9db47377)(picture, ()=>(0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`<hui-image .hass=${this.hass} .image="${picture}"></ha-image>`)}
 
-          <div class="content">
-            <div class="header">
-              <ha-icon .icon="${icon}"></ha-icon>
-              <span>${name}</span>
+          <div class="wrapper">
+            <div class="section header">
+              <div class="title">
+                <ha-icon .icon="${icon}"></ha-icon>
+                ${name}
+              </div>
+
+              <div class="sensors">
+
+              </div>
             </div>
-            <div class=""></div>
-            <div class="footer"></div>
+
+            <div class="section content"></div>
+
+            <div class="section footer"></div>
           </div>
         </div>
       </ha-card>
