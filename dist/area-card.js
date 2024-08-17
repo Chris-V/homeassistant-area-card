@@ -1335,7 +1335,23 @@ function $10cacb3edc9c9319$export$dcd0d083aa86c355(r) {
 
 
 
-var $120c5a859c012378$export$2e2bcd8739ae039 = (0, $8b70d0323444ddea$export$dbf350e5966cf602)``;
+var $120c5a859c012378$export$2e2bcd8739ae039 = (0, $8b70d0323444ddea$export$dbf350e5966cf602)`
+.root {
+  position: relative;
+}
+
+.content {
+  position: absolute'
+  top: 0;
+  left: 0;
+}
+
+.header {
+}
+
+.footer {
+}
+`;
 
 
 const $a399cc6bbb0eb26a$var$UNKNOWN_AREA_ICON = "mdi:help-circle";
