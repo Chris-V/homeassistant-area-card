@@ -1340,6 +1340,18 @@ ha-card {
   position: relative;
 
   overflow: hidden;
+}
+
+.root {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  overflow: hidden;
 
   --secondary-text-color: #DADADB;
   --primary-text-color: #DADADB;
@@ -1367,20 +1379,6 @@ ha-card {
   --mdc-text-field-label-ink-color: #DADADB;
   --mdc-text-field-idle-line-color: #DADADB;
   --mdc-text-field-hover-line-color: #DADADB;
-}
-
-.root {
-  position: absolute;
-  inset: 0;
-
-  display: flex;
-  align-items: stretch;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  overflow: hidden;
-
-  color: #DADADB;
 }
 
 .section {
