@@ -6,8 +6,6 @@ declare global {
   }
 }
 
-customElements.define("area-card", AreaCard);
-
 window.customCards = window.customCards || [];
 window.customCards.push({
   type: "area-card",
