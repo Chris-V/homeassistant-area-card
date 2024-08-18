@@ -21,8 +21,13 @@ export class AreaClimatePanel extends LitElement {
     const modeEntity = `input_select.${this.key}_thermostat_mode`;
 
     return html`
-      <div>
+      <div class="root">
+        <div class="settings">
         ${climateEntity}
+        </div>
+        <div class="thermostat">
+        ${climateEntity}
+        </div>
       </div>
     `;
   }

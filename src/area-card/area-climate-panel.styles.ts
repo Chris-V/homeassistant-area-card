@@ -19,4 +19,20 @@ export default css`
   --mdc-text-field-idle-line-color: #DADADB;
   --mdc-text-field-hover-line-color: #DADADB;
 }
+
+.root {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.settings {
+  grid-area: 1 / 1 / 2 / 2;
+}
+
+.thermostat {
+  grid-area: 1 / 2 / 2 / 3;
+}
 `;

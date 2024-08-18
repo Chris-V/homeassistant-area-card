@@ -1962,6 +1962,22 @@ var $96c74620be612612$export$2e2bcd8739ae039 = (0, $8b70d0323444ddea$export$dbf3
   --mdc-text-field-idle-line-color: #DADADB;
   --mdc-text-field-hover-line-color: #DADADB;
 }
+
+.root {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.settings {
+  grid-area: 1 / 1 / 2 / 2;
+}
+
+.thermostat {
+  grid-area: 1 / 2 / 2 / 3;
+}
 `;
 
 
@@ -1976,8 +1992,13 @@ class $6a52fdd840cc3f98$export$41648724724d056c extends (0, $7e21dc7b5ad8cb11$ex
         const ecoSetpointEntity = `input_number.${this.key}_thermostat_eco_setpoint`;
         const modeEntity = `input_select.${this.key}_thermostat_mode`;
         return (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
-      <div>
+      <div class="root">
+        <div class="settings">
         ${climateEntity}
+        </div>
+        <div class="thermostat">
+        ${climateEntity}
+        </div>
       </div>
     `;
     }
