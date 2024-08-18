@@ -1729,12 +1729,52 @@ hui-state-label-element:host {
 `;
 
 
+const $75991cc1c65241b5$export$43835e9acf248a15 = (node, type, detail, options)=>{
+    const event = new Event(type, {
+        bubbles: options?.bubbles === undefined ? true : options.bubbles,
+        cancelable: !!options?.cancelable,
+        composed: options?.composed === undefined ? true : options.composed
+    });
+    event.detail = detail === null || detail === undefined ? {} : detail;
+    node.dispatchEvent(event);
+    return event;
+};
+
+
+
+
+
+
+const $9e338c437afcfa37$var$getActionHandler = ()=>{
+    const body = document.body;
+    if (body.querySelector("action-handler")) return body.querySelector("action-handler");
+    const actionhandler = document.createElement("action-handler");
+    body.appendChild(actionhandler);
+    return actionhandler;
+};
+const $9e338c437afcfa37$export$520aee61eb0a2770 = (element, options)=>{
+    const actionhandler = $9e338c437afcfa37$var$getActionHandler();
+    if (!actionhandler) return;
+    actionhandler.bind(element, options);
+};
+const $9e338c437afcfa37$export$8a44987212de21b = (0, $59dc7bfa10d2dd2f$export$99b43ad1ed32e735)(class extends (0, $59dc7bfa10d2dd2f$export$befdefbdce210f91) {
+    update(part, [options]) {
+        $9e338c437afcfa37$export$520aee61eb0a2770(part.element, options);
+        return 0, $3046cc7e4ff866d4$export$9c068ae9cc5db4e8;
+    }
+    render(_options) {}
+});
+
+
 class $9a9ee115bc4281da$export$f3c9554892aa28ef extends (0, $7e21dc7b5ad8cb11$export$3f2f9f5909897157) {
     static{
         this.styles = (0, $8bfd52a6bb5c61f9$export$2e2bcd8739ae039);
     }
     render() {
-        if (!this.entity) return 0, $3046cc7e4ff866d4$export$45b790e32b2810ee;
+        if (!this.entity || !this.hass) return 0, $3046cc7e4ff866d4$export$45b790e32b2810ee;
+        const hass = this.hass;
+        const state = hass.states[this.entity];
+        if (!state) return (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`<hui-warning-element></hui-warning-element>`;
         const showLabel = !this.entity.startsWith("binary_sensor.");
         const iconConfig = {
             entity: this.entity,
@@ -1754,11 +1794,21 @@ class $9a9ee115bc4281da$export$f3c9554892aa28ef extends (0, $7e21dc7b5ad8cb11$ex
         return (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
       <div class="root">
         <hui-state-icon-element
-          .hass=${this.hass}
+          .hass=${hass}
           ${(0, $00eff1ec8cc3c37a$export$eff4d24c3ff7876e)((element)=>element?.setConfig(iconConfig))}
         ></hui-state-icon-element>
 
         ${(0, $e723a6ede290d350$export$a55877ca9db47377)(showLabel, ()=>(0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
+          <div
+            @action=${this.handleAction}
+            .actionHandler=${(0, $9e338c437afcfa37$export$8a44987212de21b)({
+                hasHold: false,
+                hasDoubleClick: false
+            })}
+            tabindex="0"
+          >
+            ${this.hass?.formatEntityState(state)}
+          </div>
           <hui-state-label-element
             .hass=${this.hass}
             ${(0, $00eff1ec8cc3c37a$export$eff4d24c3ff7876e)((element)=>element?.setConfig(labelConfig))}
@@ -1766,6 +1816,11 @@ class $9a9ee115bc4281da$export$f3c9554892aa28ef extends (0, $7e21dc7b5ad8cb11$ex
         `)}
       </div>
     `;
+    }
+    handleAction(event) {
+        (0, $75991cc1c65241b5$export$43835e9acf248a15)(this, "hass-more-info", {
+            entityId: this.entity
+        });
     }
 }
 (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([

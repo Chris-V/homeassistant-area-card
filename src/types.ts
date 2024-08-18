@@ -1,4 +1,4 @@
-import { HassConfig, HassEntities, HassServices } from "home-assistant-js-websocket";
+import { HassConfig, HassEntities, HassEntity, HassServices } from "home-assistant-js-websocket";
 
 export interface RegistryEntry {
   created_at: number;
@@ -59,6 +59,8 @@ export interface HomeAssistant {
   areas: { [id: string]: AreaRegistryEntry };
   services: HassServices;
   config: HassConfig;
+
+  formatEntityState(state: HassEntity): string;
 }
 
 export type Condition =
