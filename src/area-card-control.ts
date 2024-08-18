@@ -36,14 +36,14 @@ export class AreaCardControl extends LitElement {
     return html`
       <div
         class="root"
+        tabindex="0"
+        .title=${title}
         @action=${this.handleAction}
         .actionHandler=${actionHandler({ hasHold: true })}
       >
         <state-badge
-          tabindex="0"
           .hass=${this.hass}
           .stateObj=${state}
-          .title=${title}
           .overrideIcon=${this.icon}
           .stateColor=${true}
         ></state-badge>
@@ -58,7 +58,7 @@ export class AreaCardControl extends LitElement {
       return;
     }
 
-    if (event.detail.action === 'tap' && !this.tap_action || this.tap_action == 'toggle') {
+    if (event.detail.action === 'tap' && !this.tap_action || this.tap_action === 'toggle') {
       toggleEntity(this.hass, this.entity);
       forwardHaptic('light');
     } else {

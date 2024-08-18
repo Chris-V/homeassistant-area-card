@@ -1661,25 +1661,21 @@ class $9a9ee115bc4281da$export$f3c9554892aa28ef extends (0, $7e21dc7b5ad8cb11$ex
         return (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
       <div
         class="root"
+        tabindex="0"
+        .title=${title}
         @action=${this.handleAction}
         .actionHandler=${(0, $9e338c437afcfa37$export$8a44987212de21b)()}
       >
         <state-badge
           class="icon"
-          tabindex="0"
           .hass=${this.hass}
           .stateObj=${state}
-          .title=${title}
           .overrideIcon=${this.icon}
           .stateColor=${true}
         ></state-badge>
 
         ${(0, $e723a6ede290d350$export$a55877ca9db47377)(showLabel, ()=>(0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
-          <div
-            class="label"
-            tabindex="0"
-            .title=${title}
-          >
+          <div class="label">
             ${this.hass?.formatEntityState(state)}
           </div>
         `)}
@@ -1722,6 +1718,8 @@ var $b25bb6350423b22c$export$2e2bcd8739ae039 = (0, $8b70d0323444ddea$export$dbf3
 }
 
 .root {
+  position: relative;
+
   --mdc-icon-size: 32px;
 }
 
@@ -1729,6 +1727,16 @@ state-badge {
   width: unset;
   height: unset;
   line-height: unset;
+}
+
+.tag {
+  position: absolute;
+  right: -4px;
+  top: -6px;
+
+  margin: 0px;
+
+  --mdc-icon-size: 16px;
 }
 `;
 
@@ -1793,16 +1801,16 @@ class $b1213ca84b9afd3c$export$4db1c1d4d2d55651 extends (0, $7e21dc7b5ad8cb11$ex
         return (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
       <div
         class="root"
+        tabindex="0"
+        .title=${title}
         @action=${this.handleAction}
         .actionHandler=${(0, $9e338c437afcfa37$export$8a44987212de21b)({
             hasHold: true
         })}
       >
         <state-badge
-          tabindex="0"
           .hass=${this.hass}
           .stateObj=${state}
-          .title=${title}
           .overrideIcon=${this.icon}
           .stateColor=${true}
         ></state-badge>
@@ -1813,7 +1821,7 @@ class $b1213ca84b9afd3c$export$4db1c1d4d2d55651 extends (0, $7e21dc7b5ad8cb11$ex
     }
     handleAction(event) {
         if (!this.entity || !this.hass) return;
-        if (event.detail.action === "tap" && !this.tap_action || this.tap_action == "toggle") {
+        if (event.detail.action === "tap" && !this.tap_action || this.tap_action === "toggle") {
             (0, $49b904b83bae4049$export$4f6896672dcf12b1)(this.hass, this.entity);
             (0, $552eb8ad7d641dd7$export$8bcf112cf396c716)("light");
         } else (0, $0d6f31784069dcf6$export$43835e9acf248a15)(this, "hass-more-info", {
