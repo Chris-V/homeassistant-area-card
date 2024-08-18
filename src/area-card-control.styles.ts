@@ -6,11 +6,6 @@ export default css`
 }
 
 .root {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: flex-end;
-
   --mdc-icon-size: 24px;
 }
 
@@ -18,10 +13,5 @@ state-badge {
   width: unset;
   height: unset;
   line-height: unset;
-}
-
-.label {
-  font-size: 0.8em;
-  white-space: nowrap;
 }
 `;

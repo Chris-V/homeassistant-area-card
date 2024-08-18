@@ -9,9 +9,11 @@ import { HomeAssistant } from "./types";
 @customElement('area-card-badge')
 export class AreaCardBadge extends LitElement {
   @property({ attribute: false }) hass?: HomeAssistant;
+  @property() action: string = 'more-info';
   @property() entity?: string;
   @property() icon?: string;
   @property() name?: string;
+  @property() tag?: string;
 
   static styles = styles;
 
@@ -27,13 +29,7 @@ export class AreaCardBadge extends LitElement {
       return html`<hui-warning-element></hui-warning-element>`;
     }
 
-    const showLabel = !this.entity.startsWith('binary_sensor.');
     const title = this.name || state.attributes.friendly_name || this.entity;
-
-    // {{ "{% if is_state_attr('" ~ entity ~ "', 'heating', True) %}" }}
-    // --primary-text-color: var(--paper-item-icon-active-color);
-    // --paper-item-icon-color: var(--paper-item-icon-active-color);
-    // {{ "{% endif %}" }}
 
     return html`
       <div
@@ -42,7 +38,6 @@ export class AreaCardBadge extends LitElement {
         .actionHandler=${actionHandler()}
       >
         <state-badge
-          class="icon"
           tabindex="0"
           .hass=${this.hass}
           .stateObj=${state}
@@ -51,20 +46,15 @@ export class AreaCardBadge extends LitElement {
           .stateColor=${true}
         ></state-badge>
 
-        ${when(showLabel, () => html`
-          <div
-            class="label"
-            tabindex="0"
-            .title=${title}
-          >
-            ${this.hass?.formatEntityState(state)}
-          </div>
+        ${when(this.tag, () => html`
+          <ha-icon class="tag" .icon="${this.tag}"></ha-icon>
         `)}
       </div>
     `;
   }
 
   private handleAction(event: ActionHandlerEvent) {
+    // TODO: action
     fireEvent(this, "hass-more-info", { entityId: this.entity });
   }
 }

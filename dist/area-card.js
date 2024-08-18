@@ -1411,6 +1411,7 @@ ha-card {
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  gap: 0.5em;
 }
 
 .footer {
@@ -1513,7 +1514,18 @@ class $c051df81d7afd129$export$179268f6da4a88b9 extends (0, $7e21dc7b5ad8cb11$ex
 
           <div class="section content"></div>
 
-          <div class="section footer"></div>
+          <div class="section footer">
+            ${this.config.controls?.map((control)=>(0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
+              <area-card-control
+                .hass=${this.hass}
+                .entity=${control.entity}
+                .icon=${control.icon}
+                .tag=${control.tag}
+                .name=${control.name}
+                .action=${control.action}
+              ></area-card-control>
+            `)}
+          </div>
         </div>
       </ha-card>
     `;
@@ -1547,7 +1559,6 @@ var $8bfd52a6bb5c61f9$export$2e2bcd8739ae039 = (0, $8b70d0323444ddea$export$dbf3
   align-items: center;
   flex-direction: column;
   justify-content: flex-end;
-
 
   --mdc-icon-size: 24px;
 }
@@ -1644,6 +1655,10 @@ class $9a9ee115bc4281da$export$f3c9554892aa28ef extends (0, $7e21dc7b5ad8cb11$ex
         if (!state) return (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`<hui-warning-element></hui-warning-element>`;
         const showLabel = !this.entity.startsWith("binary_sensor.");
         const title = this.name || state.attributes.friendly_name || this.entity;
+        // {{ "{% if is_state_attr('" ~ entity ~ "', 'heating', True) %}" }}
+        // --primary-text-color: var(--paper-item-icon-active-color);
+        // --paper-item-icon-color: var(--paper-item-icon-active-color);
+        // {{ "{% endif %}" }}
         return (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
       <div
         class="root"
@@ -1695,6 +1710,80 @@ class $9a9ee115bc4281da$export$f3c9554892aa28ef extends (0, $7e21dc7b5ad8cb11$ex
 $9a9ee115bc4281da$export$f3c9554892aa28ef = (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
     (0, $b291dcacc5787077$export$da64fc29f17f9d0e)("area-card-badge")
 ], $9a9ee115bc4281da$export$f3c9554892aa28ef);
+
+
+
+
+
+
+
+
+
+class $b1213ca84b9afd3c$export$f3c9554892aa28ef extends (0, $7e21dc7b5ad8cb11$export$3f2f9f5909897157) {
+    static{
+        this.styles = (0, $8bfd52a6bb5c61f9$export$2e2bcd8739ae039);
+    }
+    render() {
+        if (!this.entity || !this.hass) return 0, $3046cc7e4ff866d4$export$45b790e32b2810ee;
+        const hass = this.hass;
+        const state = hass.states[this.entity];
+        if (!state) return (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`<hui-warning-element></hui-warning-element>`;
+        const title = this.name || state.attributes.friendly_name || this.entity;
+        return (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
+      <div
+        class="root"
+        @action=${this.handleAction}
+        .actionHandler=${(0, $9e338c437afcfa37$export$8a44987212de21b)()}
+      >
+        <state-badge
+          tabindex="0"
+          .hass=${this.hass}
+          .stateObj=${state}
+          .title=${title}
+          .overrideIcon=${this.icon}
+          .stateColor=${true}
+        ></state-badge>
+
+        ${(0, $e723a6ede290d350$export$a55877ca9db47377)(this.tag, ()=>(0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
+          <ha-icon class="tag" .icon="${this.tag}"></ha-icon>
+        `)}
+      </div>
+    `;
+    }
+    handleAction(event) {
+        // TODO: action
+        (0, $75991cc1c65241b5$export$43835e9acf248a15)(this, "hass-more-info", {
+            entityId: this.entity
+        });
+    }
+    constructor(...args){
+        super(...args);
+        this.action = "more-info";
+    }
+}
+(0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
+    (0, $63995b5a8f5ed880$export$d541bacb2bda4494)({
+        attribute: false
+    })
+], $b1213ca84b9afd3c$export$f3c9554892aa28ef.prototype, "hass", void 0);
+(0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
+    (0, $63995b5a8f5ed880$export$d541bacb2bda4494)()
+], $b1213ca84b9afd3c$export$f3c9554892aa28ef.prototype, "action", void 0);
+(0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
+    (0, $63995b5a8f5ed880$export$d541bacb2bda4494)()
+], $b1213ca84b9afd3c$export$f3c9554892aa28ef.prototype, "entity", void 0);
+(0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
+    (0, $63995b5a8f5ed880$export$d541bacb2bda4494)()
+], $b1213ca84b9afd3c$export$f3c9554892aa28ef.prototype, "icon", void 0);
+(0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
+    (0, $63995b5a8f5ed880$export$d541bacb2bda4494)()
+], $b1213ca84b9afd3c$export$f3c9554892aa28ef.prototype, "name", void 0);
+(0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
+    (0, $63995b5a8f5ed880$export$d541bacb2bda4494)()
+], $b1213ca84b9afd3c$export$f3c9554892aa28ef.prototype, "tag", void 0);
+$b1213ca84b9afd3c$export$f3c9554892aa28ef = (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
+    (0, $b291dcacc5787077$export$da64fc29f17f9d0e)("area-card-badge")
+], $b1213ca84b9afd3c$export$f3c9554892aa28ef);
 
 
 window.customCards = window.customCards || [];

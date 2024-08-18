@@ -13,9 +13,18 @@ export interface AreaCardBadgeConfig {
   name?: string;
 }
 
+export interface AreaCardControlConfig {
+  entity: string;
+  icon?: string;
+  tag?: string;
+  name?: string;
+  action?: 'toggle' | 'more-info';
+}
+
 export interface AreaCardConfig extends LovelaceCardConfig {
   area: string;
   badges?: AreaCardBadgeConfig[];
+  controls?: AreaCardControlConfig[];
 }
 
 @customElement('area-card')
@@ -82,7 +91,18 @@ export class AreaCard extends LitElement implements LovelaceCard<AreaCardConfig>
 
           <div class="section content"></div>
 
-          <div class="section footer"></div>
+          <div class="section footer">
+            ${this.config.controls?.map((control) => html`
+              <area-card-control
+                .hass=${this.hass}
+                .entity=${control.entity}
+                .icon=${control.icon}
+                .tag=${control.tag}
+                .name=${control.name}
+                .action=${control.action}
+              ></area-card-control>
+            `)}
+          </div>
         </div>
       </ha-card>
     `;
