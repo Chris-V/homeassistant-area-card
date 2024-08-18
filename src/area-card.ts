@@ -99,7 +99,7 @@ export class AreaCard extends LitElement implements LovelaceCard<AreaCardConfig>
                 .icon=${control.icon}
                 .tag=${control.tag}
                 .name=${control.name}
-                .ontap=${control.tap_action}
+                .tap_action=${control.tap_action}
               ></area-card-control>
             `)}
           </div>
