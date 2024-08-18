@@ -1,9 +1,11 @@
-import { html, LitElement, nothing } from 'lit';
+import { html, LitElement, nothing, TemplateResult } from 'lit';
 import { customElement, property, state } from 'lit/decorators';
 import { when } from 'lit/directives/when';
 import styles from './area-card.styles';
 import { HomeAssistant, LovelaceCard, LovelaceCardConfig, } from './types';
-import { ActionConfig } from './helpers/action-handler';
+import { ActionConfig, createDefaultAction, handleAction } from './helpers/action-handler';
+import { actionHandler, ActionHandlerEvent } from './helpers/action-handler-directive';
+import { HassEntity } from 'home-assistant-js-websocket';
 
 const UNKNOWN_AREA_ICON = 'mdi:help-circle';
 const UNKNOWN_AREA_NAME = 'Unknown';
@@ -79,12 +81,7 @@ export class AreaCard extends LitElement implements LovelaceCard<AreaCardConfig>
         <div class="root">
           <div class="section header">
             <div class="title">
-              ${when(
-                this.config.entity,
-                () => html`<state-badge .hass=${this.hass} .stateObj=${state} .stateColor=${false}></state-badge>`,
-                () => html`<ha-icon .icon="${icon}"></ha-icon>`,
-              )}
-
+              ${this.iconTemplateResult(state, icon)}
               ${name}
             </div>
 
@@ -120,5 +117,36 @@ export class AreaCard extends LitElement implements LovelaceCard<AreaCardConfig>
         </div>
       </ha-card>
     `;
+  }
+
+  private iconTemplateResult(state: HassEntity | undefined, icon: string): TemplateResult {
+    return when(
+      this.config?.entity,
+      () => state ? html`
+        <state-badge
+          tabindex="0"
+          title=${state?.state}
+          .hass=${this.hass}
+          .stateObj=${state}
+          .stateColor=${false}
+          @action=${this.handleIconAction}
+          .actionHandler=${actionHandler()}
+        ></state-badge>
+      ` : html`<hui-warning-element></hui-warning-element>`,
+      () => html`<ha-icon .icon="${icon}"></ha-icon>`
+    );
+  }
+
+  private handleIconAction(event: ActionHandlerEvent) {
+    if (!this.hass) {
+      return;
+    }
+
+    handleAction(
+      this,
+      this.hass,
+      { tap_action: { action: 'more-info', entity: this.config?.entity } },
+      event.detail.action,
+    );
   }
 }

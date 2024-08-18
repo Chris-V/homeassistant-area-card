@@ -71,6 +71,10 @@ ha-card {
   --mdc-icon-size: 32px;
 }
 
+.title state-badge {
+  cursor: pointer;
+}
+
 .header .sensors {
   height: 100%;
   flex-grow: 1;
