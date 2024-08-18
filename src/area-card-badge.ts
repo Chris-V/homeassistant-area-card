@@ -3,7 +3,7 @@ import { customElement, property } from "lit/decorators";
 import { classMap } from "lit/directives/class-map";
 import { when } from "lit/directives/when";
 import styles from './area-card-badge.styles';
-import { ActionConfig, buildDefaultAction, handleAction } from "./helpers/action-handler";
+import { ActionConfig, createDefaultAction, handleAction } from "./helpers/action-handler";
 import { actionHandler, ActionHandlerEvent } from "./helpers/action-handler-directive";
 import { HomeAssistant } from "./types";
 
@@ -63,8 +63,8 @@ export class AreaCardBadge extends LitElement {
       return;
     }
 
-    const tap_action = buildDefaultAction('more-info', this.entity, this.tapAction);
-    const hold_action = buildDefaultAction('more-info', this.entity, this.holdAction);
+    const tap_action = createDefaultAction('more-info', this.entity, this.tapAction);
+    const hold_action = createDefaultAction('more-info', this.entity, this.holdAction);
 
     handleAction(this, this.hass, { tap_action, hold_action }, event.detail.action);
   }

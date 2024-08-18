@@ -1785,7 +1785,7 @@ async function $9e338c437afcfa37$export$6c6c3f4b7541eaf1(node, hass, config, act
             break;
     }
 }
-function $9e338c437afcfa37$export$f40fa7d0d4f9bd72(type, entity, action) {
+function $9e338c437afcfa37$export$2249b8b14200eb6d(type, entity, action) {
     const actionWithDefaults = {
         action: "more-info",
         ...action
@@ -1862,8 +1862,8 @@ class $9a9ee115bc4281da$export$f3c9554892aa28ef extends (0, $7e21dc7b5ad8cb11$ex
     }
     handleAction(event) {
         if (!this.hass) return;
-        const tap_action = (0, $9e338c437afcfa37$export$f40fa7d0d4f9bd72)("more-info", this.entity, this.tapAction);
-        const hold_action = (0, $9e338c437afcfa37$export$f40fa7d0d4f9bd72)("more-info", this.entity, this.holdAction);
+        const tap_action = (0, $9e338c437afcfa37$export$2249b8b14200eb6d)("more-info", this.entity, this.tapAction);
+        const hold_action = (0, $9e338c437afcfa37$export$2249b8b14200eb6d)("more-info", this.entity, this.holdAction);
         (0, $9e338c437afcfa37$export$6c6c3f4b7541eaf1)(this, this.hass, {
             tap_action: tap_action,
             hold_action: hold_action
@@ -1968,8 +1968,8 @@ class $b1213ca84b9afd3c$export$4db1c1d4d2d55651 extends (0, $7e21dc7b5ad8cb11$ex
     }
     handleAction(event) {
         if (!this.hass) return;
-        const tap_action = (0, $9e338c437afcfa37$export$f40fa7d0d4f9bd72)("toggle", this.entity, this.tapAction);
-        const hold_action = (0, $9e338c437afcfa37$export$f40fa7d0d4f9bd72)("more-info", this.entity, this.holdAction);
+        const tap_action = (0, $9e338c437afcfa37$export$2249b8b14200eb6d)("toggle", this.entity, this.tapAction);
+        const hold_action = (0, $9e338c437afcfa37$export$2249b8b14200eb6d)("more-info", this.entity, this.holdAction);
         (0, $9e338c437afcfa37$export$6c6c3f4b7541eaf1)(this, this.hass, {
             tap_action: tap_action,
             hold_action: hold_action
