@@ -6,7 +6,7 @@ import { actionHandler, ActionHandlerEvent } from "./helpers/action-handler";
 import { fireEvent } from "./helpers/events";
 import { HomeAssistant } from "./types";
 
-@customElement('area-card-badge')
+@customElement('area-card-control')
 export class AreaCardBadge extends LitElement {
   @property({ attribute: false }) hass?: HomeAssistant;
   @property() action: string = 'more-info';
