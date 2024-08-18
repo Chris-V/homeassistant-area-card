@@ -110,6 +110,7 @@ export class AreaCard extends LitElement implements LovelaceCard<AreaCardConfig>
             ${this.config.climate ? html`
               <area-climate-panel
                 class="panel"
+                .hass=${this.hass}
                 .key=${this.config.climate.room_key}
               ></area-climate-panel>` : nothing}
           </div>

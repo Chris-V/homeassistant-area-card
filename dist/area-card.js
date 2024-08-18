@@ -1898,6 +1898,7 @@ class $76271178badb5a82$export$179268f6da4a88b9 extends (0, $7e21dc7b5ad8cb11$ex
             ${this.config.climate ? (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
               <area-climate-panel
                 class="panel"
+                .hass=${this.hass}
                 .key=${this.config.climate.room_key}
               ></area-climate-panel>` : (0, $3046cc7e4ff866d4$export$45b790e32b2810ee)}
           </div>
