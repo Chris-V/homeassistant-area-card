@@ -2286,6 +2286,7 @@ class $6a52fdd840cc3f98$export$41648724724d056c extends (0, $7e21dc7b5ad8cb11$ex
         }
       `);
             card.shadowRoot.adoptedStyleSheets.push(stylesheet);
+            card.shadowRoot.querySelector("ha-state-control-climate-temperature")?.shadowRoot?.adoptedStyleSheets?.push(stylesheet);
         }
     }
 }

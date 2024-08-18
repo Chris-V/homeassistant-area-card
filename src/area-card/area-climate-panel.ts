@@ -90,6 +90,11 @@ export class AreaClimatePanel extends LitElement {
         }
       `);
       card.shadowRoot.adoptedStyleSheets.push(stylesheet);
+      card.shadowRoot
+        .querySelector('ha-state-control-climate-temperature')
+        ?.shadowRoot
+        ?.adoptedStyleSheets
+        ?.push(stylesheet)
     }
   }
 }
