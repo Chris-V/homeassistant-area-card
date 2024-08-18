@@ -80,5 +80,15 @@ export class AreaClimatePanel extends LitElement {
       entity: `climate.${this.key}_thermostat`,
       name: '',
     });
+
+    if (card.shadowRoot) {
+      const stylesheet = new CSSStyleSheet();
+      stylesheet.replaceSync(`
+        .title {
+          display: none;
+        }
+      `);
+      card.shadowRoot.adoptedStyleSheets.push(stylesheet);
+    }
   }
 }

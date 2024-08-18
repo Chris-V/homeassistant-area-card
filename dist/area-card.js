@@ -2277,6 +2277,15 @@ class $6a52fdd840cc3f98$export$41648724724d056c extends (0, $7e21dc7b5ad8cb11$ex
             entity: `climate.${this.key}_thermostat`,
             name: ""
         });
+        if (card.shadowRoot) {
+            const stylesheet = new CSSStyleSheet();
+            stylesheet.replaceSync(`
+        .title {
+          display: none;
+        }
+      `);
+            card.shadowRoot.adoptedStyleSheets.push(stylesheet);
+        }
     }
 }
 (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
