@@ -1885,10 +1885,14 @@ class $9a9ee115bc4281da$export$f3c9554892aa28ef extends (0, $7e21dc7b5ad8cb11$ex
     (0, $63995b5a8f5ed880$export$d541bacb2bda4494)()
 ], $9a9ee115bc4281da$export$f3c9554892aa28ef.prototype, "name", void 0);
 (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
-    (0, $63995b5a8f5ed880$export$d541bacb2bda4494)()
+    (0, $63995b5a8f5ed880$export$d541bacb2bda4494)({
+        attribute: false
+    })
 ], $9a9ee115bc4281da$export$f3c9554892aa28ef.prototype, "tap", void 0);
 (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
-    (0, $63995b5a8f5ed880$export$d541bacb2bda4494)()
+    (0, $63995b5a8f5ed880$export$d541bacb2bda4494)({
+        attribute: false
+    })
 ], $9a9ee115bc4281da$export$f3c9554892aa28ef.prototype, "hold", void 0);
 $9a9ee115bc4281da$export$f3c9554892aa28ef = (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
     (0, $b291dcacc5787077$export$da64fc29f17f9d0e)("area-card-badge")
@@ -1990,10 +1994,14 @@ class $b1213ca84b9afd3c$export$4db1c1d4d2d55651 extends (0, $7e21dc7b5ad8cb11$ex
     (0, $63995b5a8f5ed880$export$d541bacb2bda4494)()
 ], $b1213ca84b9afd3c$export$4db1c1d4d2d55651.prototype, "tag", void 0);
 (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
-    (0, $63995b5a8f5ed880$export$d541bacb2bda4494)()
+    (0, $63995b5a8f5ed880$export$d541bacb2bda4494)({
+        attribute: false
+    })
 ], $b1213ca84b9afd3c$export$4db1c1d4d2d55651.prototype, "tap", void 0);
 (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
-    (0, $63995b5a8f5ed880$export$d541bacb2bda4494)()
+    (0, $63995b5a8f5ed880$export$d541bacb2bda4494)({
+        attribute: false
+    })
 ], $b1213ca84b9afd3c$export$4db1c1d4d2d55651.prototype, "hold", void 0);
 $b1213ca84b9afd3c$export$4db1c1d4d2d55651 = (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
     (0, $b291dcacc5787077$export$da64fc29f17f9d0e)("area-card-control")

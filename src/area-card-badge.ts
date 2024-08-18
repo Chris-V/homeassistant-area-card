@@ -13,8 +13,8 @@ export class AreaCardBadge extends LitElement {
   @property() entity?: string;
   @property() icon?: string;
   @property() name?: string;
-  @property() tap?: ActionConfig;
-  @property() hold?: ActionConfig;
+  @property({ attribute: false }) tap?: ActionConfig;
+  @property({ attribute: false }) hold?: ActionConfig;
 
   static styles = styles;
 
