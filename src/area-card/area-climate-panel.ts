@@ -85,7 +85,7 @@ export class AreaClimatePanel extends LitElement {
     if (card.shadowRoot) {
       const stylesheet = new CSSStyleSheet();
       stylesheet.replaceSync(`
-        .title {
+        .title, .label.secondary {
           display: none;
         }
       `);
