@@ -1,7 +1,7 @@
 import { html, LitElement, nothing } from "lit";
 import { customElement, property } from "lit/decorators";
 import { when } from "lit/directives/when";
-import styles from './area-card-badge.styles';
+import styles from './area-card-control.styles';
 import { actionHandler, ActionHandlerEvent } from "./helpers/action-handler";
 import { fireEvent } from "./helpers/events";
 import { HomeAssistant } from "./types";

@@ -1717,11 +1717,28 @@ $9a9ee115bc4281da$export$f3c9554892aa28ef = (0, $69d0b3211cd6ff55$export$29e00df
 
 
 
+var $b25bb6350423b22c$export$2e2bcd8739ae039 = (0, $8b70d0323444ddea$export$dbf350e5966cf602)`
+:host {
+  cursor: pointer;
+}
+
+.root {
+  --mdc-icon-size: 24px;
+}
+
+state-badge {
+  width: unset;
+  height: unset;
+  line-height: unset;
+}
+`;
+
+
 
 
 class $b1213ca84b9afd3c$export$f3c9554892aa28ef extends (0, $7e21dc7b5ad8cb11$export$3f2f9f5909897157) {
     static{
-        this.styles = (0, $8bfd52a6bb5c61f9$export$2e2bcd8739ae039);
+        this.styles = (0, $b25bb6350423b22c$export$2e2bcd8739ae039);
     }
     render() {
         if (!this.entity || !this.hass) return 0, $3046cc7e4ff866d4$export$45b790e32b2810ee;
