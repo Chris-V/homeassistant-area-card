@@ -18,7 +18,7 @@ export interface AreaCardControlConfig {
   icon?: string;
   tag?: string;
   name?: string;
-  ontap?: 'toggle' | 'more-info';
+  tap_action?: 'toggle' | 'more-info';
 }
 
 export interface AreaCardConfig extends LovelaceCardConfig {
@@ -99,7 +99,7 @@ export class AreaCard extends LitElement implements LovelaceCard<AreaCardConfig>
                 .icon=${control.icon}
                 .tag=${control.tag}
                 .name=${control.name}
-                .ontap=${control.ontap}
+                .ontap=${control.tap_action}
               ></area-card-control>
             `)}
           </div>

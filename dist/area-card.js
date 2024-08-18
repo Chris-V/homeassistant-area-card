@@ -1521,7 +1521,7 @@ class $c051df81d7afd129$export$179268f6da4a88b9 extends (0, $7e21dc7b5ad8cb11$ex
                 .icon=${control.icon}
                 .tag=${control.tag}
                 .name=${control.name}
-                .ontap=${control.ontap}
+                .ontap=${control.tap_action}
               ></area-card-control>
             `)}
           </div>
