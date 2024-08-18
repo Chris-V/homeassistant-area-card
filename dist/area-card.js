@@ -1794,7 +1794,9 @@ class $b1213ca84b9afd3c$export$4db1c1d4d2d55651 extends (0, $7e21dc7b5ad8cb11$ex
       <div
         class="root"
         @action=${this.handleAction}
-        .actionHandler=${(0, $9e338c437afcfa37$export$8a44987212de21b)()}
+        .actionHandler=${(0, $9e338c437afcfa37$export$8a44987212de21b)({
+            hasHold: true
+        })}
       >
         <state-badge
           tabindex="0"

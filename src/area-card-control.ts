@@ -37,7 +37,7 @@ export class AreaCardControl extends LitElement {
       <div
         class="root"
         @action=${this.handleAction}
-        .actionHandler=${actionHandler()}
+        .actionHandler=${actionHandler({ hasHold: true })}
       >
         <state-badge
           tabindex="0"
