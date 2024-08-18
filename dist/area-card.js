@@ -1813,7 +1813,7 @@ class $b1213ca84b9afd3c$export$4db1c1d4d2d55651 extends (0, $7e21dc7b5ad8cb11$ex
     }
     handleAction(event) {
         if (!this.entity || !this.hass) return;
-        if (event.detail.action == "tap" && !this.tap_action || this.tap_action == "toggle") {
+        if (event.detail.action === "tap" && !this.tap_action || this.tap_action == "toggle") {
             (0, $49b904b83bae4049$export$4f6896672dcf12b1)(this.hass, this.entity);
             (0, $552eb8ad7d641dd7$export$8bcf112cf396c716)("light");
         } else (0, $0d6f31784069dcf6$export$43835e9acf248a15)(this, "hass-more-info", {

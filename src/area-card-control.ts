@@ -58,7 +58,7 @@ export class AreaCardControl extends LitElement {
       return;
     }
 
-    if (event.detail.action == 'tap' && !this.tap_action || this.tap_action == 'toggle') {
+    if (event.detail.action === 'tap' && !this.tap_action || this.tap_action == 'toggle') {
       toggleEntity(this.hass, this.entity);
       forwardHaptic('light');
     } else {
