@@ -1,6 +1,6 @@
 import { html, LitElement, nothing } from "lit";
 import { customElement, property } from "lit/decorators";
-import { ref } from "lit/directives/ref";
+import { until } from "lit/directives/until";
 import { HomeAssistant, LovelaceCard } from "../types";
 import styles from './area-climate-panel.styles';
 
@@ -27,7 +27,7 @@ export class AreaClimatePanel extends LitElement {
     return html`
       <div class="root">
         <div class="settings">
-          ${row}
+          ${until(row)}
         </div>
 
         <div class="thermostat">
