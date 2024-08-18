@@ -16,16 +16,28 @@ export class AreaClimatePanel extends LitElement {
       return nothing;
     }
 
-    const row = window.loadCardHelpers().then(({ createRowElement }) => {
-      const row = createRowElement({ type: 'input-select-entity', entity: `input_select.${this.key}_thermostat_mode` });
-      row.hass = this.hass;
-      return row;
+    const mode = window.cardHelpers.createRowElement({
+        type: 'input-select-entity',
+        entity: `input_select.${this.key}_thermostat_mode`
     });
+    mode.hass = this.hass;
+    const ecoSetpoint = window.cardHelpers.createRowElement({
+        type: 'input-number-entity',
+        entity: `input_number.${this.key}_thermostat_eco_setpoint`
+    });
+    ecoSetpoint.hass = this.hass;
+    const comfortSetpoint = window.cardHelpers.createRowElement({
+        type: 'input-number-entity',
+        entity: `input_number.${this.key}_thermostat_comfort_setpoint`
+    });
+    comfortSetpoint.hass = this.hass;
 
     return html`
       <div class="root">
         <div class="settings">
-          ${until(row, nothing)}
+          ${mode}
+          ${ecoSetpoint}
+          ${comfortSetpoint}
         </div>
 
         <div class="thermostat">
