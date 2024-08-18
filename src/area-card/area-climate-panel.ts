@@ -47,6 +47,22 @@ export class AreaClimatePanel extends LitElement {
   private entitiesCardRef: Ref<HTMLInputElement & LovelaceCard<any>> = createRef();
 
   protected firstUpdated(properties: PropertyValues): void {
+    const sheet = new CSSStyleSheet();
+    sheet.replaceSync(`
+      .card-content, :host ::slotted(.card-content) {
+          padding: 0;
+      }
+    `);
+
+    this.entitiesCardRef.value
+      ?.shadowRoot
+      ?.querySelector('ha-card')
+      ?.shadowRoot
+      ?.adoptedStyleSheets
+      .push(sheet);
+  }
+
+  protected updated(properties: PropertyValues): void {
     const card = this.entitiesCardRef.value;
     if (!card) {
       return;
@@ -61,15 +77,5 @@ export class AreaClimatePanel extends LitElement {
         { entity: `input_number.${this.key}_thermostat_comfort_setpoint`, name: 'Comfort' },
       ],
     });
-
-    const sheet = new CSSStyleSheet();
-    sheet.replaceSync(`
-      .card-content, :host ::slotted(.card-content) {
-          padding: 0;
-      }
-
-    `);
-
-    card.shadowRoot?.querySelector('ha-card')?.shadowRoot?.adoptedStyleSheets.push(sheet);
   }
 }

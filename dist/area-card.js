@@ -2158,6 +2158,15 @@ class $6a52fdd840cc3f98$export$41648724724d056c extends (0, $7e21dc7b5ad8cb11$ex
     `;
     }
     firstUpdated(properties) {
+        const sheet = new CSSStyleSheet();
+        sheet.replaceSync(`
+      .card-content, :host ::slotted(.card-content) {
+          padding: 0;
+      }
+    `);
+        this.entitiesCardRef.value?.shadowRoot?.querySelector("ha-card")?.shadowRoot?.adoptedStyleSheets.push(sheet);
+    }
+    updated(properties) {
         const card = this.entitiesCardRef.value;
         if (!card) return;
         card.hass = this.hass;
@@ -2178,14 +2187,6 @@ class $6a52fdd840cc3f98$export$41648724724d056c extends (0, $7e21dc7b5ad8cb11$ex
                 }
             ]
         });
-        const sheet = new CSSStyleSheet();
-        sheet.replaceSync(`
-      .card-content, :host ::slotted(.card-content) {
-          padding: 0;
-      }
-
-    `);
-        card.shadowRoot?.querySelector("ha-card")?.shadowRoot?.adoptedStyleSheets.push(sheet);
     }
     constructor(...args){
         super(...args);
