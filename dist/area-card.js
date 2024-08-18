@@ -1548,12 +1548,18 @@ var $8bfd52a6bb5c61f9$export$2e2bcd8739ae039 = (0, $8b70d0323444ddea$export$dbf3
   flex-direction: column;
   justify-content: flex-end;
 
-  font-size: 0.55em;
 
   --mdc-icon-size: 24px;
 }
 
+state-badge {
+  width: unset;
+  height: unset;
+  line-height: unset;
+}
+
 .label {
+  font-size: 0.8em;
   white-space: nowrap;
 }
 `;
@@ -1645,6 +1651,7 @@ class $9a9ee115bc4281da$export$f3c9554892aa28ef extends (0, $7e21dc7b5ad8cb11$ex
         .actionHandler=${(0, $9e338c437afcfa37$export$8a44987212de21b)()}
       >
         <state-badge
+          class="icon"
           tabindex="0"
           .hass=${this.hass}
           .stateObj=${state}

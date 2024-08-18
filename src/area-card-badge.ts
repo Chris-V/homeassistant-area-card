@@ -37,6 +37,7 @@ export class AreaCardBadge extends LitElement {
         .actionHandler=${actionHandler()}
       >
         <state-badge
+          class="icon"
           tabindex="0"
           .hass=${this.hass}
           .stateObj=${state}

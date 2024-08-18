@@ -11,12 +11,18 @@ export default css`
   flex-direction: column;
   justify-content: flex-end;
 
-  font-size: 0.55em;
 
   --mdc-icon-size: 24px;
 }
 
+state-badge {
+  width: unset;
+  height: unset;
+  line-height: unset;
+}
+
 .label {
+  font-size: 0.8em;
   white-space: nowrap;
 }
 `;
