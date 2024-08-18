@@ -1323,6 +1323,222 @@ function $10cacb3edc9c9319$export$dcd0d083aa86c355(r) {
 
 
 
+/**
+ * @license
+ * Copyright 2021 Google LLC
+ * SPDX-License-Identifier: BSD-3-Clause
+ */ function $e723a6ede290d350$export$a55877ca9db47377(n, r, t) {
+    return n ? r(n) : t?.(n);
+}
+
+
+
+
+
+var $120c5a859c012378$export$2e2bcd8739ae039 = (0, $8b70d0323444ddea$export$dbf350e5966cf602)`
+ha-card {
+  position: relative;
+
+  overflow: hidden;
+
+  --primary-text-color: #DADADB;
+  --secondary-text-color: #DADADB;
+  --paper-item-icon-color: #DADADB;
+
+  --mdc-theme-primary: #DADADB;
+
+  --mdc-select-fill-color: transparent;
+  --mdc-select-outlined-idle-border-color: transparent;
+  --mdc-select-outlined-hover-border-color: transparent;
+  --mdc-select-dropdown-icon-color: #DADADB;
+  --mdc-select-label-ink-color: #DADADB;
+  --mdc-select-ink-color: #DADADB;
+  --mdc-select-idle-line-color: #DADADB;
+  --mdc-select-hover-line-color: #DADADB;
+
+  --mdc-text-field-fill-color: transparent;
+  --mdc-text-field-outlined-idle-border-color: transparent;
+  --mdc-text-field-outlined-hover-border-color: transparent;
+  --mdc-text-field-ink-color: #DADADB;
+  --mdc-text-field-label-ink-color: #DADADB;
+  --mdc-text-field-idle-line-color: #DADADB;
+  --mdc-text-field-hover-line-color: #DADADB;
+}
+
+.root {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  overflow: hidden;
+
+  color: var(--primary-text-color);
+
+  --ha-card-background: rgba(0, 0, 0, 0);
+  --ha-card-border-radius: 0;
+  --ha-card-box-shadow: none;
+}
+
+.section {
+  position: relative;
+}
+
+.header {
+  order: 1;
+
+  display: flex;
+  align-items: center;
+  padding: 5px;
+
+  background-color: rgba(0, 96, 15, 0.9);
+}
+
+.header .title {
+  font-size: 1.6em;
+  font-weight: 500;
+
+  --mdc-icon-size: 32px;
+}
+
+.header .sensors {
+  height: 100%;
+  flex-grow: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  font-size: 0.55em;
+
+  --mdc-icon-size: 24px;
+}
+
+.footer {
+  order: 3;
+  height: unset;
+  min-height: 1.75em;
+
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+
+  background-color: rgba(0, 0, 0, 0.55);
+
+  --mdc-icon-size: 32px;
+}
+
+.content {
+  order: 2;
+  flex-grow: 1;
+  flex-shrink: 1;
+
+  display: flex;
+  overflow: auto hidden;
+
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+
+  --mdc-icon-size: 24px;
+}
+
+.content ::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+
+.content ::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.content ::-webkit-scrollbar-thumb {
+  background: rgba(0, 96, 15, 0.55);
+}
+
+.content ::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 96, 15, 1);
+}
+`;
+
+
+const $c051df81d7afd129$var$UNKNOWN_AREA_ICON = "mdi:help-circle";
+const $c051df81d7afd129$var$UNKNOWN_AREA_NAME = "Unknown";
+class $c051df81d7afd129$export$179268f6da4a88b9 extends (0, $7e21dc7b5ad8cb11$export$3f2f9f5909897157) {
+    static{
+        this.styles = (0, $120c5a859c012378$export$2e2bcd8739ae039);
+    }
+    setConfig(config) {
+        if (!config.area) throw new Error("Area required");
+        this.config = config;
+    }
+    getCardSize() {
+        return 6;
+    }
+    getLayoutOptions() {
+        return {
+            grid_rows: 6,
+            grid_columns: 5,
+            grid_min_rows: 6,
+            grid_max_rows: 6
+        };
+    }
+    render() {
+        if (!this.config || !this.hass) return 0, $3046cc7e4ff866d4$export$45b790e32b2810ee;
+        const area = this.hass.areas[this.config.area];
+        const icon = area?.icon || $c051df81d7afd129$var$UNKNOWN_AREA_ICON;
+        const name = area?.name || $c051df81d7afd129$var$UNKNOWN_AREA_NAME;
+        const picture = area?.picture || null;
+        return (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
+      <ha-card>
+        ${(0, $e723a6ede290d350$export$a55877ca9db47377)(picture, ()=>(0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`<hui-image .hass=${this.hass} .image="${picture}"></hui-image>`)}
+
+        <div class="root">
+          <div class="section header">
+            <div class="title">
+              <ha-icon .icon="${icon}"></ha-icon>
+              ${name}
+            </div>
+
+            <div class="sensors">
+              ${this.config.sensors?.map((sensor)=>(0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
+                <area-card-badge
+                  .hass=${this.hass}
+                  .entity=${sensor.entity}
+                  .icon=${sensor.icon}
+                  .name=${sensor.name}
+                ></area-card-badge>
+              `)}
+            </div>
+          </div>
+
+          <div class="section content"></div>
+
+          <div class="section footer"></div>
+        </div>
+      </ha-card>
+    `;
+    }
+}
+(0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
+    (0, $63995b5a8f5ed880$export$d541bacb2bda4494)({
+        attribute: false
+    })
+], $c051df81d7afd129$export$179268f6da4a88b9.prototype, "hass", void 0);
+(0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
+    (0, $de0279ad1f91739c$export$ca000e230c0caa3e)()
+], $c051df81d7afd129$export$179268f6da4a88b9.prototype, "config", void 0);
+$c051df81d7afd129$export$179268f6da4a88b9 = (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
+    (0, $b291dcacc5787077$export$da64fc29f17f9d0e)("area-card")
+], $c051df81d7afd129$export$179268f6da4a88b9);
+
+
+
+
+
 
 
 /**
@@ -1497,212 +1713,20 @@ const $00eff1ec8cc3c37a$var$qt = new WeakMap, $00eff1ec8cc3c37a$export$eff4d24c3
 
 
 
-/**
- * @license
- * Copyright 2021 Google LLC
- * SPDX-License-Identifier: BSD-3-Clause
- */ function $e723a6ede290d350$export$a55877ca9db47377(n, r, t) {
-    return n ? r(n) : t?.(n);
-}
-
-
-
-
-
-var $120c5a859c012378$export$2e2bcd8739ae039 = (0, $8b70d0323444ddea$export$dbf350e5966cf602)`
-ha-card {
-  position: relative;
-
-  overflow: hidden;
-
-  --primary-text-color: #DADADB;
-  --secondary-text-color: #DADADB;
-  --paper-item-icon-color: #DADADB;
-
-  --mdc-theme-primary: #DADADB;
-
-  --mdc-select-fill-color: transparent;
-  --mdc-select-outlined-idle-border-color: transparent;
-  --mdc-select-outlined-hover-border-color: transparent;
-  --mdc-select-dropdown-icon-color: #DADADB;
-  --mdc-select-label-ink-color: #DADADB;
-  --mdc-select-ink-color: #DADADB;
-  --mdc-select-idle-line-color: #DADADB;
-  --mdc-select-hover-line-color: #DADADB;
-
-  --mdc-text-field-fill-color: transparent;
-  --mdc-text-field-outlined-idle-border-color: transparent;
-  --mdc-text-field-outlined-hover-border-color: transparent;
-  --mdc-text-field-ink-color: #DADADB;
-  --mdc-text-field-label-ink-color: #DADADB;
-  --mdc-text-field-idle-line-color: #DADADB;
-  --mdc-text-field-hover-line-color: #DADADB;
-}
-
-.root {
-  position: absolute;
-  inset: 0;
-
-  display: flex;
-  align-items: stretch;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  overflow: hidden;
-
-  color: var(--primary-text-color);
-
-  --ha-card-background: rgba(0, 0, 0, 0);
-  --ha-card-border-radius: 0;
-  --ha-card-box-shadow: none;
-}
-
-.section {
-  position: relative;
-}
-
-.header {
-  order: 1;
-
-  display: flex;
-  align-items: center;
-  padding: 5px;
-
-  background-color: rgba(0, 96, 15, 0.9);
-}
-
-.header .title {
-  font-size: 1.6em;
-  font-weight: 500;
-
-  --mdc-icon-size: 32px;
-}
-
-.header .sensors {
-  height: 100%;
-  flex-grow: 1;
-
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-
-  font-size: 0.55em;
-
-  --mdc-icon-size: 24px;
-}
-
-.footer {
-  order: 3;
-  height: unset;
-  min-height: 1.75em;
-
-  display: flex;
-  align-items: baseline;
-  justify-content: center;
-
-  background-color: rgba(0, 0, 0, 0.55);
-
-  --mdc-icon-size: 32px;
-}
-
-.content {
-  order: 2;
-  flex-grow: 1;
-  flex-shrink: 1;
-
-  display: flex;
-  overflow: auto hidden;
-
-  scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-
-  --mdc-icon-size: 24px;
-}
-
-.content ::-webkit-scrollbar {
-  width: 3px;
-  height: 3px;
-}
-
-.content ::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.55);
-}
-
-.content ::-webkit-scrollbar-thumb {
-  background: rgba(0, 96, 15, 0.55);
-}
-
-.content ::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 96, 15, 1);
-}
-`;
-
-
-const $a399cc6bbb0eb26a$var$UNKNOWN_AREA_ICON = "mdi:help-circle";
-const $a399cc6bbb0eb26a$var$UNKNOWN_AREA_NAME = "Unknown";
-class $a399cc6bbb0eb26a$export$179268f6da4a88b9 extends (0, $7e21dc7b5ad8cb11$export$3f2f9f5909897157) {
-    static{
-        this.styles = (0, $120c5a859c012378$export$2e2bcd8739ae039);
-    }
-    setConfig(config) {
-        if (!config.area) throw new Error("Area required");
-        this.config = config;
-    }
-    getCardSize() {
-        return 6;
-    }
-    getLayoutOptions() {
-        return {
-            grid_rows: 6,
-            grid_columns: 5,
-            grid_min_rows: 6,
-            grid_max_rows: 6
-        };
-    }
+class $9a9ee115bc4281da$export$f3c9554892aa28ef extends (0, $7e21dc7b5ad8cb11$export$3f2f9f5909897157) {
     render() {
-        if (!this.config || !this.hass) return 0, $3046cc7e4ff866d4$export$45b790e32b2810ee;
-        const area = this.hass.areas[this.config.area];
-        const icon = area?.icon || $a399cc6bbb0eb26a$var$UNKNOWN_AREA_ICON;
-        const name = area?.name || $a399cc6bbb0eb26a$var$UNKNOWN_AREA_NAME;
-        const picture = area?.picture || null;
-        return (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
-      <ha-card>
-        ${(0, $e723a6ede290d350$export$a55877ca9db47377)(picture, ()=>(0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`<hui-image .hass=${this.hass} .image="${picture}"></hui-image>`)}
-
-        <div class="root">
-          <div class="section header">
-            <div class="title">
-              <ha-icon .icon="${icon}"></ha-icon>
-              ${name}
-            </div>
-
-            <div class="sensors">
-              ${this.config.sensors?.map((sensor)=>this.createSensorTemplate(sensor))}
-            </div>
-          </div>
-
-          <div class="section content"></div>
-
-          <div class="section footer"></div>
-        </div>
-      </ha-card>
-    `;
-    }
-    createSensorTemplate(sensorConfig) {
-        if (!this.hass) return 0, $3046cc7e4ff866d4$export$45b790e32b2810ee;
-        if (!sensorConfig.entity.startsWith("binary_sensor.")) return 0, $3046cc7e4ff866d4$export$45b790e32b2810ee;
-        const elementConfig = {
-            entity: sensorConfig.entity,
-            icon: sensorConfig.icon,
-            title: sensorConfig.name,
+        if (!this.entity) return 0, $3046cc7e4ff866d4$export$45b790e32b2810ee;
+        const iconConfig = {
+            entity: this.entity,
+            icon: this.icon,
+            title: this.name,
             tap_action: {
                 action: "more-info"
             }
         };
         return (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`<hui-state-icon-element
       .hass=${this.hass}
-      ${(0, $00eff1ec8cc3c37a$export$eff4d24c3ff7876e)((element)=>element?.setConfig(elementConfig))}
+      ${(0, $00eff1ec8cc3c37a$export$eff4d24c3ff7876e)((element)=>element?.setConfig(iconConfig))}
     ></hui-state-icon-element>`;
     }
 }
@@ -1710,13 +1734,19 @@ class $a399cc6bbb0eb26a$export$179268f6da4a88b9 extends (0, $7e21dc7b5ad8cb11$ex
     (0, $63995b5a8f5ed880$export$d541bacb2bda4494)({
         attribute: false
     })
-], $a399cc6bbb0eb26a$export$179268f6da4a88b9.prototype, "hass", void 0);
+], $9a9ee115bc4281da$export$f3c9554892aa28ef.prototype, "hass", void 0);
 (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
-    (0, $de0279ad1f91739c$export$ca000e230c0caa3e)()
-], $a399cc6bbb0eb26a$export$179268f6da4a88b9.prototype, "config", void 0);
-$a399cc6bbb0eb26a$export$179268f6da4a88b9 = (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
-    (0, $b291dcacc5787077$export$da64fc29f17f9d0e)("area-card")
-], $a399cc6bbb0eb26a$export$179268f6da4a88b9);
+    (0, $63995b5a8f5ed880$export$d541bacb2bda4494)()
+], $9a9ee115bc4281da$export$f3c9554892aa28ef.prototype, "entity", void 0);
+(0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
+    (0, $63995b5a8f5ed880$export$d541bacb2bda4494)()
+], $9a9ee115bc4281da$export$f3c9554892aa28ef.prototype, "icon", void 0);
+(0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
+    (0, $63995b5a8f5ed880$export$d541bacb2bda4494)()
+], $9a9ee115bc4281da$export$f3c9554892aa28ef.prototype, "name", void 0);
+$9a9ee115bc4281da$export$f3c9554892aa28ef = (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
+    (0, $b291dcacc5787077$export$da64fc29f17f9d0e)("area-card-badge")
+], $9a9ee115bc4281da$export$f3c9554892aa28ef);
 
 
 window.customCards = window.customCards || [];

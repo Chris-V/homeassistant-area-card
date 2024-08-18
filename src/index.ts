@@ -1,4 +1,5 @@
-import './card';
+import './area-card';
+import './area-card-badge';
 
 declare global {
   interface Window {

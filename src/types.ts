@@ -126,11 +126,14 @@ export interface LovelaceCardConfig {
   visibility?: Condition[];
 }
 
-export interface LovelaceCard extends HTMLElement {
+export interface LovelaceElement<C> extends HTMLElement {
   hass?: HomeAssistant;
+  setConfig(config: C): void;
+}
+
+export interface LovelaceCard<C extends LovelaceCardConfig> extends LovelaceElement<C> {
   preview?: boolean;
   layout?: string;
   getCardSize(): number | Promise<number>;
   getLayoutOptions?(): LovelaceLayoutOptions;
-  setConfig(config: LovelaceCardConfig): void;
 }

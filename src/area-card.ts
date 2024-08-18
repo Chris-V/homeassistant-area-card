@@ -8,19 +8,19 @@ import { HomeAssistant, LovelaceCard, LovelaceCardConfig, } from './types';
 const UNKNOWN_AREA_ICON = 'mdi:help-circle';
 const UNKNOWN_AREA_NAME = 'Unknown';
 
-interface SensorConfig {
+export interface AreaCardBadgeConfig {
   entity: string;
-  name?: string | undefined;
-  icon?: string | undefined;
+  icon?: string;
+  name?: string;
 }
 
-interface AreaCardConfig extends LovelaceCardConfig {
+export interface AreaCardConfig extends LovelaceCardConfig {
   area: string;
-  sensors?: SensorConfig[];
+  sensors?: AreaCardBadgeConfig[];
 }
 
 @customElement('area-card')
-export class AreaCard extends LitElement implements LovelaceCard {
+export class AreaCard extends LitElement implements LovelaceCard<AreaCardConfig> {
   @property({ attribute: false }) hass?: HomeAssistant
 
   @state() private config?: AreaCardConfig;
@@ -70,7 +70,14 @@ export class AreaCard extends LitElement implements LovelaceCard {
             </div>
 
             <div class="sensors">
-              ${this.config.sensors?.map((sensor) => this.createSensorTemplate(sensor))}
+              ${this.config.sensors?.map((sensor) => html`
+                <area-card-badge
+                  .hass=${this.hass}
+                  .entity=${sensor.entity}
+                  .icon=${sensor.icon}
+                  .name=${sensor.name}
+                ></area-card-badge>
+              `)}
             </div>
           </div>
 
@@ -80,25 +87,5 @@ export class AreaCard extends LitElement implements LovelaceCard {
         </div>
       </ha-card>
     `;
-  }
-
-  private createSensorTemplate(sensorConfig: SensorConfig) {
-    if (!this.hass) {
-      return nothing;
-    }
-
-    if (!sensorConfig.entity.startsWith('binary_sensor.')) return nothing;
-
-    const elementConfig = {
-      entity: sensorConfig.entity,
-      icon: sensorConfig.icon,
-      title: sensorConfig.name,
-      tap_action: { action: 'more-info' },
-    };
-
-    return html`<hui-state-icon-element
-      .hass=${this.hass}
-      ${ref((element?: any) => element?.setConfig(elementConfig))}
-    ></hui-state-icon-element>`;
   }
 }
