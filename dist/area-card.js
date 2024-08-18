@@ -2105,6 +2105,9 @@ var $96c74620be612612$export$2e2bcd8739ae039 = (0, $8b70d0323444ddea$export$dbf3
   --mdc-text-field-label-ink-color: #DADADB;
   --mdc-text-field-idle-line-color: #DADADB;
   --mdc-text-field-hover-line-color: #DADADB;
+
+  --ha-card-border-width: 0;
+  --ha-card-box-shadow: none;
 }
 
 .root {

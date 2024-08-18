@@ -18,6 +18,9 @@ export default css`
   --mdc-text-field-label-ink-color: #DADADB;
   --mdc-text-field-idle-line-color: #DADADB;
   --mdc-text-field-hover-line-color: #DADADB;
+
+  --ha-card-border-width: 0;
+  --ha-card-box-shadow: none;
 }
 
 .root {
