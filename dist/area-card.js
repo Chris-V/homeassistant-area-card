@@ -2169,8 +2169,8 @@ class $6a52fdd840cc3f98$export$41648724724d056c extends (0, $7e21dc7b5ad8cb11$ex
     updated(properties) {
         const card = this.entitiesCardRef.value;
         if (!card) return;
-        card.hass = this.hass;
-        card.setConfig({
+        if (properties.has("hass")) card.hass = this.hass;
+        if (properties.has("key")) card.setConfig({
             type: "entities",
             entities: [
                 {

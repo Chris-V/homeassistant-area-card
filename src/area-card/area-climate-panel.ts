@@ -68,14 +68,18 @@ export class AreaClimatePanel extends LitElement {
       return;
     }
 
-    card.hass = this.hass;
-    card.setConfig({
-      type: "entities",
-      entities: [
-        { entity: `input_select.${this.key}_thermostat_mode`, name: 'Mode' },
-        { entity: `input_number.${this.key}_thermostat_eco_setpoint`, name: 'Eco' },
-        { entity: `input_number.${this.key}_thermostat_comfort_setpoint`, name: 'Comfort' },
-      ],
-    });
+    if (properties.has('hass')) {
+      card.hass = this.hass;
+    }
+    if (properties.has('key')) {
+      card.setConfig({
+        type: "entities",
+        entities: [
+          { entity: `input_select.${this.key}_thermostat_mode`, name: 'Mode' },
+          { entity: `input_number.${this.key}_thermostat_eco_setpoint`, name: 'Eco' },
+          { entity: `input_number.${this.key}_thermostat_comfort_setpoint`, name: 'Comfort' },
+        ],
+      });
+    }
   }
 }
