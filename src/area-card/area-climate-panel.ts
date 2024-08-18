@@ -64,9 +64,10 @@ export class AreaClimatePanel extends LitElement {
 
     const sheet = new CSSStyleSheet();
     sheet.replaceSync(`
-      :host ::slotted(.card-content) {
+      .card-content, :host ::slotted(.card-content) {
           padding: 0;
       }
+
     `);
 
     card.shadowRoot?.querySelector('ha-card')?.shadowRoot?.adoptedStyleSheets.push(sheet);
