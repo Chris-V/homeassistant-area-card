@@ -49,7 +49,8 @@ export class AreaClimatePanel extends LitElement {
   protected firstUpdated(properties: PropertyValues): void {
     const sheet = new CSSStyleSheet();
     sheet.replaceSync(`
-      .card-content, :host ::slotted(.card-content) {
+      .card-content,
+      :host ::slotted(.card-content) {
           padding: 0;
       }
     `);
@@ -71,7 +72,6 @@ export class AreaClimatePanel extends LitElement {
     if (properties.has('hass')) {
       card.hass = this.hass;
     }
-
     if (properties.has('key')) {
       card.setConfig({
         type: "entities",

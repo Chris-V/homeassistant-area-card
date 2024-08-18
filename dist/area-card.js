@@ -2160,7 +2160,8 @@ class $6a52fdd840cc3f98$export$41648724724d056c extends (0, $7e21dc7b5ad8cb11$ex
     firstUpdated(properties) {
         const sheet = new CSSStyleSheet();
         sheet.replaceSync(`
-      .card-content, :host ::slotted(.card-content) {
+      .card-content,
+      :host ::slotted(.card-content) {
           padding: 0;
       }
     `);
