@@ -1,5 +1,6 @@
 import { html, LitElement, nothing } from 'lit';
 import { customElement, property, state } from 'lit/decorators';
+import { ref } from 'lit/directives/ref';
 import { when } from 'lit/directives/when';
 import styles from './card.styles';
 import { HomeAssistant, LovelaceCard, LovelaceCardConfig, } from './types';
@@ -97,7 +98,7 @@ export class AreaCard extends LitElement implements LovelaceCard {
 
     return html`<hui-state-icon-element
       .hass=${this.hass}
-      .config=${elementConfig}
+      ${ref((element: any) => element.setConfig(elementConfig))}
     ></hui-state-icon-element>`;
   }
 }
