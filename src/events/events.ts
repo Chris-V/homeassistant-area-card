@@ -3,6 +3,8 @@ declare global {
     "hass-more-info": {
       entityId: string | undefined;
     };
+
+    "ll-upgrade": {};
   }
 }
 

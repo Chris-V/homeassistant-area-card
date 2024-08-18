@@ -3,6 +3,7 @@ import { customElement, property } from "lit/decorators";
 import { createRef, Ref, ref } from "lit/directives/ref";
 import { HomeAssistant, LovelaceCard, LovelaceElement } from "../types";
 import styles from './area-climate-panel.styles';
+import { fireEvent } from "../events/events";
 
 @customElement('area-climate-panel')
 export class AreaClimatePanel extends LitElement {
@@ -21,18 +22,24 @@ export class AreaClimatePanel extends LitElement {
         <div class="settings">
           <hui-input-select-entity-row ${ref((row: any | undefined) => {
             if (row) {
+              customElements.upgrade(row);
+              fireEvent(row, "ll-upgrade");
               row.hass = this.hass;
               row.setConfig({ entity: `input_select.${this.key}_thermostat_mode`, name: 'Mode' });
             }
           })}></hui-input-select-entity-row>
                 <hui-input-number-entity-row ${ref((row?: any) => {
             if (row) {
+              customElements.upgrade(row);
+              fireEvent(row, "ll-upgrade");
               row.hass = this.hass;
               row.setConfig({ entity: `input_number.${this.key}_thermostat_eco_setpoint`, name: 'Eco' });
             }
           })}></hui-input-number-entity-row>
           <hui-input-number-entity-row ${ref((row?: any) => {
             if (row) {
+              customElements.upgrade(row);
+              fireEvent(row, "ll-upgrade");
               row.hass = this.hass;
               row.setConfig({ entity: `input_number.${this.key}_thermostat_comfort_setpoint`, name: 'Comfort' });
             }

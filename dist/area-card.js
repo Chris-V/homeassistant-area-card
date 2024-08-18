@@ -2128,6 +2128,7 @@ var $96c74620be612612$export$2e2bcd8739ae039 = (0, $8b70d0323444ddea$export$dbf3
 `;
 
 
+
 class $6a52fdd840cc3f98$export$41648724724d056c extends (0, $7e21dc7b5ad8cb11$export$3f2f9f5909897157) {
     static{
         this.styles = (0, $96c74620be612612$export$2e2bcd8739ae039);
@@ -2139,6 +2140,8 @@ class $6a52fdd840cc3f98$export$41648724724d056c extends (0, $7e21dc7b5ad8cb11$ex
         <div class="settings">
           <hui-input-select-entity-row ${(0, $00eff1ec8cc3c37a$export$eff4d24c3ff7876e)((row)=>{
             if (row) {
+                customElements.upgrade(row);
+                (0, $0d6f31784069dcf6$export$43835e9acf248a15)(row, "ll-upgrade");
                 row.hass = this.hass;
                 row.setConfig({
                     entity: `input_select.${this.key}_thermostat_mode`,
@@ -2148,6 +2151,8 @@ class $6a52fdd840cc3f98$export$41648724724d056c extends (0, $7e21dc7b5ad8cb11$ex
         })}></hui-input-select-entity-row>
                 <hui-input-number-entity-row ${(0, $00eff1ec8cc3c37a$export$eff4d24c3ff7876e)((row)=>{
             if (row) {
+                customElements.upgrade(row);
+                (0, $0d6f31784069dcf6$export$43835e9acf248a15)(row, "ll-upgrade");
                 row.hass = this.hass;
                 row.setConfig({
                     entity: `input_number.${this.key}_thermostat_eco_setpoint`,
@@ -2157,6 +2162,8 @@ class $6a52fdd840cc3f98$export$41648724724d056c extends (0, $7e21dc7b5ad8cb11$ex
         })}></hui-input-number-entity-row>
           <hui-input-number-entity-row ${(0, $00eff1ec8cc3c37a$export$eff4d24c3ff7876e)((row)=>{
             if (row) {
+                customElements.upgrade(row);
+                (0, $0d6f31784069dcf6$export$43835e9acf248a15)(row, "ll-upgrade");
                 row.hass = this.hass;
                 row.setConfig({
                     entity: `input_number.${this.key}_thermostat_comfort_setpoint`,
