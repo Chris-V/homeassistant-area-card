@@ -1446,6 +1446,20 @@ ha-card {
   --mdc-icon-size: 24px;
 }
 
+.panel {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  flex-shrink: 0;
+
+  display: block;
+  scroll-snap-align: start;
+}
+
+.climate-panel {
+  background-color: rgba(0, 0, 0, 0.55);
+}
+
 .panels ::-webkit-scrollbar {
   width: 3px;
   height: 3px;
@@ -1723,7 +1737,10 @@ class $c051df81d7afd129$export$179268f6da4a88b9 extends (0, $7e21dc7b5ad8cb11$ex
             </div>
           </div>
 
-          <div class="section panels"></div>
+          <div class="section panels">
+            <div class="panel empty-panel"></div>
+            <div class="panel climate-panel">YO</div>
+          </div>
 
           <div class="section footer">
             ${this.config.controls?.map((control)=>(0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`

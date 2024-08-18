@@ -111,6 +111,20 @@ ha-card {
   --mdc-icon-size: 24px;
 }
 
+.panel {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  flex-shrink: 0;
+
+  display: block;
+  scroll-snap-align: start;
+}
+
+.climate-panel {
+  background-color: rgba(0, 0, 0, 0.55);
+}
+
 .panels ::-webkit-scrollbar {
   width: 3px;
   height: 3px;

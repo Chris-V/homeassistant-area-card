@@ -27,8 +27,14 @@ export interface AreaCardControlConfig {
   hold_action?: ActionConfig;
 }
 
+export interface AreaCardClimateConfig {
+  room_key: string;
+}
+
 export interface AreaCardConfig extends LovelaceCardConfig {
   area: string;
+  climate?: AreaCardClimateConfig;
+  color?: string;
   entity?: string;
   badges?: AreaCardBadgeConfig[];
   controls?: AreaCardControlConfig[];
@@ -99,7 +105,10 @@ export class AreaCard extends LitElement implements LovelaceCard<AreaCardConfig>
             </div>
           </div>
 
-          <div class="section panels"></div>
+          <div class="section panels">
+            <div class="panel empty-panel"></div>
+            <div class="panel climate-panel">YO</div>
+          </div>
 
           <div class="section footer">
             ${this.config.controls?.map((control) => html`
