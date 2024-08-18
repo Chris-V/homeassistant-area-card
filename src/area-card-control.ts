@@ -2,10 +2,8 @@ import { html, LitElement, nothing } from "lit";
 import { customElement, property } from "lit/decorators";
 import { when } from "lit/directives/when";
 import styles from './area-card-control.styles';
-import { fireEvent } from "./events/events";
-import { forwardHaptic } from "./events/haptic";
-import { actionHandler, ActionHandlerEvent } from "./helpers/action-handler";
-import { toggleEntity } from "./helpers/toggle-entity";
+import { ActionConfig, buildDefaultAction, handleAction } from "./helpers/action-handler";
+import { actionHandler, ActionHandlerEvent } from "./helpers/action-handler-directive";
 import { HomeAssistant } from "./types";
 
 @customElement('area-card-control')
@@ -15,7 +13,8 @@ export class AreaCardControl extends LitElement {
   @property() icon?: string;
   @property() name?: string;
   @property() tag?: string;
-  @property() tap_action?: 'toggle' | 'more-info';
+  @property({ attribute: 'tap-action' }) tapAction?: ActionConfig;
+  @property({ attribute: 'hold-action' }) holdAction?: ActionConfig;
 
   static styles = styles;
 
@@ -36,10 +35,10 @@ export class AreaCardControl extends LitElement {
     return html`
       <div
         class="root"
-        tabindex="0"
+        tabindex=${this.tapAction?.action === 'none' ? 0 : nothing}
         .title=${title}
         @action=${this.handleAction}
-        .actionHandler=${actionHandler({ hasHold: true })}
+        .actionHandler=${actionHandler({ hasHold: this.holdAction?.action !== 'none' })}
       >
         <state-badge
           .hass=${this.hass}
@@ -54,15 +53,13 @@ export class AreaCardControl extends LitElement {
   }
 
   private handleAction(event: ActionHandlerEvent) {
-    if (!this.entity || !this.hass) {
+    if (!this.hass) {
       return;
     }
 
-    if (event.detail.action === 'tap' && !this.tap_action || this.tap_action === 'toggle') {
-      toggleEntity(this.hass, this.entity);
-      forwardHaptic('light');
-    } else {
-      fireEvent(this, "hass-more-info", { entityId: this.entity });
-    }
+    const tap_action = buildDefaultAction('toggle', this.entity, this.tapAction);
+    const hold_action = buildDefaultAction('more-info', this.entity, this.holdAction);
+
+    handleAction(this, this.hass, { tap_action, hold_action }, event.detail.action);
   }
 }

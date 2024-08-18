@@ -26,6 +26,7 @@ state-badge {
 }
 
 .label {
+  color: var(--primary-text-color);
   font-size: 0.8em;
   white-space: nowrap;
 }

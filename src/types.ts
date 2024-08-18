@@ -1,4 +1,5 @@
 import { HassConfig, HassEntities, HassEntity, HassServices, HassServiceTarget } from "home-assistant-js-websocket";
+import { HTMLTemplateResult } from "lit";
 
 export interface RegistryEntry {
   created_at: number;
@@ -70,6 +71,31 @@ export interface EntityRegistryDisplayEntry {
   display_precision?: number;
 }
 
+export type LocalizeFunc = (
+  key: string,
+  values?: Record<
+    string,
+    string | number | HTMLTemplateResult | null | undefined
+  >
+) => string;
+
+export type TranslationCategory =
+  | "title"
+  | "state"
+  | "entity"
+  | "entity_component"
+  | "exceptions"
+  | "config"
+  | "config_panel"
+  | "options"
+  | "device_automation"
+  | "mfa_setup"
+  | "system_health"
+  | "application_credentials"
+  | "issues"
+  | "selector"
+  | "services";
+
 export interface HomeAssistant {
   states: HassEntities;
   entities: { [id: string]: EntityRegistryDisplayEntry };
@@ -87,6 +113,8 @@ export interface HomeAssistant {
     returnResponse?: boolean
   ): Promise<ServiceCallResponse>;
   formatEntityState(state: HassEntity): string;
+  loadBackendTranslation(category: TranslationCategory, integrations?: string | string[], configFlow?: boolean): Promise<LocalizeFunc>;
+  localize: LocalizeFunc;
 }
 
 export type Condition =

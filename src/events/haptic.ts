@@ -21,6 +21,6 @@ declare global {
   }
 }
 
-export const forwardHaptic = (hapticType: HapticType) => {
+export function forwardHaptic(hapticType: HapticType) {
   fireEvent(window, "haptic", hapticType);
 };

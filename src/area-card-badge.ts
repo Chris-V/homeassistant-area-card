@@ -1,10 +1,10 @@
 import { html, LitElement, nothing } from "lit";
 import { customElement, property } from "lit/decorators";
-import { when } from "lit/directives/when";
 import { classMap } from "lit/directives/class-map";
+import { when } from "lit/directives/when";
 import styles from './area-card-badge.styles';
-import { actionHandler, ActionHandlerEvent } from "./helpers/action-handler";
-import { fireEvent } from "./events/events";
+import { ActionConfig, buildDefaultAction, handleAction } from "./helpers/action-handler";
+import { actionHandler, ActionHandlerEvent } from "./helpers/action-handler-directive";
 import { HomeAssistant } from "./types";
 
 @customElement('area-card-badge')
@@ -13,6 +13,8 @@ export class AreaCardBadge extends LitElement {
   @property() entity?: string;
   @property() icon?: string;
   @property() name?: string;
+  @property({ attribute: 'tap-action' }) tapAction?: ActionConfig;
+  @property({ attribute: 'hold-action' }) holdAction?: ActionConfig;
 
   static styles = styles;
 
@@ -34,10 +36,10 @@ export class AreaCardBadge extends LitElement {
     return html`
       <div
         class=${classMap({ root: true, active: state.attributes['heating'] === true })}
-        tabindex="0"
+        tabindex=${this.tapAction?.action === 'none' ? 0 : nothing}
         .title=${title}
         @action=${this.handleAction}
-        .actionHandler=${actionHandler()}
+        .actionHandler=${actionHandler({ hasHold: this.holdAction?.action !== 'none' })}
       >
         <state-badge
           class="icon"
@@ -57,6 +59,13 @@ export class AreaCardBadge extends LitElement {
   }
 
   private handleAction(event: ActionHandlerEvent) {
-    fireEvent(this, "hass-more-info", { entityId: this.entity });
+    if (!this.hass) {
+      return;
+    }
+
+    const tap_action = buildDefaultAction('more-info', this.entity, this.tapAction);
+    const hold_action = buildDefaultAction('more-info', this.entity, this.holdAction);
+
+    handleAction(this, this.hass, { tap_action, hold_action }, event.detail.action);
   }
 }

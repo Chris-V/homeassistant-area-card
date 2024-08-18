@@ -1547,7 +1547,6 @@ $c051df81d7afd129$export$179268f6da4a88b9 = (0, $69d0b3211cd6ff55$export$29e00df
 
 
 
-
 /**
  * @license
  * Copyright 2017 Google LLC
@@ -1611,6 +1610,7 @@ class $59dc7bfa10d2dd2f$export$befdefbdce210f91 {
 
 
 
+
 var $8bfd52a6bb5c61f9$export$2e2bcd8739ae039 = (0, $8b70d0323444ddea$export$dbf350e5966cf602)`
 :host {
   cursor: pointer;
@@ -1637,35 +1637,11 @@ state-badge {
 }
 
 .label {
+  color: var(--primary-text-color);
   font-size: 0.8em;
   white-space: nowrap;
 }
 `;
-
-
-
-
-
-
-const $9e338c437afcfa37$var$getActionHandler = ()=>{
-    const body = document.body;
-    if (body.querySelector("action-handler")) return body.querySelector("action-handler");
-    const actionhandler = document.createElement("action-handler");
-    body.appendChild(actionhandler);
-    return actionhandler;
-};
-const $9e338c437afcfa37$export$520aee61eb0a2770 = (element, options)=>{
-    const actionhandler = $9e338c437afcfa37$var$getActionHandler();
-    if (!actionhandler) return;
-    actionhandler.bind(element, options);
-};
-const $9e338c437afcfa37$export$8a44987212de21b = (0, $59dc7bfa10d2dd2f$export$99b43ad1ed32e735)(class extends (0, $59dc7bfa10d2dd2f$export$befdefbdce210f91) {
-    update(part, [options]) {
-        $9e338c437afcfa37$export$520aee61eb0a2770(part.element, options);
-        return 0, $3046cc7e4ff866d4$export$9c068ae9cc5db4e8;
-    }
-    render(_options) {}
-});
 
 
 const $0d6f31784069dcf6$export$43835e9acf248a15 = (node, type, detail, options)=>{
@@ -1680,110 +1656,11 @@ const $0d6f31784069dcf6$export$43835e9acf248a15 = (node, type, detail, options)=
 };
 
 
-class $9a9ee115bc4281da$export$f3c9554892aa28ef extends (0, $7e21dc7b5ad8cb11$export$3f2f9f5909897157) {
-    static{
-        this.styles = (0, $8bfd52a6bb5c61f9$export$2e2bcd8739ae039);
-    }
-    render() {
-        if (!this.entity || !this.hass) return 0, $3046cc7e4ff866d4$export$45b790e32b2810ee;
-        const hass = this.hass;
-        const state = hass.states[this.entity];
-        if (!state) return (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`<hui-warning-element></hui-warning-element>`;
-        const showLabel = !this.entity.startsWith("binary_sensor.");
-        const title = this.name || state.attributes.friendly_name || this.entity;
-        return (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
-      <div
-        class=${(0, $cf1c38459c5a422a$export$56cc687933817664)({
-            root: true,
-            active: state.attributes["heating"] === true
-        })}
-        tabindex="0"
-        .title=${title}
-        @action=${this.handleAction}
-        .actionHandler=${(0, $9e338c437afcfa37$export$8a44987212de21b)()}
-      >
-        <state-badge
-          class="icon"
-          .hass=${this.hass}
-          .stateObj=${state}
-          .overrideIcon=${this.icon}
-          .stateColor=${true}
-        ></state-badge>
-
-        ${(0, $e723a6ede290d350$export$a55877ca9db47377)(showLabel, ()=>(0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
-          <div class="label">
-            ${this.hass?.formatEntityState(state)}
-          </div>
-        `)}
-      </div>
-    `;
-    }
-    handleAction(event) {
-        (0, $0d6f31784069dcf6$export$43835e9acf248a15)(this, "hass-more-info", {
-            entityId: this.entity
-        });
-    }
-}
-(0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
-    (0, $63995b5a8f5ed880$export$d541bacb2bda4494)({
-        attribute: false
-    })
-], $9a9ee115bc4281da$export$f3c9554892aa28ef.prototype, "hass", void 0);
-(0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
-    (0, $63995b5a8f5ed880$export$d541bacb2bda4494)()
-], $9a9ee115bc4281da$export$f3c9554892aa28ef.prototype, "entity", void 0);
-(0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
-    (0, $63995b5a8f5ed880$export$d541bacb2bda4494)()
-], $9a9ee115bc4281da$export$f3c9554892aa28ef.prototype, "icon", void 0);
-(0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
-    (0, $63995b5a8f5ed880$export$d541bacb2bda4494)()
-], $9a9ee115bc4281da$export$f3c9554892aa28ef.prototype, "name", void 0);
-$9a9ee115bc4281da$export$f3c9554892aa28ef = (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
-    (0, $b291dcacc5787077$export$da64fc29f17f9d0e)("area-card-badge")
-], $9a9ee115bc4281da$export$f3c9554892aa28ef);
-
-
-
-
-
-
-
-var $b25bb6350423b22c$export$2e2bcd8739ae039 = (0, $8b70d0323444ddea$export$dbf350e5966cf602)`
-:host {
-  cursor: pointer;
-}
-
-.root {
-  position: relative;
-
-  --mdc-icon-size: 32px;
-}
-
-state-badge {
-  width: unset;
-  height: unset;
-  line-height: unset;
-}
-
-.tag {
-  position: absolute;
-  right: -4px;
-  top: -6px;
-
-  margin: 0px;
-
-  --mdc-icon-size: 16px;
-}
-`;
-
-
-
 // https://github.com/home-assistant/frontend/blob/dev/src/data/haptics.ts
 
-const $552eb8ad7d641dd7$export$8bcf112cf396c716 = (hapticType)=>{
+function $552eb8ad7d641dd7$export$8bcf112cf396c716(hapticType) {
     (0, $0d6f31784069dcf6$export$43835e9acf248a15)(window, "haptic", hapticType);
-};
-
+}
 
 
 function $49b904b83bae4049$export$3303cc16da6bc061(hass, entityId, turnOn = true) {
@@ -1824,6 +1701,237 @@ function $49b904b83bae4049$export$4f6896672dcf12b1(hass, entityId) {
 }
 
 
+
+function $341557b62614e90b$export$f6cef6fcf9ca4e17(element, params) {
+    (0, $0d6f31784069dcf6$export$43835e9acf248a15)(element, "hass-notification", params);
+}
+
+
+
+function $726afcca5fa58abc$export$ff7962acd6052c28(path, options) {
+    const replace = options?.replace || false;
+    if (replace) history.replaceState(null, "", path);
+    else history.pushState(null, "", path);
+    (0, $0d6f31784069dcf6$export$43835e9acf248a15)(window, "location-changed", {
+        replace: replace
+    });
+}
+
+
+async function $9e338c437afcfa37$export$6c6c3f4b7541eaf1(node, hass, config, action) {
+    let actionConfig = {
+        action: "none"
+    };
+    if (action === "double_tap" && config.double_tap_action) actionConfig = config.double_tap_action;
+    else if (action === "hold" && config.hold_action) actionConfig = config.hold_action;
+    else if (action === "tap" && config.tap_action) actionConfig = config.tap_action;
+    switch(actionConfig.action){
+        case "more-info":
+            if (actionConfig.entity) (0, $0d6f31784069dcf6$export$43835e9acf248a15)(node, "hass-more-info", {
+                entityId: actionConfig.entity
+            });
+            else {
+                (0, $341557b62614e90b$export$f6cef6fcf9ca4e17)(node, {
+                    message: hass.localize("ui.panel.lovelace.cards.actions.no_entity_more_info")
+                });
+                (0, $552eb8ad7d641dd7$export$8bcf112cf396c716)("failure");
+            }
+            break;
+        case "navigate":
+            if (actionConfig.navigation_path) (0, $726afcca5fa58abc$export$ff7962acd6052c28)(actionConfig.navigation_path, {
+                replace: actionConfig.navigation_replace
+            });
+            else {
+                (0, $341557b62614e90b$export$f6cef6fcf9ca4e17)(node, {
+                    message: hass.localize("ui.panel.lovelace.cards.actions.no_navigation_path")
+                });
+                (0, $552eb8ad7d641dd7$export$8bcf112cf396c716)("failure");
+            }
+            break;
+        case "url":
+            if (actionConfig.url_path) window.open(actionConfig.url_path);
+            else {
+                (0, $341557b62614e90b$export$f6cef6fcf9ca4e17)(node, {
+                    message: hass.localize("ui.panel.lovelace.cards.actions.no_url")
+                });
+                (0, $552eb8ad7d641dd7$export$8bcf112cf396c716)("failure");
+            }
+            break;
+        case "toggle":
+            if (actionConfig.entity) {
+                (0, $49b904b83bae4049$export$4f6896672dcf12b1)(hass, actionConfig.entity);
+                (0, $552eb8ad7d641dd7$export$8bcf112cf396c716)("light");
+            } else {
+                (0, $341557b62614e90b$export$f6cef6fcf9ca4e17)(node, {
+                    message: hass.localize("ui.panel.lovelace.cards.actions.no_entity_toggle")
+                });
+                (0, $552eb8ad7d641dd7$export$8bcf112cf396c716)("failure");
+            }
+            break;
+        case "perform-action":
+            if (actionConfig.perform_action) {
+                const [domain, service] = actionConfig.perform_action.split(".", 2);
+                hass.callService(domain, service, actionConfig.data, actionConfig.target);
+                (0, $552eb8ad7d641dd7$export$8bcf112cf396c716)("light");
+            } else {
+                (0, $341557b62614e90b$export$f6cef6fcf9ca4e17)(node, {
+                    message: hass.localize("ui.panel.lovelace.cards.actions.no_action")
+                });
+                (0, $552eb8ad7d641dd7$export$8bcf112cf396c716)("failure");
+            }
+            break;
+    }
+}
+function $9e338c437afcfa37$export$f40fa7d0d4f9bd72(type, entity, action) {
+    const actionWithDefaults = {
+        action: "more-info",
+        ...action
+    };
+    if (actionWithDefaults.action === "toggle" || actionWithDefaults.action === "more-info" && !actionWithDefaults.entity) actionWithDefaults.entity = entity;
+    return actionWithDefaults;
+}
+
+
+
+
+
+
+function $ca2aeabc8e3b4e74$var$getActionHandler() {
+    const body = document.body;
+    if (body.querySelector("action-handler")) return body.querySelector("action-handler");
+    const actionhandler = document.createElement("action-handler");
+    body.appendChild(actionhandler);
+    return actionhandler;
+}
+function $ca2aeabc8e3b4e74$export$7e55d189846fa1b2(element, options) {
+    const actionhandler = $ca2aeabc8e3b4e74$var$getActionHandler();
+    if (!actionhandler) return;
+    actionhandler.bind(element, options);
+}
+const $ca2aeabc8e3b4e74$export$8a44987212de21b = (0, $59dc7bfa10d2dd2f$export$99b43ad1ed32e735)(class extends (0, $59dc7bfa10d2dd2f$export$befdefbdce210f91) {
+    update(part, [options]) {
+        $ca2aeabc8e3b4e74$export$7e55d189846fa1b2(part.element, options);
+        return 0, $3046cc7e4ff866d4$export$9c068ae9cc5db4e8;
+    }
+    render(_options) {}
+});
+
+
+class $9a9ee115bc4281da$export$f3c9554892aa28ef extends (0, $7e21dc7b5ad8cb11$export$3f2f9f5909897157) {
+    static{
+        this.styles = (0, $8bfd52a6bb5c61f9$export$2e2bcd8739ae039);
+    }
+    render() {
+        if (!this.entity || !this.hass) return 0, $3046cc7e4ff866d4$export$45b790e32b2810ee;
+        const hass = this.hass;
+        const state = hass.states[this.entity];
+        if (!state) return (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`<hui-warning-element></hui-warning-element>`;
+        const showLabel = !this.entity.startsWith("binary_sensor.");
+        const title = this.name || state.attributes.friendly_name || this.entity;
+        return (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
+      <div
+        class=${(0, $cf1c38459c5a422a$export$56cc687933817664)({
+            root: true,
+            active: state.attributes["heating"] === true
+        })}
+        tabindex=${this.tapAction?.action === "none" ? 0 : (0, $3046cc7e4ff866d4$export$45b790e32b2810ee)}
+        .title=${title}
+        @action=${this.handleAction}
+        .actionHandler=${(0, $ca2aeabc8e3b4e74$export$8a44987212de21b)({
+            hasHold: this.holdAction?.action !== "none"
+        })}
+      >
+        <state-badge
+          class="icon"
+          .hass=${this.hass}
+          .stateObj=${state}
+          .overrideIcon=${this.icon}
+          .stateColor=${true}
+        ></state-badge>
+
+        ${(0, $e723a6ede290d350$export$a55877ca9db47377)(showLabel, ()=>(0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
+          <div class="label">
+            ${this.hass?.formatEntityState(state)}
+          </div>
+        `)}
+      </div>
+    `;
+    }
+    handleAction(event) {
+        if (!this.hass) return;
+        const tap_action = (0, $9e338c437afcfa37$export$f40fa7d0d4f9bd72)("more-info", this.entity, this.tapAction);
+        const hold_action = (0, $9e338c437afcfa37$export$f40fa7d0d4f9bd72)("more-info", this.entity, this.holdAction);
+        (0, $9e338c437afcfa37$export$6c6c3f4b7541eaf1)(this, this.hass, {
+            tap_action: tap_action,
+            hold_action: hold_action
+        }, event.detail.action);
+    }
+}
+(0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
+    (0, $63995b5a8f5ed880$export$d541bacb2bda4494)({
+        attribute: false
+    })
+], $9a9ee115bc4281da$export$f3c9554892aa28ef.prototype, "hass", void 0);
+(0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
+    (0, $63995b5a8f5ed880$export$d541bacb2bda4494)()
+], $9a9ee115bc4281da$export$f3c9554892aa28ef.prototype, "entity", void 0);
+(0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
+    (0, $63995b5a8f5ed880$export$d541bacb2bda4494)()
+], $9a9ee115bc4281da$export$f3c9554892aa28ef.prototype, "icon", void 0);
+(0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
+    (0, $63995b5a8f5ed880$export$d541bacb2bda4494)()
+], $9a9ee115bc4281da$export$f3c9554892aa28ef.prototype, "name", void 0);
+(0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
+    (0, $63995b5a8f5ed880$export$d541bacb2bda4494)({
+        attribute: "tap-action"
+    })
+], $9a9ee115bc4281da$export$f3c9554892aa28ef.prototype, "tapAction", void 0);
+(0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
+    (0, $63995b5a8f5ed880$export$d541bacb2bda4494)({
+        attribute: "hold-action"
+    })
+], $9a9ee115bc4281da$export$f3c9554892aa28ef.prototype, "holdAction", void 0);
+$9a9ee115bc4281da$export$f3c9554892aa28ef = (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
+    (0, $b291dcacc5787077$export$da64fc29f17f9d0e)("area-card-badge")
+], $9a9ee115bc4281da$export$f3c9554892aa28ef);
+
+
+
+
+
+
+
+var $b25bb6350423b22c$export$2e2bcd8739ae039 = (0, $8b70d0323444ddea$export$dbf350e5966cf602)`
+:host {
+  cursor: pointer;
+}
+
+.root {
+  position: relative;
+
+  --mdc-icon-size: 32px;
+}
+
+state-badge {
+  width: unset;
+  height: unset;
+  line-height: unset;
+}
+
+.tag {
+  position: absolute;
+  right: -4px;
+  top: -6px;
+
+  margin: 0px;
+
+  --mdc-icon-size: 16px;
+}
+`;
+
+
+
+
 class $b1213ca84b9afd3c$export$4db1c1d4d2d55651 extends (0, $7e21dc7b5ad8cb11$export$3f2f9f5909897157) {
     static{
         this.styles = (0, $b25bb6350423b22c$export$2e2bcd8739ae039);
@@ -1837,11 +1945,11 @@ class $b1213ca84b9afd3c$export$4db1c1d4d2d55651 extends (0, $7e21dc7b5ad8cb11$ex
         return (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
       <div
         class="root"
-        tabindex="0"
+        tabindex=${this.tapAction?.action === "none" ? 0 : (0, $3046cc7e4ff866d4$export$45b790e32b2810ee)}
         .title=${title}
         @action=${this.handleAction}
-        .actionHandler=${(0, $9e338c437afcfa37$export$8a44987212de21b)({
-            hasHold: true
+        .actionHandler=${(0, $ca2aeabc8e3b4e74$export$8a44987212de21b)({
+            hasHold: this.holdAction?.action !== "none"
         })}
       >
         <state-badge
@@ -1856,13 +1964,13 @@ class $b1213ca84b9afd3c$export$4db1c1d4d2d55651 extends (0, $7e21dc7b5ad8cb11$ex
     `;
     }
     handleAction(event) {
-        if (!this.entity || !this.hass) return;
-        if (event.detail.action === "tap" && !this.tap_action || this.tap_action === "toggle") {
-            (0, $49b904b83bae4049$export$4f6896672dcf12b1)(this.hass, this.entity);
-            (0, $552eb8ad7d641dd7$export$8bcf112cf396c716)("light");
-        } else (0, $0d6f31784069dcf6$export$43835e9acf248a15)(this, "hass-more-info", {
-            entityId: this.entity
-        });
+        if (!this.hass) return;
+        const tap_action = (0, $9e338c437afcfa37$export$f40fa7d0d4f9bd72)("toggle", this.entity, this.tapAction);
+        const hold_action = (0, $9e338c437afcfa37$export$f40fa7d0d4f9bd72)("more-info", this.entity, this.holdAction);
+        (0, $9e338c437afcfa37$export$6c6c3f4b7541eaf1)(this, this.hass, {
+            tap_action: tap_action,
+            hold_action: hold_action
+        }, event.detail.action);
     }
 }
 (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
@@ -1883,8 +1991,15 @@ class $b1213ca84b9afd3c$export$4db1c1d4d2d55651 extends (0, $7e21dc7b5ad8cb11$ex
     (0, $63995b5a8f5ed880$export$d541bacb2bda4494)()
 ], $b1213ca84b9afd3c$export$4db1c1d4d2d55651.prototype, "tag", void 0);
 (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
-    (0, $63995b5a8f5ed880$export$d541bacb2bda4494)()
-], $b1213ca84b9afd3c$export$4db1c1d4d2d55651.prototype, "tap_action", void 0);
+    (0, $63995b5a8f5ed880$export$d541bacb2bda4494)({
+        attribute: "tap-action"
+    })
+], $b1213ca84b9afd3c$export$4db1c1d4d2d55651.prototype, "tapAction", void 0);
+(0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
+    (0, $63995b5a8f5ed880$export$d541bacb2bda4494)({
+        attribute: "hold-action"
+    })
+], $b1213ca84b9afd3c$export$4db1c1d4d2d55651.prototype, "holdAction", void 0);
 $b1213ca84b9afd3c$export$4db1c1d4d2d55651 = (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
     (0, $b291dcacc5787077$export$da64fc29f17f9d0e)("area-card-control")
 ], $b1213ca84b9afd3c$export$4db1c1d4d2d55651);
