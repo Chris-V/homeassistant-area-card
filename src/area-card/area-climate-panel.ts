@@ -16,8 +16,6 @@ export class AreaClimatePanel extends LitElement {
       return nothing;
     }
 
-    const climateEntity = `climate.${this.key}_thermostat`;
-
     const row = window.loadCardHelpers().then(({ createRowElement }) => {
       const row = createRowElement({ type: 'input-select-entity', entity: `input_select.${this.key}_thermostat_mode` });
       row.hass = this.hass;
@@ -31,7 +29,7 @@ export class AreaClimatePanel extends LitElement {
         </div>
 
         <div class="thermostat">
-        ${climateEntity}
+        climate.${this.key}_thermostat
         </div>
       </div>
     `;

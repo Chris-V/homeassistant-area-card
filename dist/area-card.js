@@ -2180,7 +2180,6 @@ class $6a52fdd840cc3f98$export$41648724724d056c extends (0, $7e21dc7b5ad8cb11$ex
     }
     render() {
         if (!this.key || !this.hass) return 0, $3046cc7e4ff866d4$export$45b790e32b2810ee;
-        const climateEntity = `climate.${this.key}_thermostat`;
         const row = window.loadCardHelpers().then(({ createRowElement: createRowElement })=>{
             const row = createRowElement({
                 type: "input-select-entity",
@@ -2196,7 +2195,7 @@ class $6a52fdd840cc3f98$export$41648724724d056c extends (0, $7e21dc7b5ad8cb11$ex
         </div>
 
         <div class="thermostat">
-        ${climateEntity}
+        climate.${this.key}_thermostat
         </div>
       </div>
     `;
