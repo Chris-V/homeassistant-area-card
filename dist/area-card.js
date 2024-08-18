@@ -1822,7 +1822,7 @@ class $b1213ca84b9afd3c$export$4db1c1d4d2d55651 extends (0, $7e21dc7b5ad8cb11$ex
     }
     constructor(...args){
         super(...args);
-        this.action = "more-info";
+        this.action = "toggle";
     }
 }
 (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
