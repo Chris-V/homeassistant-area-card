@@ -19,7 +19,7 @@ export class AreaClimatePanel extends LitElement {
     const climateEntity = `climate.${this.key}_thermostat`;
 
     const row = window.loadCardHelpers().then(({ createRowElement }) => {
-      const row = createRowElement({ type: 'input-select', entity: `input_select.${this.key}_thermostat_mode` });
+      const row = createRowElement({ type: 'input-select-entity', entity: `input_select.${this.key}_thermostat_mode` });
       row.hass = this.hass;
       return row;
     });

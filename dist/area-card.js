@@ -1994,7 +1994,7 @@ class $6a52fdd840cc3f98$export$41648724724d056c extends (0, $7e21dc7b5ad8cb11$ex
         const climateEntity = `climate.${this.key}_thermostat`;
         const row = window.loadCardHelpers().then(({ createRowElement: createRowElement })=>{
             const row = createRowElement({
-                type: "input-select",
+                type: "input-select-entity",
                 entity: `input_select.${this.key}_thermostat_mode`
             });
             row.hass = this.hass;
