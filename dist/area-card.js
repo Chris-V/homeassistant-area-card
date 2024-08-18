@@ -1809,6 +1809,10 @@ class $9a9ee115bc4281da$export$f3c9554892aa28ef extends (0, $7e21dc7b5ad8cb11$ex
           >
             ${this.hass?.formatEntityState(state)}
           </div>
+          <hui-state-label-element
+            .hass=${this.hass}
+            ${(0, $00eff1ec8cc3c37a$export$eff4d24c3ff7876e)((element)=>element?.setConfig(iconConfig))}
+          ></hui-state-label-element>
         `)}
       </div>
     `;

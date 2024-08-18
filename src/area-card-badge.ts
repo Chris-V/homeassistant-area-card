@@ -54,6 +54,10 @@ export class AreaCardBadge extends LitElement {
           >
             ${this.hass?.formatEntityState(state)}
           </div>
+          <hui-state-label-element
+            .hass=${this.hass}
+            ${ref((element?: any) => element?.setConfig(iconConfig))}
+          ></hui-state-label-element>
         `)}
       </div>
     `;
