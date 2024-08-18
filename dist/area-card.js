@@ -1689,6 +1689,43 @@ $d583f77606fa125b$export$e77ce2c28c640c4f = (0, $69d0b3211cd6ff55$export$29e00df
 
 
 
+/**
+ * @license
+ * Copyright 2018 Google LLC
+ * SPDX-License-Identifier: BSD-3-Clause
+ */ const $1fb9c1ac67aad079$var$ee = "important", $1fb9c1ac67aad079$var$ie = " !" + $1fb9c1ac67aad079$var$ee, $1fb9c1ac67aad079$export$1e5b4ce2fa884e6a = (0, $59dc7bfa10d2dd2f$export$99b43ad1ed32e735)(class extends (0, $59dc7bfa10d2dd2f$export$befdefbdce210f91) {
+    constructor(e){
+        if (super(e), e.type !== (0, $59dc7bfa10d2dd2f$export$9ba3b3f20a85bfa).ATTRIBUTE || "style" !== e.name || e.strings?.length > 2) throw Error("The `styleMap` directive must be used in the `style` attribute and must be the only part in the attribute.");
+    }
+    render(t) {
+        return Object.keys(t).reduce((e, r)=>{
+            const s = t[r];
+            return null == s ? e : e + `${r = r.includes("-") ? r : r.replace(/(?:^(webkit|moz|ms|o)|)(?=[A-Z])/g, "-$&").toLowerCase()}:${s};`;
+        }, "");
+    }
+    update(t, [e]) {
+        const { style: r } = t.element;
+        if (void 0 === this.ft) return this.ft = new Set(Object.keys(e)), this.render(e);
+        for (const t of this.ft)null == e[t] && (this.ft.delete(t), t.includes("-") ? r.removeProperty(t) : r[t] = null);
+        for(const t in e){
+            const s = e[t];
+            if (null != s) {
+                this.ft.add(t);
+                const e = "string" == typeof s && s.endsWith($1fb9c1ac67aad079$var$ie);
+                t.includes("-") || e ? r.setProperty(t, e ? s.slice(0, -11) : s, e ? $1fb9c1ac67aad079$var$ee : "") : r[t] = s;
+            }
+        }
+        return 0, $3046cc7e4ff866d4$export$9c068ae9cc5db4e8;
+    }
+});
+
+
+
+
+
+
+
+
 var $3961852dcf45b56f$export$2e2bcd8739ae039 = (0, $8b70d0323444ddea$export$dbf350e5966cf602)`
 ha-card {
   position: relative;
@@ -1825,8 +1862,6 @@ ha-card {
 `;
 
 
-
-
 const $76271178badb5a82$var$UNKNOWN_AREA_ICON = "mdi:help-circle";
 const $76271178badb5a82$var$UNKNOWN_AREA_NAME = "Unknown";
 class $76271178badb5a82$export$179268f6da4a88b9 extends (0, $7e21dc7b5ad8cb11$export$3f2f9f5909897157) {
@@ -1856,7 +1891,9 @@ class $76271178badb5a82$export$179268f6da4a88b9 extends (0, $7e21dc7b5ad8cb11$ex
         const picture = area?.picture || null;
         const state = this.config.entity ? this.hass.states[this.config.entity] : undefined;
         return (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
-      <ha-card>
+      <ha-card style=${(0, $1fb9c1ac67aad079$export$1e5b4ce2fa884e6a)({
+            "--area-accent-color": this.config?.color || "#000"
+        })}>
         ${(0, $e723a6ede290d350$export$a55877ca9db47377)(picture, ()=>(0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`<hui-image .hass=${this.hass} .image="${picture}"></hui-image>`)}
 
         <div class="root">

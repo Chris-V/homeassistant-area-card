@@ -1,11 +1,12 @@
+import { HassEntity } from 'home-assistant-js-websocket';
 import { html, LitElement, nothing, TemplateResult } from 'lit';
 import { customElement, property, state } from 'lit/decorators';
+import { styleMap } from 'lit/directives/style-map';
 import { when } from 'lit/directives/when';
-import styles from './area-card.styles';
-import { HomeAssistant, LovelaceCard, LovelaceCardConfig, } from '../types';
-import { ActionConfig, createDefaultAction, handleAction } from '../helpers/action-handler';
+import { ActionConfig, handleAction } from '../helpers/action-handler';
 import { actionHandler, ActionHandlerEvent } from '../helpers/action-handler-directive';
-import { HassEntity } from 'home-assistant-js-websocket';
+import { HomeAssistant, LovelaceCard, LovelaceCardConfig, } from '../types';
+import styles from './area-card.styles';
 
 const UNKNOWN_AREA_ICON = 'mdi:help-circle';
 const UNKNOWN_AREA_NAME = 'Unknown';
@@ -81,7 +82,7 @@ export class AreaCard extends LitElement implements LovelaceCard<AreaCardConfig>
     const state = this.config.entity ? this.hass.states[this.config.entity] : undefined;
 
     return html`
-      <ha-card>
+      <ha-card style=${styleMap({ '--area-accent-color': this.config?.color || '#000' })}>
         ${when(picture, () => html`<hui-image .hass=${this.hass} .image="${picture}"></hui-image>`)}
 
         <div class="root">
