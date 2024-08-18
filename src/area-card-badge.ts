@@ -29,15 +29,11 @@ export class AreaCardBadge extends LitElement {
     }
 
     const showLabel = !this.entity.startsWith('binary_sensor.');
+    const title = this.name || state.attributes.friendly_name || this.entity;
     const iconConfig = {
+      title,
       entity: this.entity,
       icon: this.icon,
-      title: this.name,
-      tap_action: { action: 'more-info' },
-    };
-    const labelConfig = {
-      entity: this.entity,
-      title: this.name,
       tap_action: { action: 'more-info' },
     };
 
@@ -50,16 +46,14 @@ export class AreaCardBadge extends LitElement {
 
         ${when(showLabel, () => html`
           <div
+            .title=${title}
             @action=${this.handleAction}
             .actionHandler=${actionHandler({hasHold: false, hasDoubleClick: false})}
+            class="label"
             tabindex="0"
           >
             ${this.hass?.formatEntityState(state)}
           </div>
-          <hui-state-label-element
-            .hass=${this.hass}
-            ${ref((element?: any) => element?.setConfig(labelConfig))}
-          ></hui-state-label-element>
         `)}
       </div>
     `;

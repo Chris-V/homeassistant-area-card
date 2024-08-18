@@ -1712,6 +1712,10 @@ const $00eff1ec8cc3c37a$var$qt = new WeakMap, $00eff1ec8cc3c37a$export$eff4d24c3
 
 
 var $8bfd52a6bb5c61f9$export$2e2bcd8739ae039 = (0, $8b70d0323444ddea$export$dbf350e5966cf602)`
+:host {
+  cursor: pointer;
+}
+
 .root {
   display: flex;
   align-items: center;
@@ -1723,8 +1727,8 @@ var $8bfd52a6bb5c61f9$export$2e2bcd8739ae039 = (0, $8b70d0323444ddea$export$dbf3
   --mdc-icon-size: 24px;
 }
 
-hui-state-label-element:host {
-  padding: 0;
+.label {
+  white-space: nowrap;
 }
 `;
 
@@ -1776,17 +1780,11 @@ class $9a9ee115bc4281da$export$f3c9554892aa28ef extends (0, $7e21dc7b5ad8cb11$ex
         const state = hass.states[this.entity];
         if (!state) return (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`<hui-warning-element></hui-warning-element>`;
         const showLabel = !this.entity.startsWith("binary_sensor.");
+        const title = this.name || state.attributes.friendly_name || this.entity;
         const iconConfig = {
+            title: title,
             entity: this.entity,
             icon: this.icon,
-            title: this.name,
-            tap_action: {
-                action: "more-info"
-            }
-        };
-        const labelConfig = {
-            entity: this.entity,
-            title: this.name,
             tap_action: {
                 action: "more-info"
             }
@@ -1800,19 +1798,17 @@ class $9a9ee115bc4281da$export$f3c9554892aa28ef extends (0, $7e21dc7b5ad8cb11$ex
 
         ${(0, $e723a6ede290d350$export$a55877ca9db47377)(showLabel, ()=>(0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
           <div
+            .title=${title}
             @action=${this.handleAction}
             .actionHandler=${(0, $9e338c437afcfa37$export$8a44987212de21b)({
                 hasHold: false,
                 hasDoubleClick: false
             })}
+            class="label"
             tabindex="0"
           >
             ${this.hass?.formatEntityState(state)}
           </div>
-          <hui-state-label-element
-            .hass=${this.hass}
-            ${(0, $00eff1ec8cc3c37a$export$eff4d24c3ff7876e)((element)=>element?.setConfig(labelConfig))}
-          ></hui-state-label-element>
         `)}
       </div>
     `;

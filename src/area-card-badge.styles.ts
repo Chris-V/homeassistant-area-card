@@ -1,6 +1,10 @@
 import { css } from "lit";
 
 export default css`
+:host {
+  cursor: pointer;
+}
+
 .root {
   display: flex;
   align-items: center;
@@ -12,7 +16,7 @@ export default css`
   --mdc-icon-size: 24px;
 }
 
-hui-state-label-element:host {
-  padding: 0;
+.label {
+  white-space: nowrap;
 }
 `;
