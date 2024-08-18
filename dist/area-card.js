@@ -2148,7 +2148,7 @@ class $6a52fdd840cc3f98$export$41648724724d056c extends (0, $7e21dc7b5ad8cb11$ex
       <div class="root">
         <hui-entities-card
           class="settings"
-          ${(0, $00eff1ec8cc3c37a$export$eff4d24c3ff7876e)(this.entitiesCardChanged)}
+          ${(0, $00eff1ec8cc3c37a$export$eff4d24c3ff7876e)(this.entitiesCardRef)}
         ></hui-entities-card>
 
         <div class="thermostat">
@@ -2157,9 +2157,9 @@ class $6a52fdd840cc3f98$export$41648724724d056c extends (0, $7e21dc7b5ad8cb11$ex
       </div>
     `;
     }
-    entitiesCardChanged(element) {
-        if (!element) return;
-        const card = element;
+    firstUpdated(properties) {
+        const card = this.entitiesCardRef.value;
+        if (!card) return;
         card.hass = this.hass;
         card.setConfig({
             type: "entities",
@@ -2184,7 +2184,11 @@ class $6a52fdd840cc3f98$export$41648724724d056c extends (0, $7e21dc7b5ad8cb11$ex
           padding: 0;
       }
     `);
-        element.shadowRoot?.adoptedStyleSheets.push(sheet);
+        card.shadowRoot?.adoptedStyleSheets.push(sheet);
+    }
+    constructor(...args){
+        super(...args);
+        this.entitiesCardRef = (0, $00eff1ec8cc3c37a$export$7d1e3a5e95ceca43)();
     }
 }
 (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([

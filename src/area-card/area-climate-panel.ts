@@ -1,6 +1,6 @@
-import { html, LitElement, nothing } from "lit";
+import { html, LitElement, nothing, PropertyValues } from "lit";
 import { customElement, property } from "lit/decorators";
-import { ref } from "lit/directives/ref";
+import { createRef, Ref, ref } from "lit/directives/ref";
 import { HomeAssistant, LovelaceCard } from "../types";
 import styles from './area-climate-panel.styles';
 
@@ -34,7 +34,7 @@ export class AreaClimatePanel extends LitElement {
       <div class="root">
         <hui-entities-card
           class="settings"
-          ${ref(this.entitiesCardChanged)}
+          ${ref(this.entitiesCardRef)}
         ></hui-entities-card>
 
         <div class="thermostat">
@@ -44,12 +44,14 @@ export class AreaClimatePanel extends LitElement {
     `;
   }
 
-  private entitiesCardChanged(element?: Element): void {
-    if (!element) {
+  private entitiesCardRef: Ref<HTMLInputElement & LovelaceCard<any>> = createRef();
+
+  protected firstUpdated(properties: PropertyValues): void {
+    const card = this.entitiesCardRef.value;
+    if (!card) {
       return;
     }
 
-    const card = <LovelaceCard<any>>element;
     card.hass = this.hass;
     card.setConfig({
       type: "entities",
@@ -66,7 +68,7 @@ export class AreaClimatePanel extends LitElement {
           padding: 0;
       }
     `);
-    element.shadowRoot?.adoptedStyleSheets.push(sheet);
 
+    card.shadowRoot?.adoptedStyleSheets.push(sheet);
   }
 }
