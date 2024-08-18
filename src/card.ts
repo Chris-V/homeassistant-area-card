@@ -7,8 +7,15 @@ import { HomeAssistant, LovelaceCard, LovelaceCardConfig, } from './types';
 const UNKNOWN_AREA_ICON = 'mdi:help-circle';
 const UNKNOWN_AREA_NAME = 'Unknown';
 
+interface SensorConfig {
+  entity: string;
+  name?: string | undefined;
+  icon?: string | undefined;
+}
+
 interface AreaCardConfig extends LovelaceCardConfig {
   area: string;
+  sensors?: SensorConfig[];
 }
 
 @customElement('area-card')
@@ -62,7 +69,7 @@ export class AreaCard extends LitElement implements LovelaceCard {
             </div>
 
             <div class="sensors">
-
+              ${this.config.sensors?.map((sensor) => this.createSensorTemplate(sensor))}
             </div>
           </div>
 
@@ -72,5 +79,25 @@ export class AreaCard extends LitElement implements LovelaceCard {
         </div>
       </ha-card>
     `;
+  }
+
+  private createSensorTemplate(sensorConfig: SensorConfig) {
+    if (!this.hass) {
+      return nothing;
+    }
+
+    if (!sensorConfig.entity.startsWith('binary_sensor.')) return nothing;
+
+    const elementConfig = {
+      entity: sensorConfig.entity,
+      icon: sensorConfig.icon,
+      title: sensorConfig.name,
+      tap_action: { action: 'more-info' },
+    };
+
+    return html`<hui-state-icon-element
+      .hass=${this.hass}
+      .config=${elementConfig}
+    ></hui-state-icon-element>`;
   }
 }

@@ -1504,7 +1504,7 @@ class $a399cc6bbb0eb26a$export$179268f6da4a88b9 extends (0, $7e21dc7b5ad8cb11$ex
             </div>
 
             <div class="sensors">
-
+              ${this.config.sensors?.map((sensor)=>this.createSensorTemplate(sensor))}
             </div>
           </div>
 
@@ -1514,6 +1514,22 @@ class $a399cc6bbb0eb26a$export$179268f6da4a88b9 extends (0, $7e21dc7b5ad8cb11$ex
         </div>
       </ha-card>
     `;
+    }
+    createSensorTemplate(sensorConfig) {
+        if (!this.hass) return 0, $3046cc7e4ff866d4$export$45b790e32b2810ee;
+        if (!sensorConfig.entity.startsWith("binary_sensor.")) return 0, $3046cc7e4ff866d4$export$45b790e32b2810ee;
+        const elementConfig = {
+            entity: sensorConfig.entity,
+            icon: sensorConfig.icon,
+            title: sensorConfig.name,
+            tap_action: {
+                action: "more-info"
+            }
+        };
+        return (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`<hui-state-icon-element
+      .hass=${this.hass}
+      .config=${elementConfig}
+    ></hui-state-icon-element>`;
     }
 }
 (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
