@@ -11,7 +11,7 @@ import { HomeAssistant } from "./types";
 @customElement('area-card-control')
 export class AreaCardControl extends LitElement {
   @property({ attribute: false }) hass?: HomeAssistant;
-  @property() action: 'toggle' | 'more-info' = 'toggle';
+  @property() ontap?: 'toggle' | 'more-info';
   @property() entity?: string;
   @property() icon?: string;
   @property() name?: string;
@@ -58,7 +58,7 @@ export class AreaCardControl extends LitElement {
       return;
     }
 
-    if (event.detail.action == 'tap' && this.action == 'toggle') {
+    if (event.detail.action == 'tap' && !this.ontap || this.ontap == 'toggle') {
       toggleEntity(this.hass, this.entity);
       forwardHaptic('light');
     } else {

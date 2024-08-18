@@ -1,1 +1,1 @@
-# homeassistant-area-card
+# Area card

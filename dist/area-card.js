@@ -1521,7 +1521,7 @@ class $c051df81d7afd129$export$179268f6da4a88b9 extends (0, $7e21dc7b5ad8cb11$ex
                 .icon=${control.icon}
                 .tag=${control.tag}
                 .name=${control.name}
-                .action=${control.action}
+                .ontap=${control.ontap}
               ></area-card-control>
             `)}
           </div>
@@ -1811,16 +1811,12 @@ class $b1213ca84b9afd3c$export$4db1c1d4d2d55651 extends (0, $7e21dc7b5ad8cb11$ex
     }
     handleAction(event) {
         if (!this.entity || !this.hass) return;
-        if (event.detail.action == "tap" && this.action == "toggle") {
+        if (event.detail.action == "tap" && !this.ontap || this.ontap == "toggle") {
             (0, $49b904b83bae4049$export$4f6896672dcf12b1)(this.hass, this.entity);
             (0, $552eb8ad7d641dd7$export$8bcf112cf396c716)("light");
         } else (0, $0d6f31784069dcf6$export$43835e9acf248a15)(this, "hass-more-info", {
             entityId: this.entity
         });
-    }
-    constructor(...args){
-        super(...args);
-        this.action = "toggle";
     }
 }
 (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
@@ -1830,7 +1826,7 @@ class $b1213ca84b9afd3c$export$4db1c1d4d2d55651 extends (0, $7e21dc7b5ad8cb11$ex
 ], $b1213ca84b9afd3c$export$4db1c1d4d2d55651.prototype, "hass", void 0);
 (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
     (0, $63995b5a8f5ed880$export$d541bacb2bda4494)()
-], $b1213ca84b9afd3c$export$4db1c1d4d2d55651.prototype, "action", void 0);
+], $b1213ca84b9afd3c$export$4db1c1d4d2d55651.prototype, "ontap", void 0);
 (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
     (0, $63995b5a8f5ed880$export$d541bacb2bda4494)()
 ], $b1213ca84b9afd3c$export$4db1c1d4d2d55651.prototype, "entity", void 0);
