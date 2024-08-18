@@ -71,6 +71,7 @@ export class AreaClimatePanel extends LitElement {
     if (properties.has('hass')) {
       card.hass = this.hass;
     }
+
     if (properties.has('key')) {
       card.setConfig({
         type: "entities",
