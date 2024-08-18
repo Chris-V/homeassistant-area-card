@@ -2,13 +2,13 @@ import { html, LitElement, nothing } from "lit";
 import { customElement, property } from "lit/decorators";
 import { classMap } from "lit/directives/class-map";
 import { when } from "lit/directives/when";
-import styles from './area-card-badge.styles';
-import { ActionConfig, createDefaultAction, handleAction } from "./helpers/action-handler";
-import { actionHandler, ActionHandlerEvent } from "./helpers/action-handler-directive";
-import { HomeAssistant } from "./types";
+import styles from './area-badge.styles';
+import { ActionConfig, createDefaultAction, handleAction } from "../helpers/action-handler";
+import { actionHandler, ActionHandlerEvent } from "../helpers/action-handler-directive";
+import { HomeAssistant } from "../types";
 
-@customElement('area-card-badge')
-export class AreaCardBadge extends LitElement {
+@customElement('area-badge')
+export class AreaBadge extends LitElement {
   @property({ attribute: false }) hass?: HomeAssistant;
   @property() entity?: string;
   @property() icon?: string;

@@ -1,10 +1,10 @@
 import { html, LitElement, nothing } from "lit";
 import { customElement, property } from "lit/decorators";
-import styles from './area-card-badge.styles';
-import { HomeAssistant } from "./types";
+import styles from './area-badge.styles';
+import { HomeAssistant } from "../types";
 
-@customElement('area-card-climate-panel')
-export class AreaCardClimatePanel extends LitElement {
+@customElement('area-climate-panel')
+export class AreaClimatePanel extends LitElement {
   @property({ attribute: false }) hass?: HomeAssistant;
   @property() key?: string;
 

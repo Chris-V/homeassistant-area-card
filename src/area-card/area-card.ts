@@ -2,9 +2,9 @@ import { html, LitElement, nothing, TemplateResult } from 'lit';
 import { customElement, property, state } from 'lit/decorators';
 import { when } from 'lit/directives/when';
 import styles from './area-card.styles';
-import { HomeAssistant, LovelaceCard, LovelaceCardConfig, } from './types';
-import { ActionConfig, createDefaultAction, handleAction } from './helpers/action-handler';
-import { actionHandler, ActionHandlerEvent } from './helpers/action-handler-directive';
+import { HomeAssistant, LovelaceCard, LovelaceCardConfig, } from '../types';
+import { ActionConfig, createDefaultAction, handleAction } from '../helpers/action-handler';
+import { actionHandler, ActionHandlerEvent } from '../helpers/action-handler-directive';
 import { HassEntity } from 'home-assistant-js-websocket';
 
 const UNKNOWN_AREA_ICON = 'mdi:help-circle';
@@ -93,14 +93,14 @@ export class AreaCard extends LitElement implements LovelaceCard<AreaCardConfig>
 
             <div class="sensors">
               ${this.config.badges?.map((badge) => html`
-                <area-card-badge
+                <area-badge
                   .hass=${this.hass}
                   .entity=${badge.entity}
                   .icon=${badge.icon}
                   .name=${badge.name}
                   .tap=${badge.tap_action}
                   .hold=${badge.hold_action}
-                ></area-card-badge>
+                ></area-badge>
               `)}
             </div>
           </div>
@@ -108,15 +108,15 @@ export class AreaCard extends LitElement implements LovelaceCard<AreaCardConfig>
           <div class="section panels">
             <div class="panel empty-panel"></div>
             ${this.config.climate ? html`
-              <area-card-climate-panel
+              <area-climate-panel
                 class="panel"
                 .key=${this.config.climate.room_key}
-              ></area-card-climate-panel>` : nothing}
+              ></area-climate-panel>` : nothing}
           </div>
 
           <div class="section footer">
             ${this.config.controls?.map((control) => html`
-              <area-card-control
+              <area-control
                 .hass=${this.hass}
                 .entity=${control.entity}
                 .icon=${control.icon}
@@ -124,7 +124,7 @@ export class AreaCard extends LitElement implements LovelaceCard<AreaCardConfig>
                 .name=${control.name}
                 .tap=${control.tap_action}
                 .hold=${control.hold_action}
-              ></area-card-control>
+              ></area-control>
             `)}
           </div>
         </div>

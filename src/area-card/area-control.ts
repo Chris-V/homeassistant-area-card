@@ -1,13 +1,13 @@
 import { html, LitElement, nothing } from "lit";
 import { customElement, property } from "lit/decorators";
 import { when } from "lit/directives/when";
-import styles from './area-card-control.styles';
-import { ActionConfig, createDefaultAction, handleAction } from "./helpers/action-handler";
-import { actionHandler, ActionHandlerEvent } from "./helpers/action-handler-directive";
-import { HomeAssistant } from "./types";
+import styles from './area-control.styles';
+import { ActionConfig, createDefaultAction, handleAction } from "../helpers/action-handler";
+import { actionHandler, ActionHandlerEvent } from "../helpers/action-handler-directive";
+import { HomeAssistant } from "../types";
 
-@customElement('area-card-control')
-export class AreaCardControl extends LitElement {
+@customElement('area-control')
+export class AreaControl extends LitElement {
   @property({ attribute: false }) hass?: HomeAssistant;
   @property() entity?: string;
   @property() icon?: string;

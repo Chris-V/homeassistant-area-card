@@ -1323,6 +1323,69 @@ function $10cacb3edc9c9319$export$dcd0d083aa86c355(r) {
 
 
 
+
+/**
+ * @license
+ * Copyright 2017 Google LLC
+ * SPDX-License-Identifier: BSD-3-Clause
+ */ const $59dc7bfa10d2dd2f$export$9ba3b3f20a85bfa = {
+    ATTRIBUTE: 1,
+    CHILD: 2,
+    PROPERTY: 3,
+    BOOLEAN_ATTRIBUTE: 4,
+    EVENT: 5,
+    ELEMENT: 6
+}, $59dc7bfa10d2dd2f$export$99b43ad1ed32e735 = (t)=>(...e)=>({
+            _$litDirective$: t,
+            values: e
+        });
+class $59dc7bfa10d2dd2f$export$befdefbdce210f91 {
+    constructor(t){}
+    get _$AU() {
+        return this._$AM._$AU;
+    }
+    _$AT(t, e, i) {
+        this.t = t, this._$AM = e, this.i = i;
+    }
+    _$AS(t, e) {
+        return this.update(t, e);
+    }
+    update(t, e) {
+        return this.render(...e);
+    }
+}
+
+
+/**
+ * @license
+ * Copyright 2018 Google LLC
+ * SPDX-License-Identifier: BSD-3-Clause
+ */ const $cf1c38459c5a422a$export$56cc687933817664 = (0, $59dc7bfa10d2dd2f$export$99b43ad1ed32e735)(class extends (0, $59dc7bfa10d2dd2f$export$befdefbdce210f91) {
+    constructor(s){
+        if (super(s), s.type !== (0, $59dc7bfa10d2dd2f$export$9ba3b3f20a85bfa).ATTRIBUTE || "class" !== s.name || s.strings?.length > 2) throw Error("`classMap()` can only be used in the `class` attribute and must be the only part in the attribute.");
+    }
+    render(t) {
+        return " " + Object.keys(t).filter((s)=>t[s]).join(" ") + " ";
+    }
+    update(t, [s]) {
+        if (void 0 === this.st) {
+            this.st = new Set, void 0 !== t.strings && (this.nt = new Set(t.strings.join(" ").split(/\s/).filter((t)=>"" !== t)));
+            for(const t in s)s[t] && !this.nt?.has(t) && this.st.add(t);
+            return this.render(s);
+        }
+        const i = t.element.classList;
+        for (const t of this.st)t in s || (i.remove(t), this.st.delete(t));
+        for(const t in s){
+            const r = !!s[t];
+            r === this.st.has(t) || this.nt?.has(t) || (r ? (i.add(t), this.st.add(t)) : (i.remove(t), this.st.delete(t)));
+        }
+        return 0, $3046cc7e4ff866d4$export$9c068ae9cc5db4e8;
+    }
+});
+
+
+
+
 /**
  * @license
  * Copyright 2021 Google LLC
@@ -1335,151 +1398,35 @@ function $10cacb3edc9c9319$export$dcd0d083aa86c355(r) {
 
 
 
-var $b7be6268d2096bab$export$2e2bcd8739ae039 = (0, $8b70d0323444ddea$export$dbf350e5966cf602)`
-ha-card {
-  position: relative;
-
-  overflow: hidden;
-
-  --primary-text-color: #DADADB;
-  --secondary-text-color: #DADADB;
-  --paper-item-icon-color: #DADADB;
-
-  --mdc-theme-primary: #DADADB;
-
-  --mdc-select-fill-color: transparent;
-  --mdc-select-outlined-idle-border-color: transparent;
-  --mdc-select-outlined-hover-border-color: transparent;
-  --mdc-select-dropdown-icon-color: #DADADB;
-  --mdc-select-label-ink-color: #DADADB;
-  --mdc-select-ink-color: #DADADB;
-  --mdc-select-idle-line-color: #DADADB;
-  --mdc-select-hover-line-color: #DADADB;
-
-  --mdc-text-field-fill-color: transparent;
-  --mdc-text-field-outlined-idle-border-color: transparent;
-  --mdc-text-field-outlined-hover-border-color: transparent;
-  --mdc-text-field-ink-color: #DADADB;
-  --mdc-text-field-label-ink-color: #DADADB;
-  --mdc-text-field-idle-line-color: #DADADB;
-  --mdc-text-field-hover-line-color: #DADADB;
-}
-
-.root {
-  position: absolute;
-  inset: 0;
-
-  display: flex;
-  align-items: stretch;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  overflow: hidden;
-
-  color: var(--primary-text-color);
-
-  --ha-card-background: rgba(0, 0, 0, 0);
-  --ha-card-border-radius: 0;
-  --ha-card-box-shadow: none;
-}
-
-.section {
-  position: relative;
-
-  padding: 5px;
-}
-
-.header {
-  order: 1;
-
-  display: flex;
-  align-items: center;
-  padding: 5px;
-
-  background-color: rgba(0, 96, 15, 0.9);
-}
-
-.header .title {
-  font-size: 1.6em;
-  font-weight: 500;
-
-  --mdc-icon-size: 32px;
-}
-
-.title state-badge {
+var $058bbce60b728e89$export$2e2bcd8739ae039 = (0, $8b70d0323444ddea$export$dbf350e5966cf602)`
+:host {
   cursor: pointer;
 }
 
-.header .sensors {
-  height: 100%;
-  flex-grow: 1;
-
+.root {
   display: flex;
   align-items: center;
+  flex-direction: column;
   justify-content: flex-end;
-  gap: 0.5em;
-}
-
-.footer {
-  order: 3;
-
-  display: flex;
-  align-items: baseline;
-  justify-content: center;
-  gap: 0.5em;
-
-  background-color: rgba(0, 0, 0, 0.6);
-}
-
-.section.panels {
-  order: 2;
-  flex-grow: 1;
-  flex-shrink: 1;
-
-  display: flex;
-  overflow: auto hidden;
-  padding: 0;
-
-  scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
 
   --mdc-icon-size: 24px;
 }
 
-.panel {
-  position: relative;
-  height: 100%;
-  width: 100%;
-  flex-shrink: 0;
-
-  display: block;
-  padding: 5px;
-
-  background-color: rgba(0, 0, 0, 0.55);
-
-  scroll-snap-align: start;
+.root.active {
+  --primary-text-color: var(--paper-item-icon-active-color);
+  --paper-item-icon-color: var(--paper-item-icon-active-color);
 }
 
-.panel.empty-panel {
-  background: none;
+state-badge {
+  width: unset;
+  height: unset;
+  line-height: unset;
 }
 
-::-webkit-scrollbar {
-  width: 3px;
-  height: 3px;
-}
-
-::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.55);
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgba(0, 96, 15, 0.55);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 96, 15, 1);
+.label {
+  color: var(--primary-text-color);
+  font-size: 0.8em;
+  white-space: nowrap;
 }
 `;
 
@@ -1634,37 +1581,6 @@ function $9e338c437afcfa37$export$2249b8b14200eb6d(action, entity, optionalConfi
 
 
 
-/**
- * @license
- * Copyright 2017 Google LLC
- * SPDX-License-Identifier: BSD-3-Clause
- */ const $59dc7bfa10d2dd2f$export$9ba3b3f20a85bfa = {
-    ATTRIBUTE: 1,
-    CHILD: 2,
-    PROPERTY: 3,
-    BOOLEAN_ATTRIBUTE: 4,
-    EVENT: 5,
-    ELEMENT: 6
-}, $59dc7bfa10d2dd2f$export$99b43ad1ed32e735 = (t)=>(...e)=>({
-            _$litDirective$: t,
-            values: e
-        });
-class $59dc7bfa10d2dd2f$export$befdefbdce210f91 {
-    constructor(t){}
-    get _$AU() {
-        return this._$AM._$AU;
-    }
-    _$AT(t, e, i) {
-        this.t = t, this._$AM = e, this.i = i;
-    }
-    _$AS(t, e) {
-        return this.update(t, e);
-    }
-    update(t, e) {
-        return this.render(...e);
-    }
-}
-
 
 
 
@@ -1689,196 +1605,9 @@ const $ca2aeabc8e3b4e74$export$8a44987212de21b = (0, $59dc7bfa10d2dd2f$export$99
 });
 
 
-const $c051df81d7afd129$var$UNKNOWN_AREA_ICON = "mdi:help-circle";
-const $c051df81d7afd129$var$UNKNOWN_AREA_NAME = "Unknown";
-class $c051df81d7afd129$export$179268f6da4a88b9 extends (0, $7e21dc7b5ad8cb11$export$3f2f9f5909897157) {
+class $d583f77606fa125b$export$e77ce2c28c640c4f extends (0, $7e21dc7b5ad8cb11$export$3f2f9f5909897157) {
     static{
-        this.styles = (0, $b7be6268d2096bab$export$2e2bcd8739ae039);
-    }
-    setConfig(config) {
-        if (!config.area) throw new Error("Area required");
-        this.config = config;
-    }
-    getCardSize() {
-        return 6;
-    }
-    getLayoutOptions() {
-        return {
-            grid_rows: 6,
-            grid_columns: 5,
-            grid_min_rows: 6,
-            grid_max_rows: 6
-        };
-    }
-    render() {
-        if (!this.config || !this.hass) return 0, $3046cc7e4ff866d4$export$45b790e32b2810ee;
-        const area = this.hass.areas[this.config.area];
-        const icon = area?.icon || $c051df81d7afd129$var$UNKNOWN_AREA_ICON;
-        const name = area?.name || $c051df81d7afd129$var$UNKNOWN_AREA_NAME;
-        const picture = area?.picture || null;
-        const state = this.config.entity ? this.hass.states[this.config.entity] : undefined;
-        return (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
-      <ha-card>
-        ${(0, $e723a6ede290d350$export$a55877ca9db47377)(picture, ()=>(0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`<hui-image .hass=${this.hass} .image="${picture}"></hui-image>`)}
-
-        <div class="root">
-          <div class="section header">
-            <div class="title">
-              ${this.iconTemplateResult(state, icon)}
-              ${name}
-            </div>
-
-            <div class="sensors">
-              ${this.config.badges?.map((badge)=>(0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
-                <area-card-badge
-                  .hass=${this.hass}
-                  .entity=${badge.entity}
-                  .icon=${badge.icon}
-                  .name=${badge.name}
-                  .tap=${badge.tap_action}
-                  .hold=${badge.hold_action}
-                ></area-card-badge>
-              `)}
-            </div>
-          </div>
-
-          <div class="section panels">
-            <div class="panel empty-panel"></div>
-            ${this.config.climate ? (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
-              <area-card-climate-panel
-                class="panel"
-                .key=${this.config.climate.room_key}
-              ></area-card-climate-panel>` : (0, $3046cc7e4ff866d4$export$45b790e32b2810ee)}
-          </div>
-
-          <div class="section footer">
-            ${this.config.controls?.map((control)=>(0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
-              <area-card-control
-                .hass=${this.hass}
-                .entity=${control.entity}
-                .icon=${control.icon}
-                .tag=${control.tag}
-                .name=${control.name}
-                .tap=${control.tap_action}
-                .hold=${control.hold_action}
-              ></area-card-control>
-            `)}
-          </div>
-        </div>
-      </ha-card>
-    `;
-    }
-    iconTemplateResult(state, icon) {
-        return (0, $e723a6ede290d350$export$a55877ca9db47377)(this.config?.entity, ()=>state ? (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
-        <state-badge
-          tabindex="0"
-          title=${state?.state}
-          .hass=${this.hass}
-          .stateObj=${state}
-          .stateColor=${false}
-          @action=${this.handleIconAction}
-          .actionHandler=${(0, $ca2aeabc8e3b4e74$export$8a44987212de21b)()}
-        ></state-badge>
-      ` : (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`<hui-warning-element></hui-warning-element>`, ()=>(0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`<ha-icon .icon="${icon}"></ha-icon>`);
-    }
-    handleIconAction(event) {
-        if (!this.hass) return;
-        (0, $9e338c437afcfa37$export$6c6c3f4b7541eaf1)(this, this.hass, {
-            tap_action: {
-                action: "more-info",
-                entity: this.config?.entity
-            }
-        }, event.detail.action);
-    }
-}
-(0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
-    (0, $63995b5a8f5ed880$export$d541bacb2bda4494)({
-        attribute: false
-    })
-], $c051df81d7afd129$export$179268f6da4a88b9.prototype, "hass", void 0);
-(0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
-    (0, $de0279ad1f91739c$export$ca000e230c0caa3e)()
-], $c051df81d7afd129$export$179268f6da4a88b9.prototype, "config", void 0);
-$c051df81d7afd129$export$179268f6da4a88b9 = (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
-    (0, $b291dcacc5787077$export$da64fc29f17f9d0e)("area-card")
-], $c051df81d7afd129$export$179268f6da4a88b9);
-
-
-
-
-
-
-
-/**
- * @license
- * Copyright 2018 Google LLC
- * SPDX-License-Identifier: BSD-3-Clause
- */ const $cf1c38459c5a422a$export$56cc687933817664 = (0, $59dc7bfa10d2dd2f$export$99b43ad1ed32e735)(class extends (0, $59dc7bfa10d2dd2f$export$befdefbdce210f91) {
-    constructor(s){
-        if (super(s), s.type !== (0, $59dc7bfa10d2dd2f$export$9ba3b3f20a85bfa).ATTRIBUTE || "class" !== s.name || s.strings?.length > 2) throw Error("`classMap()` can only be used in the `class` attribute and must be the only part in the attribute.");
-    }
-    render(t) {
-        return " " + Object.keys(t).filter((s)=>t[s]).join(" ") + " ";
-    }
-    update(t, [s]) {
-        if (void 0 === this.st) {
-            this.st = new Set, void 0 !== t.strings && (this.nt = new Set(t.strings.join(" ").split(/\s/).filter((t)=>"" !== t)));
-            for(const t in s)s[t] && !this.nt?.has(t) && this.st.add(t);
-            return this.render(s);
-        }
-        const i = t.element.classList;
-        for (const t of this.st)t in s || (i.remove(t), this.st.delete(t));
-        for(const t in s){
-            const r = !!s[t];
-            r === this.st.has(t) || this.nt?.has(t) || (r ? (i.add(t), this.st.add(t)) : (i.remove(t), this.st.delete(t)));
-        }
-        return 0, $3046cc7e4ff866d4$export$9c068ae9cc5db4e8;
-    }
-});
-
-
-
-
-
-
-var $8bfd52a6bb5c61f9$export$2e2bcd8739ae039 = (0, $8b70d0323444ddea$export$dbf350e5966cf602)`
-:host {
-  cursor: pointer;
-}
-
-.root {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: flex-end;
-
-  --mdc-icon-size: 24px;
-}
-
-.root.active {
-  --primary-text-color: var(--paper-item-icon-active-color);
-  --paper-item-icon-color: var(--paper-item-icon-active-color);
-}
-
-state-badge {
-  width: unset;
-  height: unset;
-  line-height: unset;
-}
-
-.label {
-  color: var(--primary-text-color);
-  font-size: 0.8em;
-  white-space: nowrap;
-}
-`;
-
-
-
-
-class $9a9ee115bc4281da$export$f3c9554892aa28ef extends (0, $7e21dc7b5ad8cb11$export$3f2f9f5909897157) {
-    static{
-        this.styles = (0, $8bfd52a6bb5c61f9$export$2e2bcd8739ae039);
+        this.styles = (0, $058bbce60b728e89$export$2e2bcd8739ae039);
     }
     render() {
         if (!this.entity || !this.hass) return 0, $3046cc7e4ff866d4$export$45b790e32b2810ee;
@@ -1930,38 +1659,309 @@ class $9a9ee115bc4281da$export$f3c9554892aa28ef extends (0, $7e21dc7b5ad8cb11$ex
     (0, $63995b5a8f5ed880$export$d541bacb2bda4494)({
         attribute: false
     })
-], $9a9ee115bc4281da$export$f3c9554892aa28ef.prototype, "hass", void 0);
+], $d583f77606fa125b$export$e77ce2c28c640c4f.prototype, "hass", void 0);
 (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
     (0, $63995b5a8f5ed880$export$d541bacb2bda4494)()
-], $9a9ee115bc4281da$export$f3c9554892aa28ef.prototype, "entity", void 0);
+], $d583f77606fa125b$export$e77ce2c28c640c4f.prototype, "entity", void 0);
 (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
     (0, $63995b5a8f5ed880$export$d541bacb2bda4494)()
-], $9a9ee115bc4281da$export$f3c9554892aa28ef.prototype, "icon", void 0);
+], $d583f77606fa125b$export$e77ce2c28c640c4f.prototype, "icon", void 0);
 (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
     (0, $63995b5a8f5ed880$export$d541bacb2bda4494)()
-], $9a9ee115bc4281da$export$f3c9554892aa28ef.prototype, "name", void 0);
+], $d583f77606fa125b$export$e77ce2c28c640c4f.prototype, "name", void 0);
 (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
     (0, $63995b5a8f5ed880$export$d541bacb2bda4494)({
         attribute: false
     })
-], $9a9ee115bc4281da$export$f3c9554892aa28ef.prototype, "tap", void 0);
+], $d583f77606fa125b$export$e77ce2c28c640c4f.prototype, "tap", void 0);
 (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
     (0, $63995b5a8f5ed880$export$d541bacb2bda4494)({
         attribute: false
     })
-], $9a9ee115bc4281da$export$f3c9554892aa28ef.prototype, "hold", void 0);
-$9a9ee115bc4281da$export$f3c9554892aa28ef = (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
-    (0, $b291dcacc5787077$export$da64fc29f17f9d0e)("area-card-badge")
-], $9a9ee115bc4281da$export$f3c9554892aa28ef);
+], $d583f77606fa125b$export$e77ce2c28c640c4f.prototype, "hold", void 0);
+$d583f77606fa125b$export$e77ce2c28c640c4f = (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
+    (0, $b291dcacc5787077$export$da64fc29f17f9d0e)("area-badge")
+], $d583f77606fa125b$export$e77ce2c28c640c4f);
 
 
 
 
 
 
-class $8bafea4037569188$export$6d438864f880aa extends (0, $7e21dc7b5ad8cb11$export$3f2f9f5909897157) {
+
+var $3961852dcf45b56f$export$2e2bcd8739ae039 = (0, $8b70d0323444ddea$export$dbf350e5966cf602)`
+ha-card {
+  position: relative;
+
+  overflow: hidden;
+
+  --primary-text-color: #DADADB;
+  --secondary-text-color: #DADADB;
+  --paper-item-icon-color: #DADADB;
+
+  --mdc-theme-primary: #DADADB;
+
+  --mdc-select-fill-color: transparent;
+  --mdc-select-outlined-idle-border-color: transparent;
+  --mdc-select-outlined-hover-border-color: transparent;
+  --mdc-select-dropdown-icon-color: #DADADB;
+  --mdc-select-label-ink-color: #DADADB;
+  --mdc-select-ink-color: #DADADB;
+  --mdc-select-idle-line-color: #DADADB;
+  --mdc-select-hover-line-color: #DADADB;
+
+  --mdc-text-field-fill-color: transparent;
+  --mdc-text-field-outlined-idle-border-color: transparent;
+  --mdc-text-field-outlined-hover-border-color: transparent;
+  --mdc-text-field-ink-color: #DADADB;
+  --mdc-text-field-label-ink-color: #DADADB;
+  --mdc-text-field-idle-line-color: #DADADB;
+  --mdc-text-field-hover-line-color: #DADADB;
+}
+
+.root {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  overflow: hidden;
+
+  color: var(--primary-text-color);
+
+  --ha-card-background: rgba(0, 0, 0, 0);
+  --ha-card-border-radius: 0;
+  --ha-card-box-shadow: none;
+}
+
+.section {
+  position: relative;
+
+  padding: 5px;
+}
+
+.header {
+  order: 1;
+
+  display: flex;
+  align-items: center;
+  padding: 5px;
+
+  background-color: rgba(0, 96, 15, 0.9);
+}
+
+.header .title {
+  font-size: 1.6em;
+  font-weight: 500;
+
+  --mdc-icon-size: 32px;
+}
+
+.title state-badge {
+  cursor: pointer;
+}
+
+.header .sensors {
+  height: 100%;
+  flex-grow: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5em;
+}
+
+.footer {
+  order: 3;
+
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.5em;
+
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.section.panels {
+  order: 2;
+  flex-grow: 1;
+  flex-shrink: 1;
+
+  display: flex;
+  overflow: auto hidden;
+  padding: 0;
+
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+
+  --mdc-icon-size: 24px;
+}
+
+.panel {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  flex-shrink: 0;
+
+  display: block;
+  padding: 5px;
+
+  background-color: rgba(0, 0, 0, 0.55);
+
+  scroll-snap-align: start;
+}
+
+.panel.empty-panel {
+  background: none;
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.55);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 96, 15, 0.55);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 96, 15, 1);
+}
+`;
+
+
+
+
+const $76271178badb5a82$var$UNKNOWN_AREA_ICON = "mdi:help-circle";
+const $76271178badb5a82$var$UNKNOWN_AREA_NAME = "Unknown";
+class $76271178badb5a82$export$179268f6da4a88b9 extends (0, $7e21dc7b5ad8cb11$export$3f2f9f5909897157) {
     static{
-        this.styles = (0, $8bfd52a6bb5c61f9$export$2e2bcd8739ae039);
+        this.styles = (0, $3961852dcf45b56f$export$2e2bcd8739ae039);
+    }
+    setConfig(config) {
+        if (!config.area) throw new Error("Area required");
+        this.config = config;
+    }
+    getCardSize() {
+        return 6;
+    }
+    getLayoutOptions() {
+        return {
+            grid_rows: 6,
+            grid_columns: 5,
+            grid_min_rows: 6,
+            grid_max_rows: 6
+        };
+    }
+    render() {
+        if (!this.config || !this.hass) return 0, $3046cc7e4ff866d4$export$45b790e32b2810ee;
+        const area = this.hass.areas[this.config.area];
+        const icon = area?.icon || $76271178badb5a82$var$UNKNOWN_AREA_ICON;
+        const name = area?.name || $76271178badb5a82$var$UNKNOWN_AREA_NAME;
+        const picture = area?.picture || null;
+        const state = this.config.entity ? this.hass.states[this.config.entity] : undefined;
+        return (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
+      <ha-card>
+        ${(0, $e723a6ede290d350$export$a55877ca9db47377)(picture, ()=>(0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`<hui-image .hass=${this.hass} .image="${picture}"></hui-image>`)}
+
+        <div class="root">
+          <div class="section header">
+            <div class="title">
+              ${this.iconTemplateResult(state, icon)}
+              ${name}
+            </div>
+
+            <div class="sensors">
+              ${this.config.badges?.map((badge)=>(0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
+                <area-badge
+                  .hass=${this.hass}
+                  .entity=${badge.entity}
+                  .icon=${badge.icon}
+                  .name=${badge.name}
+                  .tap=${badge.tap_action}
+                  .hold=${badge.hold_action}
+                ></area-badge>
+              `)}
+            </div>
+          </div>
+
+          <div class="section panels">
+            <div class="panel empty-panel"></div>
+            ${this.config.climate ? (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
+              <area-climate-panel
+                class="panel"
+                .key=${this.config.climate.room_key}
+              ></area-climate-panel>` : (0, $3046cc7e4ff866d4$export$45b790e32b2810ee)}
+          </div>
+
+          <div class="section footer">
+            ${this.config.controls?.map((control)=>(0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
+              <area-control
+                .hass=${this.hass}
+                .entity=${control.entity}
+                .icon=${control.icon}
+                .tag=${control.tag}
+                .name=${control.name}
+                .tap=${control.tap_action}
+                .hold=${control.hold_action}
+              ></area-control>
+            `)}
+          </div>
+        </div>
+      </ha-card>
+    `;
+    }
+    iconTemplateResult(state, icon) {
+        return (0, $e723a6ede290d350$export$a55877ca9db47377)(this.config?.entity, ()=>state ? (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
+        <state-badge
+          tabindex="0"
+          title=${state?.state}
+          .hass=${this.hass}
+          .stateObj=${state}
+          .stateColor=${false}
+          @action=${this.handleIconAction}
+          .actionHandler=${(0, $ca2aeabc8e3b4e74$export$8a44987212de21b)()}
+        ></state-badge>
+      ` : (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`<hui-warning-element></hui-warning-element>`, ()=>(0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`<ha-icon .icon="${icon}"></ha-icon>`);
+    }
+    handleIconAction(event) {
+        if (!this.hass) return;
+        (0, $9e338c437afcfa37$export$6c6c3f4b7541eaf1)(this, this.hass, {
+            tap_action: {
+                action: "more-info",
+                entity: this.config?.entity
+            }
+        }, event.detail.action);
+    }
+}
+(0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
+    (0, $63995b5a8f5ed880$export$d541bacb2bda4494)({
+        attribute: false
+    })
+], $76271178badb5a82$export$179268f6da4a88b9.prototype, "hass", void 0);
+(0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
+    (0, $de0279ad1f91739c$export$ca000e230c0caa3e)()
+], $76271178badb5a82$export$179268f6da4a88b9.prototype, "config", void 0);
+$76271178badb5a82$export$179268f6da4a88b9 = (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
+    (0, $b291dcacc5787077$export$da64fc29f17f9d0e)("area-card")
+], $76271178badb5a82$export$179268f6da4a88b9);
+
+
+
+
+
+
+class $6a52fdd840cc3f98$export$41648724724d056c extends (0, $7e21dc7b5ad8cb11$export$3f2f9f5909897157) {
+    static{
+        this.styles = (0, $058bbce60b728e89$export$2e2bcd8739ae039);
     }
     render() {
         if (!this.key || !this.hass) return 0, $3046cc7e4ff866d4$export$45b790e32b2810ee;
@@ -1978,13 +1978,13 @@ class $8bafea4037569188$export$6d438864f880aa extends (0, $7e21dc7b5ad8cb11$expo
     (0, $63995b5a8f5ed880$export$d541bacb2bda4494)({
         attribute: false
     })
-], $8bafea4037569188$export$6d438864f880aa.prototype, "hass", void 0);
+], $6a52fdd840cc3f98$export$41648724724d056c.prototype, "hass", void 0);
 (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
     (0, $63995b5a8f5ed880$export$d541bacb2bda4494)()
-], $8bafea4037569188$export$6d438864f880aa.prototype, "key", void 0);
-$8bafea4037569188$export$6d438864f880aa = (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
-    (0, $b291dcacc5787077$export$da64fc29f17f9d0e)("area-card-climate-panel")
-], $8bafea4037569188$export$6d438864f880aa);
+], $6a52fdd840cc3f98$export$41648724724d056c.prototype, "key", void 0);
+$6a52fdd840cc3f98$export$41648724724d056c = (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
+    (0, $b291dcacc5787077$export$da64fc29f17f9d0e)("area-climate-panel")
+], $6a52fdd840cc3f98$export$41648724724d056c);
 
 
 
@@ -1992,7 +1992,7 @@ $8bafea4037569188$export$6d438864f880aa = (0, $69d0b3211cd6ff55$export$29e00dfd3
 
 
 
-var $b25bb6350423b22c$export$2e2bcd8739ae039 = (0, $8b70d0323444ddea$export$dbf350e5966cf602)`
+var $3c7fd81506c19700$export$2e2bcd8739ae039 = (0, $8b70d0323444ddea$export$dbf350e5966cf602)`
 :host {
   cursor: pointer;
 }
@@ -2023,9 +2023,9 @@ state-badge {
 
 
 
-class $b1213ca84b9afd3c$export$4db1c1d4d2d55651 extends (0, $7e21dc7b5ad8cb11$export$3f2f9f5909897157) {
+class $6c078e9bdce48184$export$c1d00ea758456528 extends (0, $7e21dc7b5ad8cb11$export$3f2f9f5909897157) {
     static{
-        this.styles = (0, $b25bb6350423b22c$export$2e2bcd8739ae039);
+        this.styles = (0, $3c7fd81506c19700$export$2e2bcd8739ae039);
     }
     render() {
         if (!this.entity || !this.hass) return 0, $3046cc7e4ff866d4$export$45b790e32b2810ee;
@@ -2068,32 +2068,32 @@ class $b1213ca84b9afd3c$export$4db1c1d4d2d55651 extends (0, $7e21dc7b5ad8cb11$ex
     (0, $63995b5a8f5ed880$export$d541bacb2bda4494)({
         attribute: false
     })
-], $b1213ca84b9afd3c$export$4db1c1d4d2d55651.prototype, "hass", void 0);
+], $6c078e9bdce48184$export$c1d00ea758456528.prototype, "hass", void 0);
 (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
     (0, $63995b5a8f5ed880$export$d541bacb2bda4494)()
-], $b1213ca84b9afd3c$export$4db1c1d4d2d55651.prototype, "entity", void 0);
+], $6c078e9bdce48184$export$c1d00ea758456528.prototype, "entity", void 0);
 (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
     (0, $63995b5a8f5ed880$export$d541bacb2bda4494)()
-], $b1213ca84b9afd3c$export$4db1c1d4d2d55651.prototype, "icon", void 0);
+], $6c078e9bdce48184$export$c1d00ea758456528.prototype, "icon", void 0);
 (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
     (0, $63995b5a8f5ed880$export$d541bacb2bda4494)()
-], $b1213ca84b9afd3c$export$4db1c1d4d2d55651.prototype, "name", void 0);
+], $6c078e9bdce48184$export$c1d00ea758456528.prototype, "name", void 0);
 (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
     (0, $63995b5a8f5ed880$export$d541bacb2bda4494)()
-], $b1213ca84b9afd3c$export$4db1c1d4d2d55651.prototype, "tag", void 0);
+], $6c078e9bdce48184$export$c1d00ea758456528.prototype, "tag", void 0);
 (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
     (0, $63995b5a8f5ed880$export$d541bacb2bda4494)({
         attribute: false
     })
-], $b1213ca84b9afd3c$export$4db1c1d4d2d55651.prototype, "tap", void 0);
+], $6c078e9bdce48184$export$c1d00ea758456528.prototype, "tap", void 0);
 (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
     (0, $63995b5a8f5ed880$export$d541bacb2bda4494)({
         attribute: false
     })
-], $b1213ca84b9afd3c$export$4db1c1d4d2d55651.prototype, "hold", void 0);
-$b1213ca84b9afd3c$export$4db1c1d4d2d55651 = (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
-    (0, $b291dcacc5787077$export$da64fc29f17f9d0e)("area-card-control")
-], $b1213ca84b9afd3c$export$4db1c1d4d2d55651);
+], $6c078e9bdce48184$export$c1d00ea758456528.prototype, "hold", void 0);
+$6c078e9bdce48184$export$c1d00ea758456528 = (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
+    (0, $b291dcacc5787077$export$da64fc29f17f9d0e)("area-control")
+], $6c078e9bdce48184$export$c1d00ea758456528);
 
 
 window.customCards = window.customCards || [];
@@ -2102,6 +2102,8 @@ window.customCards.push({
     name: "Turn an entity on and off",
     description: "A pretty card with everything related to an area."
 });
+
+
 
 
 //# sourceMappingURL=area-card.js.map
