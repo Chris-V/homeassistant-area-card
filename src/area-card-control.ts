@@ -9,7 +9,7 @@ import { HomeAssistant } from "./types";
 @customElement('area-card-control')
 export class AreaCardControl extends LitElement {
   @property({ attribute: false }) hass?: HomeAssistant;
-  @property() action: string = 'more-info';
+  @property() action: 'toggle' | 'more-info' = 'more-info';
   @property() entity?: string;
   @property() icon?: string;
   @property() name?: string;
