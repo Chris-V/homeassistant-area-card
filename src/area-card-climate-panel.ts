@@ -18,10 +18,6 @@ export class AreaCardClimatePanel extends LitElement {
     const hass = this.hass;
     const state = hass.states[`climate.${this.key}_thermostat`];
 
-    if (!state) {
-      return html`<hui-warning-element></hui-warning-element>`;
-    }
-
     return html`
       <div>
         TOP

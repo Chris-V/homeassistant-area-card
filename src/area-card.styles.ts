@@ -121,11 +121,13 @@ ha-card {
   display: block;
   padding: 5px;
 
+  background-color: rgba(0, 0, 0, 0.55);
+
   scroll-snap-align: start;
 }
 
-.climate-panel {
-  background-color: rgba(0, 0, 0, 0.55);
+.panel.empty-panel {
+  background: none;
 }
 
 ::-webkit-scrollbar {

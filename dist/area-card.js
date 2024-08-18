@@ -1456,11 +1456,13 @@ ha-card {
   display: block;
   padding: 5px;
 
+  background-color: rgba(0, 0, 0, 0.55);
+
   scroll-snap-align: start;
 }
 
-.climate-panel {
-  background-color: rgba(0, 0, 0, 0.55);
+.panel.empty-panel {
+  background: none;
 }
 
 ::-webkit-scrollbar {
@@ -1965,7 +1967,6 @@ class $8bafea4037569188$export$6d438864f880aa extends (0, $7e21dc7b5ad8cb11$expo
         if (!this.key || !this.hass) return 0, $3046cc7e4ff866d4$export$45b790e32b2810ee;
         const hass = this.hass;
         const state = hass.states[`climate.${this.key}_thermostat`];
-        if (!state) return (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`<hui-warning-element></hui-warning-element>`;
         return (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
       <div>
         TOP
