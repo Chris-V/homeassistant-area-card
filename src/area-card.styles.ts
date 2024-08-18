@@ -96,13 +96,14 @@ ha-card {
   background-color: rgba(0, 0, 0, 0.6);
 }
 
-.panels {
+.section.panels {
   order: 2;
   flex-grow: 1;
   flex-shrink: 1;
 
   display: flex;
   overflow: auto hidden;
+  padding: 0;
 
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
@@ -118,6 +119,8 @@ ha-card {
   flex-shrink: 0;
 
   display: block;
+  padding: 5px;
+
   scroll-snap-align: start;
 }
 
@@ -125,20 +128,20 @@ ha-card {
   background-color: rgba(0, 0, 0, 0.55);
 }
 
-.panels ::-webkit-scrollbar {
+::-webkit-scrollbar {
   width: 3px;
   height: 3px;
 }
 
-.panels ::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
   background: rgba(0, 0, 0, 0.55);
 }
 
-.panels ::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   background: rgba(0, 96, 15, 0.55);
 }
 
-.panels ::-webkit-scrollbar-thumb:hover {
+::-webkit-scrollbar-thumb:hover {
   background: rgba(0, 96, 15, 1);
 }
 `;
