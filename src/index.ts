@@ -1,5 +1,6 @@
 import './area-card';
 import './area-card-badge';
+import './area-card-climate-panel';
 import './area-card-control';
 
 declare global {

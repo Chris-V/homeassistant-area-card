@@ -107,7 +107,11 @@ export class AreaCard extends LitElement implements LovelaceCard<AreaCardConfig>
 
           <div class="section panels">
             <div class="panel empty-panel"></div>
-            <div class="panel climate-panel">YO</div>
+            ${this.config.climate ? html`
+              <area-card-climate-panel
+                class="panel"
+                .key=${this.config.climate.room_key}
+              ></area-card-climate-panel>` : nothing}
           </div>
 
           <div class="section footer">

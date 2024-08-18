@@ -1742,7 +1742,11 @@ class $c051df81d7afd129$export$179268f6da4a88b9 extends (0, $7e21dc7b5ad8cb11$ex
 
           <div class="section panels">
             <div class="panel empty-panel"></div>
-            <div class="panel climate-panel">YO</div>
+            ${this.config.climate ? (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
+              <area-card-climate-panel
+                class="panel"
+                .key=${this.config.climate.room_key}
+              ></area-card-climate-panel>` : (0, $3046cc7e4ff866d4$export$45b790e32b2810ee)}
           </div>
 
           <div class="section footer">
@@ -1947,6 +1951,39 @@ class $9a9ee115bc4281da$export$f3c9554892aa28ef extends (0, $7e21dc7b5ad8cb11$ex
 $9a9ee115bc4281da$export$f3c9554892aa28ef = (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
     (0, $b291dcacc5787077$export$da64fc29f17f9d0e)("area-card-badge")
 ], $9a9ee115bc4281da$export$f3c9554892aa28ef);
+
+
+
+
+
+
+class $8bafea4037569188$export$6d438864f880aa extends (0, $7e21dc7b5ad8cb11$export$3f2f9f5909897157) {
+    static{
+        this.styles = (0, $8bfd52a6bb5c61f9$export$2e2bcd8739ae039);
+    }
+    render() {
+        if (!this.key || !this.hass) return 0, $3046cc7e4ff866d4$export$45b790e32b2810ee;
+        const hass = this.hass;
+        const state = hass.states[`climate.${this.key}_thermostat`];
+        if (!state) return (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`<hui-warning-element></hui-warning-element>`;
+        return (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
+      <div>
+        TOP
+      </div>
+    `;
+    }
+}
+(0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
+    (0, $63995b5a8f5ed880$export$d541bacb2bda4494)({
+        attribute: false
+    })
+], $8bafea4037569188$export$6d438864f880aa.prototype, "hass", void 0);
+(0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
+    (0, $63995b5a8f5ed880$export$d541bacb2bda4494)()
+], $8bafea4037569188$export$6d438864f880aa.prototype, "key", void 0);
+$8bafea4037569188$export$6d438864f880aa = (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
+    (0, $b291dcacc5787077$export$da64fc29f17f9d0e)("area-card-climate-panel")
+], $8bafea4037569188$export$6d438864f880aa);
 
 
 
