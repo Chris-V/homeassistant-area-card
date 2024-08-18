@@ -1548,34 +1548,6 @@ $c051df81d7afd129$export$179268f6da4a88b9 = (0, $69d0b3211cd6ff55$export$29e00df
 
 
 
-var $8bfd52a6bb5c61f9$export$2e2bcd8739ae039 = (0, $8b70d0323444ddea$export$dbf350e5966cf602)`
-:host {
-  cursor: pointer;
-}
-
-.root {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: flex-end;
-
-  --mdc-icon-size: 24px;
-}
-
-state-badge {
-  width: unset;
-  height: unset;
-  line-height: unset;
-}
-
-.label {
-  font-size: 0.8em;
-  white-space: nowrap;
-}
-`;
-
-
-
 /**
  * @license
  * Copyright 2017 Google LLC
@@ -1606,6 +1578,71 @@ class $59dc7bfa10d2dd2f$export$befdefbdce210f91 {
         return this.render(...e);
     }
 }
+
+
+/**
+ * @license
+ * Copyright 2018 Google LLC
+ * SPDX-License-Identifier: BSD-3-Clause
+ */ const $cf1c38459c5a422a$export$56cc687933817664 = (0, $59dc7bfa10d2dd2f$export$99b43ad1ed32e735)(class extends (0, $59dc7bfa10d2dd2f$export$befdefbdce210f91) {
+    constructor(s){
+        if (super(s), s.type !== (0, $59dc7bfa10d2dd2f$export$9ba3b3f20a85bfa).ATTRIBUTE || "class" !== s.name || s.strings?.length > 2) throw Error("`classMap()` can only be used in the `class` attribute and must be the only part in the attribute.");
+    }
+    render(t) {
+        return " " + Object.keys(t).filter((s)=>t[s]).join(" ") + " ";
+    }
+    update(t, [s]) {
+        if (void 0 === this.st) {
+            this.st = new Set, void 0 !== t.strings && (this.nt = new Set(t.strings.join(" ").split(/\s/).filter((t)=>"" !== t)));
+            for(const t in s)s[t] && !this.nt?.has(t) && this.st.add(t);
+            return this.render(s);
+        }
+        const i = t.element.classList;
+        for (const t of this.st)t in s || (i.remove(t), this.st.delete(t));
+        for(const t in s){
+            const r = !!s[t];
+            r === this.st.has(t) || this.nt?.has(t) || (r ? (i.add(t), this.st.add(t)) : (i.remove(t), this.st.delete(t)));
+        }
+        return 0, $3046cc7e4ff866d4$export$9c068ae9cc5db4e8;
+    }
+});
+
+
+
+
+
+var $8bfd52a6bb5c61f9$export$2e2bcd8739ae039 = (0, $8b70d0323444ddea$export$dbf350e5966cf602)`
+:host {
+  cursor: pointer;
+}
+
+.root {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  --mdc-icon-size: 24px;
+}
+
+.root.active {
+  --primary-text-color: var(--paper-item-icon-active-color);
+  --paper-item-icon-color: var(--paper-item-icon-active-color);
+}
+
+state-badge {
+  width: unset;
+  height: unset;
+  line-height: unset;
+}
+
+.label {
+  font-size: 0.8em;
+  white-space: nowrap;
+}
+`;
+
+
 
 
 
@@ -1654,13 +1691,12 @@ class $9a9ee115bc4281da$export$f3c9554892aa28ef extends (0, $7e21dc7b5ad8cb11$ex
         if (!state) return (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`<hui-warning-element></hui-warning-element>`;
         const showLabel = !this.entity.startsWith("binary_sensor.");
         const title = this.name || state.attributes.friendly_name || this.entity;
-        // {{ "{% if is_state_attr('" ~ entity ~ "', 'heating', True) %}" }}
-        // --primary-text-color: var(--paper-item-icon-active-color);
-        // --paper-item-icon-color: var(--paper-item-icon-active-color);
-        // {{ "{% endif %}" }}
         return (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
       <div
-        class="root"
+        class=${(0, $cf1c38459c5a422a$export$56cc687933817664)({
+            root: true,
+            active: state.attributes["heating"] === true
+        })}
         tabindex="0"
         .title=${title}
         @action=${this.handleAction}

@@ -14,6 +14,11 @@ export default css`
   --mdc-icon-size: 24px;
 }
 
+.root.active {
+  --primary-text-color: var(--paper-item-icon-active-color);
+  --paper-item-icon-color: var(--paper-item-icon-active-color);
+}
+
 state-badge {
   width: unset;
   height: unset;

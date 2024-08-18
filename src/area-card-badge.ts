@@ -1,6 +1,7 @@
 import { html, LitElement, nothing } from "lit";
 import { customElement, property } from "lit/decorators";
 import { when } from "lit/directives/when";
+import { classMap } from "lit/directives/class-map";
 import styles from './area-card-badge.styles';
 import { actionHandler, ActionHandlerEvent } from "./helpers/action-handler";
 import { fireEvent } from "./events/events";
@@ -30,14 +31,9 @@ export class AreaCardBadge extends LitElement {
     const showLabel = !this.entity.startsWith('binary_sensor.');
     const title = this.name || state.attributes.friendly_name || this.entity;
 
-    // {{ "{% if is_state_attr('" ~ entity ~ "', 'heating', True) %}" }}
-    // --primary-text-color: var(--paper-item-icon-active-color);
-    // --paper-item-icon-color: var(--paper-item-icon-active-color);
-    // {{ "{% endif %}" }}
-
     return html`
       <div
-        class="root"
+        class=${classMap({ root: true, active: state.attributes['heating'] === true })}
         tabindex="0"
         .title=${title}
         @action=${this.handleAction}
