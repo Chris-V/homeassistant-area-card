@@ -1,10 +1,7 @@
 import { css } from "lit";
 
 export default css`
-:host {
-  height: 100%;
-  margin: 0px 3px;
-
+.root {
   display: flex;
   align-items: center;
   flex-direction: column;

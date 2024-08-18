@@ -19,7 +19,7 @@ export class AreaCardBadge extends LitElement {
       return nothing;
     }
 
-    const showLabel = this.entity.startsWith('binary_sensor.');
+    const showLabel = !this.entity.startsWith('binary_sensor.');
     const iconConfig = {
       entity: this.entity,
       icon: this.icon,
@@ -33,17 +33,19 @@ export class AreaCardBadge extends LitElement {
     };
 
     return html`
-      <hui-state-icon-element
-        .hass=${this.hass}
-        ${ref((element?: any) => element?.setConfig(iconConfig))}
-      ></hui-state-icon-element>
-
-      ${when(showLabel, () => html`
-        <hui-state-label-element
+      <div class="root">
+        <hui-state-icon-element
           .hass=${this.hass}
-          ${ref((element?: any) => element?.setConfig(labelConfig))}
-        ></hui-state-label-element>
-      `)}
+          ${ref((element?: any) => element?.setConfig(iconConfig))}
+        ></hui-state-icon-element>
+
+        ${when(showLabel, () => html`
+          <hui-state-label-element
+            .hass=${this.hass}
+            ${ref((element?: any) => element?.setConfig(labelConfig))}
+          ></hui-state-label-element>
+        `)}
+      </div>
     `;
   }
 }

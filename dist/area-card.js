@@ -1712,10 +1712,7 @@ const $00eff1ec8cc3c37a$var$qt = new WeakMap, $00eff1ec8cc3c37a$export$eff4d24c3
 
 
 var $8bfd52a6bb5c61f9$export$2e2bcd8739ae039 = (0, $8b70d0323444ddea$export$dbf350e5966cf602)`
-:host {
-  height: 100%;
-  margin: 0px 3px;
-
+.root {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -1734,7 +1731,7 @@ class $9a9ee115bc4281da$export$f3c9554892aa28ef extends (0, $7e21dc7b5ad8cb11$ex
     }
     render() {
         if (!this.entity) return 0, $3046cc7e4ff866d4$export$45b790e32b2810ee;
-        const showLabel = this.entity.startsWith("binary_sensor.");
+        const showLabel = !this.entity.startsWith("binary_sensor.");
         const iconConfig = {
             entity: this.entity,
             icon: this.icon,
@@ -1751,17 +1748,19 @@ class $9a9ee115bc4281da$export$f3c9554892aa28ef extends (0, $7e21dc7b5ad8cb11$ex
             }
         };
         return (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
-      <hui-state-icon-element
-        .hass=${this.hass}
-        ${(0, $00eff1ec8cc3c37a$export$eff4d24c3ff7876e)((element)=>element?.setConfig(iconConfig))}
-      ></hui-state-icon-element>
-
-      ${(0, $e723a6ede290d350$export$a55877ca9db47377)(showLabel, ()=>(0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
-        <hui-state-label-element
+      <div class="root">
+        <hui-state-icon-element
           .hass=${this.hass}
-          ${(0, $00eff1ec8cc3c37a$export$eff4d24c3ff7876e)((element)=>element?.setConfig(labelConfig))}
-        ></hui-state-label-element>
-      `)}
+          ${(0, $00eff1ec8cc3c37a$export$eff4d24c3ff7876e)((element)=>element?.setConfig(iconConfig))}
+        ></hui-state-icon-element>
+
+        ${(0, $e723a6ede290d350$export$a55877ca9db47377)(showLabel, ()=>(0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
+          <hui-state-label-element
+            .hass=${this.hass}
+            ${(0, $00eff1ec8cc3c37a$export$eff4d24c3ff7876e)((element)=>element?.setConfig(labelConfig))}
+          ></hui-state-label-element>
+        `)}
+      </div>
     `;
     }
 }
