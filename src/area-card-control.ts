@@ -48,9 +48,7 @@ export class AreaCardControl extends LitElement {
           .stateColor=${true}
         ></state-badge>
 
-        ${when(this.tag, () => html`
-          <ha-icon class="tag" .icon="${this.tag}"></ha-icon>
-        `)}
+        ${when(this.tag, () => html`<ha-icon class="tag" .icon="${this.tag}"></ha-icon>`)}
       </div>
     `;
   }

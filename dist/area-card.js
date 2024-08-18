@@ -1805,9 +1805,7 @@ class $b1213ca84b9afd3c$export$4db1c1d4d2d55651 extends (0, $7e21dc7b5ad8cb11$ex
           .stateColor=${true}
         ></state-badge>
 
-        ${(0, $e723a6ede290d350$export$a55877ca9db47377)(this.tag, ()=>(0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
-          <ha-icon class="tag" .icon="${this.tag}"></ha-icon>
-        `)}
+        ${(0, $e723a6ede290d350$export$a55877ca9db47377)(this.tag, ()=>(0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`<ha-icon class="tag" .icon="${this.tag}"></ha-icon>`)}
       </div>
     `;
     }
