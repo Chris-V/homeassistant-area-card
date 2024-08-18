@@ -141,15 +141,15 @@ export async function handleAction(
 }
 
 export function createDefaultAction(
-  type: ActionConfig['action'],
+  action: ActionConfig['action'],
   entity: string | undefined,
-  action: ActionConfig | undefined,
+  optionalConfig: ActionConfig | undefined,
 ): ActionConfig {
-  const actionWithDefaults: ActionConfig = { action: 'more-info', ...action };
+  const config: ActionConfig = optionalConfig?.action ? <any>{ ...optionalConfig } : { action };
 
-  if (actionWithDefaults.action === 'toggle' || actionWithDefaults.action === 'more-info' && !actionWithDefaults.entity) {
-    actionWithDefaults.entity = entity;
+  if ((config.action === 'toggle' || config.action === 'more-info') && !config.entity) {
+    config.entity = entity;
   }
 
-  return actionWithDefaults;
+  return config;
 }

@@ -1785,13 +1785,14 @@ async function $9e338c437afcfa37$export$6c6c3f4b7541eaf1(node, hass, config, act
             break;
     }
 }
-function $9e338c437afcfa37$export$2249b8b14200eb6d(type, entity, action) {
-    const actionWithDefaults = {
-        action: "more-info",
-        ...action
+function $9e338c437afcfa37$export$2249b8b14200eb6d(action, entity, optionalConfig) {
+    const config = optionalConfig?.action ? {
+        ...optionalConfig
+    } : {
+        action: action
     };
-    if (actionWithDefaults.action === "toggle" || actionWithDefaults.action === "more-info" && !actionWithDefaults.entity) actionWithDefaults.entity = entity;
-    return actionWithDefaults;
+    if ((config.action === "toggle" || config.action === "more-info") && !config.entity) config.entity = entity;
+    return config;
 }
 
 
