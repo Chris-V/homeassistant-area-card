@@ -27,7 +27,7 @@ export class AreaClimatePanel extends LitElement {
     return html`
       <div class="root">
         <div class="settings">
-          ${until(row)}
+          ${until(row, nothing)}
         </div>
 
         <div class="thermostat">

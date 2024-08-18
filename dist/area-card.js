@@ -2192,7 +2192,7 @@ class $6a52fdd840cc3f98$export$41648724724d056c extends (0, $7e21dc7b5ad8cb11$ex
         return (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
       <div class="root">
         <div class="settings">
-          ${(0, $d33915c68ab82e80$export$a40009bd2c363351)(row)}
+          ${(0, $d33915c68ab82e80$export$a40009bd2c363351)(row, (0, $3046cc7e4ff866d4$export$45b790e32b2810ee))}
         </div>
 
         <div class="thermostat">
