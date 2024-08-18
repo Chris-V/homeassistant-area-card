@@ -2134,60 +2134,58 @@ class $6a52fdd840cc3f98$export$41648724724d056c extends (0, $7e21dc7b5ad8cb11$ex
     }
     render() {
         if (!this.key || !this.hass) return 0, $3046cc7e4ff866d4$export$45b790e32b2810ee;
-        const climateEntity = `climate.${this.key}_thermostat`;
-        // - type: entities
-        //   show_header_toggle: false
-        //   card_mod:
-        //     style: |
-        //       ha-card .card-content { padding: 0; }
-        //       ha-card #states > * { margin: 0; }
-        // .mdc-text-field--filled {
-        //   height: 3em;
-        // }
         return (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
       <div class="root">
-        <hui-entities-card
-          class="settings"
-          ${(0, $00eff1ec8cc3c37a$export$eff4d24c3ff7876e)(this.entitiesCardRef)}
-        ></hui-entities-card>
+        <div class="settings">
+          <hui-input-select-entity-row ${(0, $00eff1ec8cc3c37a$export$eff4d24c3ff7876e)((row)=>{
+            if (row) {
+                row.hass = this.hass;
+                row.setConfig({
+                    entity: `input_select.${this.key}_thermostat_mode`,
+                    name: "Mode"
+                });
+            }
+        })}></hui-input-select-entity-row>
+                <hui-input-number-entity-row ${(0, $00eff1ec8cc3c37a$export$eff4d24c3ff7876e)((row)=>{
+            if (row) {
+                row.hass = this.hass;
+                row.setConfig({
+                    entity: `input_number.${this.key}_thermostat_eco_setpoint`,
+                    name: "Eco"
+                });
+            }
+        })}></hui-input-number-entity-row>
+          <hui-input-number-entity-row ${(0, $00eff1ec8cc3c37a$export$eff4d24c3ff7876e)((row)=>{
+            if (row) {
+                row.hass = this.hass;
+                row.setConfig({
+                    entity: `input_number.${this.key}_thermostat_comfort_setpoint`,
+                    name: "Comfort"
+                });
+            }
+        })}></hui-input-number-entity-row>
+        </div>
 
         <div class="thermostat">
-        ${climateEntity}
+        climate.${this.key}_thermostat
         </div>
       </div>
     `;
     }
     firstUpdated(properties) {
-        const sheet = new CSSStyleSheet();
-        sheet.replaceSync(`
-      .card-content,
-      :host ::slotted(.card-content) {
-          padding: 0;
-      }
-    `);
-        this.entitiesCardRef.value?.shadowRoot?.querySelector("ha-card")?.shadowRoot?.adoptedStyleSheets.push(sheet);
-    }
-    updated(properties) {
-        const card = this.entitiesCardRef.value;
-        if (!card) return;
-        if (properties.has("hass")) card.hass = this.hass;
-        if (properties.has("key")) card.setConfig({
-            type: "entities",
-            entities: [
-                {
-                    entity: `input_select.${this.key}_thermostat_mode`,
-                    name: "Mode"
-                },
-                {
-                    entity: `input_number.${this.key}_thermostat_eco_setpoint`,
-                    name: "Eco"
-                },
-                {
-                    entity: `input_number.${this.key}_thermostat_comfort_setpoint`,
-                    name: "Comfort"
-                }
-            ]
-        });
+    // const sheet = new CSSStyleSheet();
+    // sheet.replaceSync(`
+    //   .card-content,
+    //   :host ::slotted(.card-content) {
+    //       padding: 0;
+    //   }
+    // `);
+    // this.entitiesCardRef.value
+    //   ?.shadowRoot
+    //   ?.querySelector('ha-card')
+    //   ?.shadowRoot
+    //   ?.adoptedStyleSheets
+    //   .push(sheet);
     }
     constructor(...args){
         super(...args);
