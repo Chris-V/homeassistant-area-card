@@ -89,7 +89,7 @@ export class AreaCard extends LitElement implements LovelaceCard<AreaCardConfig>
             </div>
           </div>
 
-          <div class="section content"></div>
+          <div class="section panels"></div>
 
           <div class="section footer">
             ${this.config.controls?.map((control) => html`

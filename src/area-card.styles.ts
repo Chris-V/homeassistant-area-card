@@ -50,6 +50,8 @@ ha-card {
 
 .section {
   position: relative;
+
+  padding: 5px;
 }
 
 .header {
@@ -81,19 +83,16 @@ ha-card {
 
 .footer {
   order: 3;
-  height: unset;
-  min-height: 1.75em;
 
   display: flex;
   align-items: baseline;
   justify-content: center;
+  gap: 0.5em;
 
-  background-color: rgba(0, 0, 0, 0.55);
-
-  --mdc-icon-size: 32px;
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
-.content {
+.panels {
   order: 2;
   flex-grow: 1;
   flex-shrink: 1;
@@ -108,20 +107,20 @@ ha-card {
   --mdc-icon-size: 24px;
 }
 
-.content ::-webkit-scrollbar {
+.panels ::-webkit-scrollbar {
   width: 3px;
   height: 3px;
 }
 
-.content ::-webkit-scrollbar-track {
+.panels ::-webkit-scrollbar-track {
   background: rgba(0, 0, 0, 0.55);
 }
 
-.content ::-webkit-scrollbar-thumb {
+.panels ::-webkit-scrollbar-thumb {
   background: rgba(0, 96, 15, 0.55);
 }
 
-.content ::-webkit-scrollbar-thumb:hover {
+.panels ::-webkit-scrollbar-thumb:hover {
   background: rgba(0, 96, 15, 1);
 }
 `;

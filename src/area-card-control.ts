@@ -2,8 +2,10 @@ import { html, LitElement, nothing } from "lit";
 import { customElement, property } from "lit/decorators";
 import { when } from "lit/directives/when";
 import styles from './area-card-control.styles';
+import { fireEvent } from "./events/events";
+import { forwardHaptic } from "./events/haptic";
 import { actionHandler, ActionHandlerEvent } from "./helpers/action-handler";
-import { fireEvent } from "./helpers/events";
+import { toggleEntity } from "./helpers/toggle-entity";
 import { HomeAssistant } from "./types";
 
 @customElement('area-card-control')
@@ -54,7 +56,15 @@ export class AreaCardControl extends LitElement {
   }
 
   private handleAction(event: ActionHandlerEvent) {
-    // TODO: action
-    fireEvent(this, "hass-more-info", { entityId: this.entity });
+    if (!this.entity || !this.hass) {
+      return;
+    }
+
+    if (event.detail.action == 'tap' && this.action == 'toggle') {
+      toggleEntity(this.hass, this.entity);
+      forwardHaptic('light');
+    } else {
+      fireEvent(this, "hass-more-info", { entityId: this.entity });
+    }
   }
 }

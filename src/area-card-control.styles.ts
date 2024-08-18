@@ -6,7 +6,7 @@ export default css`
 }
 
 .root {
-  --mdc-icon-size: 24px;
+  --mdc-icon-size: 32px;
 }
 
 state-badge {

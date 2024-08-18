@@ -3,7 +3,7 @@ import { customElement, property } from "lit/decorators";
 import { when } from "lit/directives/when";
 import styles from './area-card-badge.styles';
 import { actionHandler, ActionHandlerEvent } from "./helpers/action-handler";
-import { fireEvent } from "./helpers/events";
+import { fireEvent } from "./events/events";
 import { HomeAssistant } from "./types";
 
 @customElement('area-card-badge')

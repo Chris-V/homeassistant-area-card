@@ -1,4 +1,4 @@
-import { HassConfig, HassEntities, HassEntity, HassServices } from "home-assistant-js-websocket";
+import { HassConfig, HassEntities, HassEntity, HassServices, HassServiceTarget } from "home-assistant-js-websocket";
 
 export interface RegistryEntry {
   created_at: number;
@@ -38,6 +38,24 @@ export interface DeviceRegistryEntry extends RegistryEntry {
 
 type EntityCategory = "config" | "diagnostic";
 
+export interface ServiceCallRequest {
+  domain: string;
+  service: string;
+  serviceData?: Record<string, any>;
+  target?: HassServiceTarget;
+}
+
+export interface Context {
+  id: string;
+  parent_id?: string;
+  user_id?: string | null;
+}
+
+export interface ServiceCallResponse {
+  context: Context;
+  response?: any;
+}
+
 export interface EntityRegistryDisplayEntry {
   entity_id: string;
   name?: string;
@@ -60,6 +78,14 @@ export interface HomeAssistant {
   services: HassServices;
   config: HassConfig;
 
+  callService(
+    domain: ServiceCallRequest["domain"],
+    service: ServiceCallRequest["service"],
+    serviceData?: ServiceCallRequest["serviceData"],
+    target?: ServiceCallRequest["target"],
+    notifyOnError?: boolean,
+    returnResponse?: boolean
+  ): Promise<ServiceCallResponse>;
   formatEntityState(state: HassEntity): string;
 }
 

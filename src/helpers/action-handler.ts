@@ -1,6 +1,6 @@
 import { noChange } from "lit";
 import { AttributePart, directive, Directive, DirectiveParameters } from "lit/directive";
-import { HASSDomEvent } from "./events";
+import { HASSDomEvent } from "../events/events";
 
 export type ActionHandlerEvent = HASSDomEvent<ActionHandlerDetail>;
 

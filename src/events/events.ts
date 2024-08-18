@@ -1,7 +1,9 @@
-interface HASSDomEvents {
-  "hass-more-info": {
-    entityId: string | undefined;
-  };
+declare global {
+  interface HASSDomEvents {
+    "hass-more-info": {
+      entityId: string | undefined;
+    };
+  }
 }
 
 export interface HASSDomEvent<T> extends Event {

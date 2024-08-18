@@ -1385,6 +1385,8 @@ ha-card {
 
 .section {
   position: relative;
+
+  padding: 5px;
 }
 
 .header {
@@ -1416,19 +1418,16 @@ ha-card {
 
 .footer {
   order: 3;
-  height: unset;
-  min-height: 1.75em;
 
   display: flex;
   align-items: baseline;
   justify-content: center;
+  gap: 0.5em;
 
-  background-color: rgba(0, 0, 0, 0.55);
-
-  --mdc-icon-size: 32px;
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
-.content {
+.panels {
   order: 2;
   flex-grow: 1;
   flex-shrink: 1;
@@ -1443,20 +1442,20 @@ ha-card {
   --mdc-icon-size: 24px;
 }
 
-.content ::-webkit-scrollbar {
+.panels ::-webkit-scrollbar {
   width: 3px;
   height: 3px;
 }
 
-.content ::-webkit-scrollbar-track {
+.panels ::-webkit-scrollbar-track {
   background: rgba(0, 0, 0, 0.55);
 }
 
-.content ::-webkit-scrollbar-thumb {
+.panels ::-webkit-scrollbar-thumb {
   background: rgba(0, 96, 15, 0.55);
 }
 
-.content ::-webkit-scrollbar-thumb:hover {
+.panels ::-webkit-scrollbar-thumb:hover {
   background: rgba(0, 96, 15, 1);
 }
 `;
@@ -1512,7 +1511,7 @@ class $c051df81d7afd129$export$179268f6da4a88b9 extends (0, $7e21dc7b5ad8cb11$ex
             </div>
           </div>
 
-          <div class="section content"></div>
+          <div class="section panels"></div>
 
           <div class="section footer">
             ${this.config.controls?.map((control)=>(0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
@@ -1632,7 +1631,7 @@ const $9e338c437afcfa37$export$8a44987212de21b = (0, $59dc7bfa10d2dd2f$export$99
 });
 
 
-const $75991cc1c65241b5$export$43835e9acf248a15 = (node, type, detail, options)=>{
+const $0d6f31784069dcf6$export$43835e9acf248a15 = (node, type, detail, options)=>{
     const event = new Event(type, {
         bubbles: options?.bubbles === undefined ? true : options.bubbles,
         cancelable: !!options?.cancelable,
@@ -1688,7 +1687,7 @@ class $9a9ee115bc4281da$export$f3c9554892aa28ef extends (0, $7e21dc7b5ad8cb11$ex
     `;
     }
     handleAction(event) {
-        (0, $75991cc1c65241b5$export$43835e9acf248a15)(this, "hass-more-info", {
+        (0, $0d6f31784069dcf6$export$43835e9acf248a15)(this, "hass-more-info", {
             entityId: this.entity
         });
     }
@@ -1723,7 +1722,7 @@ var $b25bb6350423b22c$export$2e2bcd8739ae039 = (0, $8b70d0323444ddea$export$dbf3
 }
 
 .root {
-  --mdc-icon-size: 24px;
+  --mdc-icon-size: 32px;
 }
 
 state-badge {
@@ -1734,6 +1733,51 @@ state-badge {
 `;
 
 
+
+// https://github.com/home-assistant/frontend/blob/dev/src/data/haptics.ts
+
+const $552eb8ad7d641dd7$export$8bcf112cf396c716 = (hapticType)=>{
+    (0, $0d6f31784069dcf6$export$43835e9acf248a15)(window, "haptic", hapticType);
+};
+
+
+
+function $49b904b83bae4049$export$3303cc16da6bc061(hass, entityId, turnOn = true) {
+    const stateDomain = entityId.substring(0, entityId.indexOf("."));
+    const serviceDomain = stateDomain === "group" ? "homeassistant" : stateDomain;
+    let service;
+    switch(stateDomain){
+        case "lock":
+            service = turnOn ? "unlock" : "lock";
+            break;
+        case "cover":
+            service = turnOn ? "open_cover" : "close_cover";
+            break;
+        case "button":
+        case "input_button":
+            service = "press";
+            break;
+        case "scene":
+            service = "turn_on";
+            break;
+        case "valve":
+            service = turnOn ? "open_valve" : "close_valve";
+            break;
+        default:
+            service = turnOn ? "turn_on" : "turn_off";
+    }
+    return hass.callService(serviceDomain, service, {
+        entity_id: entityId
+    });
+}
+function $49b904b83bae4049$export$4f6896672dcf12b1(hass, entityId) {
+    const turnOn = [
+        "closed",
+        "locked",
+        "off"
+    ].includes(hass.states[entityId].state);
+    return $49b904b83bae4049$export$3303cc16da6bc061(hass, entityId, turnOn);
+}
 
 
 class $b1213ca84b9afd3c$export$4db1c1d4d2d55651 extends (0, $7e21dc7b5ad8cb11$export$3f2f9f5909897157) {
@@ -1768,8 +1812,11 @@ class $b1213ca84b9afd3c$export$4db1c1d4d2d55651 extends (0, $7e21dc7b5ad8cb11$ex
     `;
     }
     handleAction(event) {
-        // TODO: action
-        (0, $75991cc1c65241b5$export$43835e9acf248a15)(this, "hass-more-info", {
+        if (!this.entity || !this.hass) return;
+        if (event.detail.action == "tap" && this.action == "toggle") {
+            (0, $49b904b83bae4049$export$4f6896672dcf12b1)(this.hass, this.entity);
+            (0, $552eb8ad7d641dd7$export$8bcf112cf396c716)("light");
+        } else (0, $0d6f31784069dcf6$export$43835e9acf248a15)(this, "hass-more-info", {
             entityId: this.entity
         });
     }
