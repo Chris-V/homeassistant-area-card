@@ -1,8 +1,7 @@
 import { html, LitElement, nothing } from 'lit';
 import { customElement, property, state } from 'lit/decorators';
-import { ref } from 'lit/directives/ref';
 import { when } from 'lit/directives/when';
-import styles from './card.styles';
+import styles from './area-card.styles';
 import { HomeAssistant, LovelaceCard, LovelaceCardConfig, } from './types';
 
 const UNKNOWN_AREA_ICON = 'mdi:help-circle';
@@ -16,7 +15,7 @@ export interface AreaCardBadgeConfig {
 
 export interface AreaCardConfig extends LovelaceCardConfig {
   area: string;
-  sensors?: AreaCardBadgeConfig[];
+  badges?: AreaCardBadgeConfig[];
 }
 
 @customElement('area-card')
@@ -70,12 +69,12 @@ export class AreaCard extends LitElement implements LovelaceCard<AreaCardConfig>
             </div>
 
             <div class="sensors">
-              ${this.config.sensors?.map((sensor) => html`
+              ${this.config.badges?.map((badge) => html`
                 <area-card-badge
                   .hass=${this.hass}
-                  .entity=${sensor.entity}
-                  .icon=${sensor.icon}
-                  .name=${sensor.name}
+                  .entity=${badge.entity}
+                  .icon=${badge.icon}
+                  .name=${badge.name}
                 ></area-card-badge>
               `)}
             </div>

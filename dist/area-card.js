@@ -1335,7 +1335,7 @@ function $10cacb3edc9c9319$export$dcd0d083aa86c355(r) {
 
 
 
-var $120c5a859c012378$export$2e2bcd8739ae039 = (0, $8b70d0323444ddea$export$dbf350e5966cf602)`
+var $b7be6268d2096bab$export$2e2bcd8739ae039 = (0, $8b70d0323444ddea$export$dbf350e5966cf602)`
 ha-card {
   position: relative;
 
@@ -1411,10 +1411,6 @@ ha-card {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-
-  font-size: 0.55em;
-
-  --mdc-icon-size: 24px;
 }
 
 .footer {
@@ -1469,7 +1465,7 @@ const $c051df81d7afd129$var$UNKNOWN_AREA_ICON = "mdi:help-circle";
 const $c051df81d7afd129$var$UNKNOWN_AREA_NAME = "Unknown";
 class $c051df81d7afd129$export$179268f6da4a88b9 extends (0, $7e21dc7b5ad8cb11$export$3f2f9f5909897157) {
     static{
-        this.styles = (0, $120c5a859c012378$export$2e2bcd8739ae039);
+        this.styles = (0, $b7be6268d2096bab$export$2e2bcd8739ae039);
     }
     setConfig(config) {
         if (!config.area) throw new Error("Area required");
@@ -1504,12 +1500,12 @@ class $c051df81d7afd129$export$179268f6da4a88b9 extends (0, $7e21dc7b5ad8cb11$ex
             </div>
 
             <div class="sensors">
-              ${this.config.sensors?.map((sensor)=>(0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
+              ${this.config.badges?.map((badge)=>(0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
                 <area-card-badge
                   .hass=${this.hass}
-                  .entity=${sensor.entity}
-                  .icon=${sensor.icon}
-                  .name=${sensor.name}
+                  .entity=${badge.entity}
+                  .icon=${badge.icon}
+                  .name=${badge.name}
                 ></area-card-badge>
               `)}
             </div>
@@ -1713,9 +1709,32 @@ const $00eff1ec8cc3c37a$var$qt = new WeakMap, $00eff1ec8cc3c37a$export$eff4d24c3
 
 
 
+
+
+var $8bfd52a6bb5c61f9$export$2e2bcd8739ae039 = (0, $8b70d0323444ddea$export$dbf350e5966cf602)`
+:host {
+  height: 100%;
+  margin: 0px 3px;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  font-size: 0.55em;
+
+  --mdc-icon-size: 24px;
+}
+`;
+
+
 class $9a9ee115bc4281da$export$f3c9554892aa28ef extends (0, $7e21dc7b5ad8cb11$export$3f2f9f5909897157) {
+    static{
+        this.styles = (0, $8bfd52a6bb5c61f9$export$2e2bcd8739ae039);
+    }
     render() {
         if (!this.entity) return 0, $3046cc7e4ff866d4$export$45b790e32b2810ee;
+        const showLabel = this.entity.startsWith("binary_sensor.");
         const iconConfig = {
             entity: this.entity,
             icon: this.icon,
@@ -1724,10 +1743,26 @@ class $9a9ee115bc4281da$export$f3c9554892aa28ef extends (0, $7e21dc7b5ad8cb11$ex
                 action: "more-info"
             }
         };
-        return (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`<hui-state-icon-element
-      .hass=${this.hass}
-      ${(0, $00eff1ec8cc3c37a$export$eff4d24c3ff7876e)((element)=>element?.setConfig(iconConfig))}
-    ></hui-state-icon-element>`;
+        const labelConfig = {
+            entity: this.entity,
+            title: this.name,
+            tap_action: {
+                action: "more-info"
+            }
+        };
+        return (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
+      <hui-state-icon-element
+        .hass=${this.hass}
+        ${(0, $00eff1ec8cc3c37a$export$eff4d24c3ff7876e)((element)=>element?.setConfig(iconConfig))}
+      ></hui-state-icon-element>
+
+      ${(0, $e723a6ede290d350$export$a55877ca9db47377)(showLabel, ()=>(0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
+        <hui-state-label-element
+          .hass=${this.hass}
+          ${(0, $00eff1ec8cc3c37a$export$eff4d24c3ff7876e)((element)=>element?.setConfig(labelConfig))}
+        ></hui-state-label-element>
+      `)}
+    `;
     }
 }
 (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([

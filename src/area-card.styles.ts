@@ -76,10 +76,6 @@ ha-card {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-
-  font-size: 0.55em;
-
-  --mdc-icon-size: 24px;
 }
 
 .footer {
