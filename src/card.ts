@@ -98,7 +98,7 @@ export class AreaCard extends LitElement implements LovelaceCard {
 
     return html`<hui-state-icon-element
       .hass=${this.hass}
-      ${ref((element: any) => element.setConfig(elementConfig))}
+      ${ref((element?: any) => element?.setConfig(elementConfig))}
     ></hui-state-icon-element>`;
   }
 }

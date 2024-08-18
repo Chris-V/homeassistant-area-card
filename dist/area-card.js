@@ -1702,7 +1702,7 @@ class $a399cc6bbb0eb26a$export$179268f6da4a88b9 extends (0, $7e21dc7b5ad8cb11$ex
         };
         return (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`<hui-state-icon-element
       .hass=${this.hass}
-      ${(0, $00eff1ec8cc3c37a$export$eff4d24c3ff7876e)((element)=>element.setConfig(elementConfig))}
+      ${(0, $00eff1ec8cc3c37a$export$eff4d24c3ff7876e)((element)=>element?.setConfig(elementConfig))}
     ></hui-state-icon-element>`;
     }
 }
