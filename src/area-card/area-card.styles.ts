@@ -8,10 +8,11 @@ ha-card {
   min-height: 280px;
   overflow: hidden;
 
+  --area-accent-color: #00363A;
+
   --primary-text-color: #DADADB;
   --secondary-text-color: #DADADB;
   --paper-item-icon-color: #DADADB;
-
   --mdc-theme-primary: #DADADB;
 }
 
@@ -46,7 +47,7 @@ ha-card {
   align-items: center;
   padding: 5px;
 
-  background-color: rgba(0, 96, 15, 0.9);
+  background-color: color-mix(in srgb, var(--area-accent-color) 90%, transparent);
 }
 
 .header .title {
@@ -126,10 +127,10 @@ ha-card {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(0, 96, 15, 0.55);
+  background-color: color-mix(in srgb, var(--area-accent-color) 55%, transparent);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 96, 15, 1);
+  background: var(--area-accent-color);
 }
 `;

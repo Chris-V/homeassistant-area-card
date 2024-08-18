@@ -1697,10 +1697,11 @@ ha-card {
   min-height: 280px;
   overflow: hidden;
 
+  --area-accent-color: #00363A;
+
   --primary-text-color: #DADADB;
   --secondary-text-color: #DADADB;
   --paper-item-icon-color: #DADADB;
-
   --mdc-theme-primary: #DADADB;
 }
 
@@ -1735,7 +1736,7 @@ ha-card {
   align-items: center;
   padding: 5px;
 
-  background-color: rgba(0, 96, 15, 0.9);
+  background-color: color-mix(in srgb, var(--area-accent-color) 90%, transparent);
 }
 
 .header .title {
@@ -1815,11 +1816,11 @@ ha-card {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(0, 96, 15, 0.55);
+  background-color: color-mix(in srgb, var(--area-accent-color) 55%, transparent);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 96, 15, 1);
+  background: var(--area-accent-color);
 }
 `;
 
@@ -2179,19 +2180,19 @@ var $96c74620be612612$export$2e2bcd8739ae039 = (0, $8b70d0323444ddea$export$dbf3
   --mdc-select-fill-color: transparent;
   --mdc-select-outlined-idle-border-color: transparent;
   --mdc-select-outlined-hover-border-color: transparent;
-  --mdc-select-dropdown-icon-color: #DADADB;
-  --mdc-select-label-ink-color: #DADADB;
-  --mdc-select-ink-color: #DADADB;
-  --mdc-select-idle-line-color: #DADADB;
-  --mdc-select-hover-line-color: #DADADB;
+  --mdc-select-dropdown-icon-color: var(--primary-text-color);
+  --mdc-select-label-ink-color: var(--primary-text-color);
+  --mdc-select-ink-color: var(--primary-text-color);
+  --mdc-select-idle-line-color: var(--primary-text-color);
+  --mdc-select-hover-line-color: var(--primary-text-color);
 
   --mdc-text-field-fill-color: transparent;
   --mdc-text-field-outlined-idle-border-color: transparent;
   --mdc-text-field-outlined-hover-border-color: transparent;
-  --mdc-text-field-ink-color: #DADADB;
-  --mdc-text-field-label-ink-color: #DADADB;
-  --mdc-text-field-idle-line-color: #DADADB;
-  --mdc-text-field-hover-line-color: #DADADB;
+  --mdc-text-field-ink-color: var(--primary-text-color);
+  --mdc-text-field-label-ink-color: var(--primary-text-color);
+  --mdc-text-field-idle-line-color: var(--primary-text-color);
+  --mdc-text-field-hover-line-color: var(--primary-text-color);
 
   --ha-card-border-width: 0;
   --ha-card-box-shadow: none;
