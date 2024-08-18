@@ -2198,9 +2198,12 @@ var $96c74620be612612$export$2e2bcd8739ae039 = (0, $8b70d0323444ddea$export$dbf3
 }
 
 .root {
+  height: 100%;
+  box-sizing: border-box;
+
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 1fr;
+  grid-template-rows: 100%;
   grid-column-gap: 5px;
   grid-row-gap: 0px;
 }
@@ -2271,7 +2274,8 @@ class $6a52fdd840cc3f98$export$41648724724d056c extends (0, $7e21dc7b5ad8cb11$ex
     onClimateCardUpdated(card) {
         if (!card) return;
         card.setConfig({
-            entity: `climate.${this.key}_thermostat`
+            entity: `climate.${this.key}_thermostat`,
+            name: ""
         });
     }
 }

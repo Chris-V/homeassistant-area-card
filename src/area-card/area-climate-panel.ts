@@ -78,6 +78,7 @@ export class AreaClimatePanel extends LitElement {
 
     (card as LovelaceCard<any>).setConfig({
       entity: `climate.${this.key}_thermostat`,
+      name: '',
     });
   }
 }

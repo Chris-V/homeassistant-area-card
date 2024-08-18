@@ -24,9 +24,12 @@ export default css`
 }
 
 .root {
+  height: 100%;
+  box-sizing: border-box;
+
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 1fr;
+  grid-template-rows: 100%;
   grid-column-gap: 5px;
   grid-row-gap: 0px;
 }
