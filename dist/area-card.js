@@ -1506,6 +1506,8 @@ class $c051df81d7afd129$export$179268f6da4a88b9 extends (0, $7e21dc7b5ad8cb11$ex
                   .entity=${badge.entity}
                   .icon=${badge.icon}
                   .name=${badge.name}
+                  .tap-action=${badge.tap_action}
+                  .hold-action=${badge.hold_action}
                 ></area-card-badge>
               `)}
             </div>
@@ -1521,7 +1523,8 @@ class $c051df81d7afd129$export$179268f6da4a88b9 extends (0, $7e21dc7b5ad8cb11$ex
                 .icon=${control.icon}
                 .tag=${control.tag}
                 .name=${control.name}
-                .tap_action=${control.tap_action}
+                .tap-action=${control.tap_action}
+                .hold-action=${control.hold_action}
               ></area-card-control>
             `)}
           </div>

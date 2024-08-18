@@ -3,6 +3,7 @@ import { customElement, property, state } from 'lit/decorators';
 import { when } from 'lit/directives/when';
 import styles from './area-card.styles';
 import { HomeAssistant, LovelaceCard, LovelaceCardConfig, } from './types';
+import { ActionConfig } from './helpers/action-handler';
 
 const UNKNOWN_AREA_ICON = 'mdi:help-circle';
 const UNKNOWN_AREA_NAME = 'Unknown';
@@ -11,6 +12,8 @@ export interface AreaCardBadgeConfig {
   entity: string;
   icon?: string;
   name?: string;
+  tap_action?: ActionConfig;
+  hold_action?: ActionConfig;
 }
 
 export interface AreaCardControlConfig {
@@ -18,7 +21,8 @@ export interface AreaCardControlConfig {
   icon?: string;
   tag?: string;
   name?: string;
-  tap_action?: 'toggle' | 'more-info';
+  tap_action?: ActionConfig;
+  hold_action?: ActionConfig;
 }
 
 export interface AreaCardConfig extends LovelaceCardConfig {
@@ -84,6 +88,8 @@ export class AreaCard extends LitElement implements LovelaceCard<AreaCardConfig>
                   .entity=${badge.entity}
                   .icon=${badge.icon}
                   .name=${badge.name}
+                  .tap-action=${badge.tap_action}
+                  .hold-action=${badge.hold_action}
                 ></area-card-badge>
               `)}
             </div>
@@ -99,7 +105,8 @@ export class AreaCard extends LitElement implements LovelaceCard<AreaCardConfig>
                 .icon=${control.icon}
                 .tag=${control.tag}
                 .name=${control.name}
-                .tap_action=${control.tap_action}
+                .tap-action=${control.tap_action}
+                .hold-action=${control.hold_action}
               ></area-card-control>
             `)}
           </div>
