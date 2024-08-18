@@ -2274,8 +2274,7 @@ class $6a52fdd840cc3f98$export$41648724724d056c extends (0, $7e21dc7b5ad8cb11$ex
     async onClimateCardUpdated(card) {
         if (!card) return;
         card.setConfig({
-            entity: `climate.${this.key}_thermostat`,
-            name: ""
+            entity: `climate.${this.key}_thermostat`
         });
         await new Promise((r)=>setTimeout(r, 0)); // Paint
         if (card.shadowRoot) {
