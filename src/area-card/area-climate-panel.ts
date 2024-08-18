@@ -69,6 +69,6 @@ export class AreaClimatePanel extends LitElement {
       }
     `);
 
-    card.shadowRoot?.adoptedStyleSheets.push(sheet);
+    card.shadowRoot?.querySelector('ha-card')?.shadowRoot?.adoptedStyleSheets.push(sheet);
   }
 }

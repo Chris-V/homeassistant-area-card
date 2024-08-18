@@ -2184,7 +2184,7 @@ class $6a52fdd840cc3f98$export$41648724724d056c extends (0, $7e21dc7b5ad8cb11$ex
           padding: 0;
       }
     `);
-        card.shadowRoot?.adoptedStyleSheets.push(sheet);
+        card.shadowRoot?.querySelector("ha-card")?.shadowRoot?.adoptedStyleSheets.push(sheet);
     }
     constructor(...args){
         super(...args);
