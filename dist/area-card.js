@@ -1693,6 +1693,8 @@ var $3961852dcf45b56f$export$2e2bcd8739ae039 = (0, $8b70d0323444ddea$export$dbf3
 ha-card {
   position: relative;
 
+  min-width: 500px;
+  min-height: 280px;
   overflow: hidden;
 
   --primary-text-color: #DADADB;
@@ -1987,7 +1989,6 @@ $76271178badb5a82$export$179268f6da4a88b9 = (0, $69d0b3211cd6ff55$export$29e00df
 
 
 
-
 /**
  * @license
  * Copyright 2017 Google LLC
@@ -2048,6 +2049,46 @@ class $f8b8f16231eb3378$export$7d025501802325e extends (0, $59dc7bfa10d2dd2f$exp
     disconnected() {}
     reconnected() {}
 }
+
+
+
+/**
+ * @license
+ * Copyright 2020 Google LLC
+ * SPDX-License-Identifier: BSD-3-Clause
+ */ const $00eff1ec8cc3c37a$export$7d1e3a5e95ceca43 = ()=>new $00eff1ec8cc3c37a$var$Zt;
+class $00eff1ec8cc3c37a$var$Zt {
+}
+const $00eff1ec8cc3c37a$var$qt = new WeakMap, $00eff1ec8cc3c37a$export$eff4d24c3ff7876e = (0, $59dc7bfa10d2dd2f$export$99b43ad1ed32e735)(class extends (0, $f8b8f16231eb3378$export$7d025501802325e) {
+    render(t) {
+        return 0, $3046cc7e4ff866d4$export$45b790e32b2810ee;
+    }
+    update(t, [i]) {
+        const s = i !== this.Y;
+        return s && void 0 !== this.Y && this.rt(void 0), (s || this.lt !== this.ct) && (this.Y = i, this.ht = t.options?.host, this.rt(this.ct = t.element)), $3046cc7e4ff866d4$export$45b790e32b2810ee;
+    }
+    rt(t) {
+        if (this.isConnected || (t = void 0), "function" == typeof this.Y) {
+            const i = this.ht ?? globalThis;
+            let s = $00eff1ec8cc3c37a$var$qt.get(i);
+            void 0 === s && (s = new WeakMap, $00eff1ec8cc3c37a$var$qt.set(i, s)), void 0 !== s.get(this.Y) && this.Y.call(this.ht, void 0), s.set(this.Y, t), void 0 !== t && this.Y.call(this.ht, t);
+        } else this.Y.value = t;
+    }
+    get lt() {
+        return "function" == typeof this.Y ? $00eff1ec8cc3c37a$var$qt.get(this.ht ?? globalThis)?.get(this.Y) : this.Y?.value;
+    }
+    disconnected() {
+        this.lt === this.ct && this.rt(void 0);
+    }
+    reconnected() {
+        this.rt(this.ct);
+    }
+});
+
+
+
+
+
 
 
 /**
@@ -2211,7 +2252,10 @@ class $6a52fdd840cc3f98$export$41648724724d056c extends (0, $7e21dc7b5ad8cb11$ex
         </div>
 
         <div class="thermostat">
-        climate.${this.key}_thermostat
+          <hui-thermostat-card
+            .hass=${this.#hass}
+            ${(0, $00eff1ec8cc3c37a$export$eff4d24c3ff7876e)(this.onClimateCardUpdated)}
+          ></hui-thermostat-card>
         </div>
       </div>
     `;
@@ -2224,26 +2268,10 @@ class $6a52fdd840cc3f98$export$41648724724d056c extends (0, $7e21dc7b5ad8cb11$ex
         });
         return (0, $d33915c68ab82e80$export$a40009bd2c363351)(rowPromise, (0, $3046cc7e4ff866d4$export$45b790e32b2810ee));
     }
-    entitiesCardChanged(element) {
-        if (!element) return;
-        const card = element;
-        card.hass = this.#hass;
+    onClimateCardUpdated(card) {
+        if (!card) return;
         card.setConfig({
-            type: "entities",
-            entities: [
-                {
-                    entity: `input_select.${this.key}_thermostat_mode`,
-                    name: "Mode"
-                },
-                {
-                    entity: `input_number.${this.key}_thermostat_eco_setpoint`,
-                    name: "Eco"
-                },
-                {
-                    entity: `input_number.${this.key}_thermostat_comfort_setpoint`,
-                    name: "Comfort"
-                }
-            ]
+            entity: `climate.${this.key}_thermostat`
         });
     }
 }

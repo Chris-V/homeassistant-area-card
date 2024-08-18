@@ -4,6 +4,8 @@ export default css`
 ha-card {
   position: relative;
 
+  min-width: 500px;
+  min-height: 280px;
   overflow: hidden;
 
   --primary-text-color: #DADADB;

@@ -1,5 +1,6 @@
 import { html, LitElement, nothing } from "lit";
 import { customElement, property } from "lit/decorators";
+import { ref } from "lit/directives/ref";
 import { until } from "lit/directives/until";
 import { HomeAssistant, LovelaceCard, LovelaceElement } from "../types";
 import styles from './area-climate-panel.styles';
@@ -52,7 +53,10 @@ export class AreaClimatePanel extends LitElement {
         </div>
 
         <div class="thermostat">
-        climate.${this.key}_thermostat
+          <hui-thermostat-card
+            .hass=${this.#hass}
+            ${ref(this.onClimateCardUpdated)}
+          ></hui-thermostat-card>
         </div>
       </div>
     `;
@@ -67,20 +71,13 @@ export class AreaClimatePanel extends LitElement {
     return until(rowPromise, nothing);
   }
 
-  private entitiesCardChanged(element?: Element): void {
-    if (!element) {
+  private onClimateCardUpdated(card?: Element) {
+    if (!card) {
       return;
     }
 
-    const card = <LovelaceCard<any>>element;
-    card.hass = this.#hass;
-    card.setConfig({
-      type: "entities",
-      entities: [
-        { entity: `input_select.${this.key}_thermostat_mode`, name: 'Mode' },
-        { entity: `input_number.${this.key}_thermostat_eco_setpoint`, name: 'Eco' },
-        { entity: `input_number.${this.key}_thermostat_comfort_setpoint`, name: 'Comfort' },
-      ],
+    (card as LovelaceCard<any>).setConfig({
+      entity: `climate.${this.key}_thermostat`,
     });
   }
 }
