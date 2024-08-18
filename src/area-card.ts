@@ -27,6 +27,7 @@ export interface AreaCardControlConfig {
 
 export interface AreaCardConfig extends LovelaceCardConfig {
   area: string;
+  entity?: string;
   badges?: AreaCardBadgeConfig[];
   controls?: AreaCardControlConfig[];
 }
@@ -69,6 +70,7 @@ export class AreaCard extends LitElement implements LovelaceCard<AreaCardConfig>
     const icon = area?.icon || UNKNOWN_AREA_ICON;
     const name = area?.name || UNKNOWN_AREA_NAME;
     const picture = area?.picture || null;
+    const state = this.config.entity ? this.hass.states[this.config.entity] : undefined;
 
     return html`
       <ha-card>
@@ -77,7 +79,12 @@ export class AreaCard extends LitElement implements LovelaceCard<AreaCardConfig>
         <div class="root">
           <div class="section header">
             <div class="title">
-              <ha-icon .icon="${icon}"></ha-icon>
+              ${when(
+                this.config.entity,
+                () => html`<state-badge .hass=${this.hass} .stateObj=${state} .stateColor=${false}></state-badge>`,
+                () => html`<ha-icon .icon="${icon}"></ha-icon>`,
+              )}
+
               ${name}
             </div>
 

@@ -1488,6 +1488,7 @@ class $c051df81d7afd129$export$179268f6da4a88b9 extends (0, $7e21dc7b5ad8cb11$ex
         const icon = area?.icon || $c051df81d7afd129$var$UNKNOWN_AREA_ICON;
         const name = area?.name || $c051df81d7afd129$var$UNKNOWN_AREA_NAME;
         const picture = area?.picture || null;
+        const state = this.config.entity ? this.hass.states[this.config.entity] : undefined;
         return (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
       <ha-card>
         ${(0, $e723a6ede290d350$export$a55877ca9db47377)(picture, ()=>(0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`<hui-image .hass=${this.hass} .image="${picture}"></hui-image>`)}
@@ -1495,7 +1496,8 @@ class $c051df81d7afd129$export$179268f6da4a88b9 extends (0, $7e21dc7b5ad8cb11$ex
         <div class="root">
           <div class="section header">
             <div class="title">
-              <ha-icon .icon="${icon}"></ha-icon>
+              ${(0, $e723a6ede290d350$export$a55877ca9db47377)(this.config.entity, ()=>(0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`<state-badge .hass=${this.hass} .stateObj=${state} .stateColor=${false}></state-badge>`, ()=>(0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`<ha-icon .icon="${icon}"></ha-icon>`)}
+
               ${name}
             </div>
 
