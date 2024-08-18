@@ -102,6 +102,7 @@ ha-card {
   flex-shrink: 0;
 
   display: block;
+  box-sizing: border-box;
   padding: 5px;
 
   background-color: rgba(0, 0, 0, 0.55);

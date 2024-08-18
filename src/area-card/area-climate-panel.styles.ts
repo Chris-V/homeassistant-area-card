@@ -24,7 +24,7 @@ export default css`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: 1fr;
-  grid-column-gap: 0px;
+  grid-column-gap: 5px;
   grid-row-gap: 0px;
 }
 
