@@ -1639,25 +1639,25 @@ class $9a9ee115bc4281da$export$f3c9554892aa28ef extends (0, $7e21dc7b5ad8cb11$ex
         const showLabel = !this.entity.startsWith("binary_sensor.");
         const title = this.name || state.attributes.friendly_name || this.entity;
         return (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
-      <div class="root">
+      <div
+        class="root"
+        @action=${this.handleAction}
+        .actionHandler=${(0, $9e338c437afcfa37$export$8a44987212de21b)()}
+      >
         <state-badge
+          tabindex="0"
           .hass=${this.hass}
           .stateObj=${state}
           .title=${title}
-          @action=${this.handleAction}
-          .actionHandler=${(0, $9e338c437afcfa37$export$8a44987212de21b)()}
           .overrideIcon=${this.icon}
           .stateColor=${true}
-          tabindex="0"
         ></state-badge>
 
         ${(0, $e723a6ede290d350$export$a55877ca9db47377)(showLabel, ()=>(0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
           <div
-            .title=${title}
-            @action=${this.handleAction}
-            .actionHandler=${(0, $9e338c437afcfa37$export$8a44987212de21b)()}
             class="label"
             tabindex="0"
+            .title=${title}
           >
             ${this.hass?.formatEntityState(state)}
           </div>

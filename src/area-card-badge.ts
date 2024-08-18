@@ -31,25 +31,25 @@ export class AreaCardBadge extends LitElement {
     const title = this.name || state.attributes.friendly_name || this.entity;
 
     return html`
-      <div class="root">
+      <div
+        class="root"
+        @action=${this.handleAction}
+        .actionHandler=${actionHandler()}
+      >
         <state-badge
+          tabindex="0"
           .hass=${this.hass}
           .stateObj=${state}
           .title=${title}
-          @action=${this.handleAction}
-          .actionHandler=${actionHandler()}
           .overrideIcon=${this.icon}
           .stateColor=${true}
-          tabindex="0"
         ></state-badge>
 
         ${when(showLabel, () => html`
           <div
-            .title=${title}
-            @action=${this.handleAction}
-            .actionHandler=${actionHandler()}
             class="label"
             tabindex="0"
+            .title=${title}
           >
             ${this.hass?.formatEntityState(state)}
           </div>
