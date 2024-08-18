@@ -1736,7 +1736,7 @@ state-badge {
 
 
 
-class $b1213ca84b9afd3c$export$f3c9554892aa28ef extends (0, $7e21dc7b5ad8cb11$export$3f2f9f5909897157) {
+class $b1213ca84b9afd3c$export$4db1c1d4d2d55651 extends (0, $7e21dc7b5ad8cb11$export$3f2f9f5909897157) {
     static{
         this.styles = (0, $b25bb6350423b22c$export$2e2bcd8739ae039);
     }
@@ -1782,25 +1782,25 @@ class $b1213ca84b9afd3c$export$f3c9554892aa28ef extends (0, $7e21dc7b5ad8cb11$ex
     (0, $63995b5a8f5ed880$export$d541bacb2bda4494)({
         attribute: false
     })
-], $b1213ca84b9afd3c$export$f3c9554892aa28ef.prototype, "hass", void 0);
+], $b1213ca84b9afd3c$export$4db1c1d4d2d55651.prototype, "hass", void 0);
 (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
     (0, $63995b5a8f5ed880$export$d541bacb2bda4494)()
-], $b1213ca84b9afd3c$export$f3c9554892aa28ef.prototype, "action", void 0);
+], $b1213ca84b9afd3c$export$4db1c1d4d2d55651.prototype, "action", void 0);
 (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
     (0, $63995b5a8f5ed880$export$d541bacb2bda4494)()
-], $b1213ca84b9afd3c$export$f3c9554892aa28ef.prototype, "entity", void 0);
+], $b1213ca84b9afd3c$export$4db1c1d4d2d55651.prototype, "entity", void 0);
 (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
     (0, $63995b5a8f5ed880$export$d541bacb2bda4494)()
-], $b1213ca84b9afd3c$export$f3c9554892aa28ef.prototype, "icon", void 0);
+], $b1213ca84b9afd3c$export$4db1c1d4d2d55651.prototype, "icon", void 0);
 (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
     (0, $63995b5a8f5ed880$export$d541bacb2bda4494)()
-], $b1213ca84b9afd3c$export$f3c9554892aa28ef.prototype, "name", void 0);
+], $b1213ca84b9afd3c$export$4db1c1d4d2d55651.prototype, "name", void 0);
 (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
     (0, $63995b5a8f5ed880$export$d541bacb2bda4494)()
-], $b1213ca84b9afd3c$export$f3c9554892aa28ef.prototype, "tag", void 0);
-$b1213ca84b9afd3c$export$f3c9554892aa28ef = (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
+], $b1213ca84b9afd3c$export$4db1c1d4d2d55651.prototype, "tag", void 0);
+$b1213ca84b9afd3c$export$4db1c1d4d2d55651 = (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
     (0, $b291dcacc5787077$export$da64fc29f17f9d0e)("area-card-control")
-], $b1213ca84b9afd3c$export$f3c9554892aa28ef);
+], $b1213ca84b9afd3c$export$4db1c1d4d2d55651);
 
 
 window.customCards = window.customCards || [];

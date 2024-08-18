@@ -7,7 +7,7 @@ import { fireEvent } from "./helpers/events";
 import { HomeAssistant } from "./types";
 
 @customElement('area-card-control')
-export class AreaCardBadge extends LitElement {
+export class AreaCardControl extends LitElement {
   @property({ attribute: false }) hass?: HomeAssistant;
   @property() action: string = 'more-info';
   @property() entity?: string;
