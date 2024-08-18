@@ -27,40 +27,28 @@ export class AreaClimatePanel extends LitElement {
       return nothing;
     }
 
-    const mode = window.loadCardHelpers().then(({ createRowElement }) => {
-      const row = createRowElement({
-        type: 'input-select-entity',
-        entity: `input_select.${this.key}_thermostat_mode`,
-        name: 'Mode',
-      });
-      row.hass = this.#hass;
-      return html`<div class="setting-row">${row}</div>`;
+    const mode = this.createSettingRowTemplate({
+      type: 'input-select-entity',
+      entity: `input_select.${this.key}_thermostat_mode`,
+      name: 'Mode',
     });
-    const ecoSetpoint = window.loadCardHelpers().then(({ createRowElement }) => {
-      const row = createRowElement({
-        type: 'input-number-entity',
-        entity: `input_number.${this.key}_thermostat_eco_setpoint`,
-        name: 'Eco',
-      });
-      row.hass = this.#hass;
-      return html`<div class="setting-row">${row}</div>`;
+    const ecoSetpoint = this.createSettingRowTemplate({
+      type: 'input-number-entity',
+      entity: `input_number.${this.key}_thermostat_eco_setpoint`,
+      name: 'Eco',
     });
-    const comfortSetpoint = window.loadCardHelpers().then(({ createRowElement }) => {
-      const row = createRowElement({
-        type: 'input-number-entity',
-        entity: `input_number.${this.key}_thermostat_comfort_setpoint`,
-        name: 'Comfort',
-      });
-      row.hass = this.#hass;
-      return html`<div class="setting-row">${row}</div>`;
+    const comfortSetpoint = this.createSettingRowTemplate({
+      type: 'input-number-entity',
+      entity: `input_number.${this.key}_thermostat_comfort_setpoint`,
+      name: 'Comfort',
     });
 
     return html`
       <div class="root">
         <div class="settings">
-          ${until(mode, nothing)}
-          ${until(ecoSetpoint, nothing)}
-          ${until(comfortSetpoint, nothing)}
+          ${mode}
+          ${ecoSetpoint}
+          ${comfortSetpoint}
         </div>
 
         <div class="thermostat">
@@ -68,6 +56,15 @@ export class AreaClimatePanel extends LitElement {
         </div>
       </div>
     `;
+  }
+
+  private createSettingRowTemplate(options: LovelaceCardOptions) {
+    const rowPromise = window.loadCardHelpers().then(({ createRowElement }) => {
+      const row = createRowElement(options);
+      row.hass = this.#hass;
+      return html`<div class="setting-row">${row}</div>`;
+    });
+    return until(rowPromise, nothing);
   }
 
   private entitiesCardChanged(element?: Element): void {

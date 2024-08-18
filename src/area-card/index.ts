@@ -5,12 +5,17 @@ import './area-climate-panel';
 import './area-control';
 
 declare global {
+  interface LovelaceCardOptions {
+    type?: string;
+    entity?: string;
+    name?: string;
+  }
 
   interface Window {
     customCards: Array<Object>;
     loadCardHelpers(): Promise<{
-      createCardElement(options: { type?: string, entity?: string, name?: string }): LovelaceElement<any>;
-      createRowElement(options: { type?: string, entity?: string, name?: string }): LovelaceElement<any>;
+      createCardElement(options: LovelaceCardOptions): LovelaceElement<any>;
+      createRowElement(options: LovelaceCardOptions): LovelaceElement<any>;
     }>;
   }
 }

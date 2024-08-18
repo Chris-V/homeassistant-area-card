@@ -2187,39 +2187,27 @@ class $6a52fdd840cc3f98$export$41648724724d056c extends (0, $7e21dc7b5ad8cb11$ex
     }
     render() {
         if (!this.key || !this.#hass) return 0, $3046cc7e4ff866d4$export$45b790e32b2810ee;
-        const mode = window.loadCardHelpers().then(({ createRowElement: createRowElement })=>{
-            const row = createRowElement({
-                type: "input-select-entity",
-                entity: `input_select.${this.key}_thermostat_mode`,
-                name: "Mode"
-            });
-            row.hass = this.#hass;
-            return (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`<div class="setting-row">${row}</div>`;
+        const mode = this.createSettingRowTemplate({
+            type: "input-select-entity",
+            entity: `input_select.${this.key}_thermostat_mode`,
+            name: "Mode"
         });
-        const ecoSetpoint = window.loadCardHelpers().then(({ createRowElement: createRowElement })=>{
-            const row = createRowElement({
-                type: "input-number-entity",
-                entity: `input_number.${this.key}_thermostat_eco_setpoint`,
-                name: "Eco"
-            });
-            row.hass = this.#hass;
-            return (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`<div class="setting-row">${row}</div>`;
+        const ecoSetpoint = this.createSettingRowTemplate({
+            type: "input-number-entity",
+            entity: `input_number.${this.key}_thermostat_eco_setpoint`,
+            name: "Eco"
         });
-        const comfortSetpoint = window.loadCardHelpers().then(({ createRowElement: createRowElement })=>{
-            const row = createRowElement({
-                type: "input-number-entity",
-                entity: `input_number.${this.key}_thermostat_comfort_setpoint`,
-                name: "Comfort"
-            });
-            row.hass = this.#hass;
-            return (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`<div class="setting-row">${row}</div>`;
+        const comfortSetpoint = this.createSettingRowTemplate({
+            type: "input-number-entity",
+            entity: `input_number.${this.key}_thermostat_comfort_setpoint`,
+            name: "Comfort"
         });
         return (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
       <div class="root">
         <div class="settings">
-          ${(0, $d33915c68ab82e80$export$a40009bd2c363351)(mode, (0, $3046cc7e4ff866d4$export$45b790e32b2810ee))}
-          ${(0, $d33915c68ab82e80$export$a40009bd2c363351)(ecoSetpoint, (0, $3046cc7e4ff866d4$export$45b790e32b2810ee))}
-          ${(0, $d33915c68ab82e80$export$a40009bd2c363351)(comfortSetpoint, (0, $3046cc7e4ff866d4$export$45b790e32b2810ee))}
+          ${mode}
+          ${ecoSetpoint}
+          ${comfortSetpoint}
         </div>
 
         <div class="thermostat">
@@ -2227,6 +2215,14 @@ class $6a52fdd840cc3f98$export$41648724724d056c extends (0, $7e21dc7b5ad8cb11$ex
         </div>
       </div>
     `;
+    }
+    createSettingRowTemplate(options) {
+        const rowPromise = window.loadCardHelpers().then(({ createRowElement: createRowElement })=>{
+            const row = createRowElement(options);
+            row.hass = this.#hass;
+            return (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`<div class="setting-row">${row}</div>`;
+        });
+        return (0, $d33915c68ab82e80$export$a40009bd2c363351)(rowPromise, (0, $3046cc7e4ff866d4$export$45b790e32b2810ee));
     }
     entitiesCardChanged(element) {
         if (!element) return;
