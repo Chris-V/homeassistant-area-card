@@ -1700,23 +1700,6 @@ ha-card {
   --paper-item-icon-color: #DADADB;
 
   --mdc-theme-primary: #DADADB;
-
-  --mdc-select-fill-color: transparent;
-  --mdc-select-outlined-idle-border-color: transparent;
-  --mdc-select-outlined-hover-border-color: transparent;
-  --mdc-select-dropdown-icon-color: #DADADB;
-  --mdc-select-label-ink-color: #DADADB;
-  --mdc-select-ink-color: #DADADB;
-  --mdc-select-idle-line-color: #DADADB;
-  --mdc-select-hover-line-color: #DADADB;
-
-  --mdc-text-field-fill-color: transparent;
-  --mdc-text-field-outlined-idle-border-color: transparent;
-  --mdc-text-field-outlined-hover-border-color: transparent;
-  --mdc-text-field-ink-color: #DADADB;
-  --mdc-text-field-label-ink-color: #DADADB;
-  --mdc-text-field-idle-line-color: #DADADB;
-  --mdc-text-field-hover-line-color: #DADADB;
 }
 
 .root {
@@ -1960,17 +1943,41 @@ $76271178badb5a82$export$179268f6da4a88b9 = (0, $69d0b3211cd6ff55$export$29e00df
 
 
 
+var $96c74620be612612$export$2e2bcd8739ae039 = (0, $8b70d0323444ddea$export$dbf350e5966cf602)`
+:host {
+  --mdc-select-fill-color: transparent;
+  --mdc-select-outlined-idle-border-color: transparent;
+  --mdc-select-outlined-hover-border-color: transparent;
+  --mdc-select-dropdown-icon-color: #DADADB;
+  --mdc-select-label-ink-color: #DADADB;
+  --mdc-select-ink-color: #DADADB;
+  --mdc-select-idle-line-color: #DADADB;
+  --mdc-select-hover-line-color: #DADADB;
+
+  --mdc-text-field-fill-color: transparent;
+  --mdc-text-field-outlined-idle-border-color: transparent;
+  --mdc-text-field-outlined-hover-border-color: transparent;
+  --mdc-text-field-ink-color: #DADADB;
+  --mdc-text-field-label-ink-color: #DADADB;
+  --mdc-text-field-idle-line-color: #DADADB;
+  --mdc-text-field-hover-line-color: #DADADB;
+}
+`;
+
+
 class $6a52fdd840cc3f98$export$41648724724d056c extends (0, $7e21dc7b5ad8cb11$export$3f2f9f5909897157) {
     static{
-        this.styles = (0, $058bbce60b728e89$export$2e2bcd8739ae039);
+        this.styles = (0, $96c74620be612612$export$2e2bcd8739ae039);
     }
     render() {
         if (!this.key || !this.hass) return 0, $3046cc7e4ff866d4$export$45b790e32b2810ee;
-        const hass = this.hass;
-        const state = hass.states[`climate.${this.key}_thermostat`];
+        const climateEntity = `climate.${this.key}_thermostat`;
+        const comfortSetpointEntity = `input_number.${this.key}_thermostat_comfort_setpoint`;
+        const ecoSetpointEntity = `input_number.${this.key}_thermostat_eco_setpoint`;
+        const modeEntity = `input_select.${this.key}_thermostat_mode`;
         return (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
       <div>
-        TOP
+        ${climateEntity}
       </div>
     `;
     }
