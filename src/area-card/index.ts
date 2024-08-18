@@ -6,8 +6,16 @@ import './area-control';
 declare global {
   interface Window {
     customCards: Array<Object>;
+    loadCardHelpers(): Promise<{
+      createCardElement(options: { type: string }): Element,
+      createRowElement(options: { type: string }): Element,
+    }>;
   }
 }
+
+window.loadCardHelpers().then(({ createCardElement, createRowElement }) => {
+  createRowElement({ type: 'input-select' });
+});
 
 window.customCards = window.customCards || [];
 window.customCards.push({

@@ -18,10 +18,11 @@ export class AreaClimatePanel extends LitElement {
 
     const climateEntity = `climate.${this.key}_thermostat`;
 
+
     return html`
       <div class="root">
         <div class="settings">
-          <hui-input-select-entity-row></hui-input-select-entity-row>
+          <hui-input-select-entity-row ${ref()}></hui-input-select-entity-row>
         </div>
 
         <div class="thermostat">

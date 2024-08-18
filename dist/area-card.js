@@ -1944,6 +1944,149 @@ $76271178badb5a82$export$179268f6da4a88b9 = (0, $69d0b3211cd6ff55$export$29e00df
 
 
 
+
+/**
+ * @license
+ * Copyright 2020 Google LLC
+ * SPDX-License-Identifier: BSD-3-Clause
+ */ const { I: $7cb7c525933f6f81$var$et } = (0, $3046cc7e4ff866d4$export$8613d1ca9052b22e), $7cb7c525933f6f81$export$c3825b437cbdea5c = (o)=>null === o || "object" != typeof o && "function" != typeof o, $7cb7c525933f6f81$export$80c36ae3cab9881d = {
+    HTML: 1,
+    SVG: 2,
+    MATHML: 3
+}, $7cb7c525933f6f81$export$6b6d145ec2a44ca9 = (o, t)=>void 0 === t ? void 0 !== o?._$litType$ : o?._$litType$ === t, $7cb7c525933f6f81$export$6a0e8de894d2fcca = (o)=>null != o?._$litType$?.h, $7cb7c525933f6f81$export$2f448fec17d50a3e = (o)=>void 0 !== o?._$litDirective$, $7cb7c525933f6f81$export$f28e31de6a6eaf32 = (o)=>o?._$litDirective$, $7cb7c525933f6f81$export$7f431ad0fff82fd9 = (o)=>void 0 === o.strings, $7cb7c525933f6f81$var$lt = ()=>document.createComment(""), $7cb7c525933f6f81$export$291b2338ad9b0b30 = (o, t, i)=>{
+    const n = o._$AA.parentNode, e = void 0 === t ? o._$AB : t._$AA;
+    if (void 0 === i) {
+        const t = n.insertBefore($7cb7c525933f6f81$var$lt(), e), l = n.insertBefore($7cb7c525933f6f81$var$lt(), e);
+        i = new $7cb7c525933f6f81$var$et(t, l, o, o.options);
+    } else {
+        const t = i._$AB.nextSibling, l = i._$AM, c = l !== o;
+        if (c) {
+            let t;
+            i._$AQ?.(o), i._$AM = o, void 0 !== i._$AP && (t = o._$AU) !== l._$AU && i._$AP(t);
+        }
+        if (t !== e || c) {
+            let o = i._$AA;
+            for(; o !== t;){
+                const t = o.nextSibling;
+                n.insertBefore(o, e), o = t;
+            }
+        }
+    }
+    return i;
+}, $7cb7c525933f6f81$export$cb8bf9562088e9f4 = (o, t, i = o)=>(o._$AI(t, i), o), $7cb7c525933f6f81$var$ht = {}, $7cb7c525933f6f81$export$ea70d9dd5965b1c8 = (o, t = $7cb7c525933f6f81$var$ht)=>o._$AH = t, $7cb7c525933f6f81$export$59e9bce518cde500 = (o)=>o._$AH, $7cb7c525933f6f81$export$3133b3144bbba267 = (o)=>{
+    o._$AP?.(!1, !0);
+    let t = o._$AA;
+    const i = o._$AB.nextSibling;
+    for(; t !== i;){
+        const o = t.nextSibling;
+        t.remove(), t = o;
+    }
+}, $7cb7c525933f6f81$export$7f600b8138c094dc = (o)=>{
+    o._$AR();
+};
+
+
+
+/**
+ * @license
+ * Copyright 2017 Google LLC
+ * SPDX-License-Identifier: BSD-3-Clause
+ */ const $f8b8f16231eb3378$var$mt = (i, t)=>{
+    const e = i._$AN;
+    if (void 0 === e) return !1;
+    for (const i of e)i._$AO?.(t, !1), $f8b8f16231eb3378$var$mt(i, t);
+    return !0;
+}, $f8b8f16231eb3378$var$_t = (i)=>{
+    let t, e;
+    do {
+        if (void 0 === (t = i._$AM)) break;
+        e = t._$AN, e.delete(i), i = t;
+    }while (0 === e?.size);
+}, $f8b8f16231eb3378$var$wt = (i)=>{
+    for(let t; t = i._$AM; i = t){
+        let e = t._$AN;
+        if (void 0 === e) t._$AN = e = new Set;
+        else if (e.has(i)) break;
+        e.add(i), $f8b8f16231eb3378$var$gt(t);
+    }
+};
+function $f8b8f16231eb3378$var$bt(i) {
+    void 0 !== this._$AN ? ($f8b8f16231eb3378$var$_t(this), this._$AM = i, $f8b8f16231eb3378$var$wt(this)) : this._$AM = i;
+}
+function $f8b8f16231eb3378$var$yt(i, t = !1, e = 0) {
+    const s = this._$AH, o = this._$AN;
+    if (void 0 !== o && 0 !== o.size) {
+        if (t) {
+            if (Array.isArray(s)) for(let i = e; i < s.length; i++)$f8b8f16231eb3378$var$mt(s[i], !1), $f8b8f16231eb3378$var$_t(s[i]);
+            else null != s && ($f8b8f16231eb3378$var$mt(s, !1), $f8b8f16231eb3378$var$_t(s));
+        } else $f8b8f16231eb3378$var$mt(this, i);
+    }
+}
+const $f8b8f16231eb3378$var$gt = (i)=>{
+    i.type == (0, $59dc7bfa10d2dd2f$export$9ba3b3f20a85bfa).CHILD && (i._$AP ??= $f8b8f16231eb3378$var$yt, i._$AQ ??= $f8b8f16231eb3378$var$bt);
+};
+class $f8b8f16231eb3378$export$7d025501802325e extends (0, $59dc7bfa10d2dd2f$export$befdefbdce210f91) {
+    constructor(){
+        super(...arguments), this._$AN = void 0;
+    }
+    _$AT(i, t, e) {
+        super._$AT(i, t, e), $f8b8f16231eb3378$var$wt(this), this.isConnected = i._$AU;
+    }
+    _$AO(i, t = !0) {
+        i !== this.isConnected && (this.isConnected = i, i ? this.reconnected?.() : this.disconnected?.()), t && ($f8b8f16231eb3378$var$mt(this, i), $f8b8f16231eb3378$var$_t(this));
+    }
+    setValue(i) {
+        if ((0, $7cb7c525933f6f81$export$7f431ad0fff82fd9)(this.t)) this.t._$AI(i, this);
+        else {
+            const t = [
+                ...this.t._$AH
+            ];
+            t[this.i] = i, this.t._$AI(t, this, 0);
+        }
+    }
+    disconnected() {}
+    reconnected() {}
+}
+
+
+
+/**
+ * @license
+ * Copyright 2020 Google LLC
+ * SPDX-License-Identifier: BSD-3-Clause
+ */ const $00eff1ec8cc3c37a$export$7d1e3a5e95ceca43 = ()=>new $00eff1ec8cc3c37a$var$Zt;
+class $00eff1ec8cc3c37a$var$Zt {
+}
+const $00eff1ec8cc3c37a$var$qt = new WeakMap, $00eff1ec8cc3c37a$export$eff4d24c3ff7876e = (0, $59dc7bfa10d2dd2f$export$99b43ad1ed32e735)(class extends (0, $f8b8f16231eb3378$export$7d025501802325e) {
+    render(t) {
+        return 0, $3046cc7e4ff866d4$export$45b790e32b2810ee;
+    }
+    update(t, [i]) {
+        const s = i !== this.Y;
+        return s && void 0 !== this.Y && this.rt(void 0), (s || this.lt !== this.ct) && (this.Y = i, this.ht = t.options?.host, this.rt(this.ct = t.element)), $3046cc7e4ff866d4$export$45b790e32b2810ee;
+    }
+    rt(t) {
+        if (this.isConnected || (t = void 0), "function" == typeof this.Y) {
+            const i = this.ht ?? globalThis;
+            let s = $00eff1ec8cc3c37a$var$qt.get(i);
+            void 0 === s && (s = new WeakMap, $00eff1ec8cc3c37a$var$qt.set(i, s)), void 0 !== s.get(this.Y) && this.Y.call(this.ht, void 0), s.set(this.Y, t), void 0 !== t && this.Y.call(this.ht, t);
+        } else this.Y.value = t;
+    }
+    get lt() {
+        return "function" == typeof this.Y ? $00eff1ec8cc3c37a$var$qt.get(this.ht ?? globalThis)?.get(this.Y) : this.Y?.value;
+    }
+    disconnected() {
+        this.lt === this.ct && this.rt(void 0);
+    }
+    reconnected() {
+        this.rt(this.ct);
+    }
+});
+
+
+
+
+
 var $96c74620be612612$export$2e2bcd8739ae039 = (0, $8b70d0323444ddea$export$dbf350e5966cf602)`
 :host {
   --mdc-select-fill-color: transparent;
@@ -1995,7 +2138,7 @@ class $6a52fdd840cc3f98$export$41648724724d056c extends (0, $7e21dc7b5ad8cb11$ex
         return (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
       <div class="root">
         <div class="settings">
-          <hui-input-select-entity-row></hui-input-select-entity-row>
+          <hui-input-select-entity-row ${(0, $00eff1ec8cc3c37a$export$eff4d24c3ff7876e)()}></hui-input-select-entity-row>
         </div>
 
         <div class="thermostat">
@@ -2149,6 +2292,11 @@ $6c078e9bdce48184$export$c1d00ea758456528 = (0, $69d0b3211cd6ff55$export$29e00df
 ], $6c078e9bdce48184$export$c1d00ea758456528);
 
 
+window.loadCardHelpers().then(({ createCardElement: createCardElement, createRowElement: createRowElement })=>{
+    createRowElement({
+        type: "input-select"
+    });
+});
 window.customCards = window.customCards || [];
 window.customCards.push({
     type: "area-card",
