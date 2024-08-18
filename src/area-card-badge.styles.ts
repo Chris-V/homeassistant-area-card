@@ -11,4 +11,8 @@ export default css`
 
   --mdc-icon-size: 24px;
 }
+
+hui-state-label-element:host {
+  padding: 0;
+}
 `;

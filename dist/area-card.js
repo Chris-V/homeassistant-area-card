@@ -1722,6 +1722,10 @@ var $8bfd52a6bb5c61f9$export$2e2bcd8739ae039 = (0, $8b70d0323444ddea$export$dbf3
 
   --mdc-icon-size: 24px;
 }
+
+hui-state-label-element:host {
+  padding: 0;
+}
 `;
 
 
