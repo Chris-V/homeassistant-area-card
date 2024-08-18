@@ -2141,6 +2141,9 @@ class $6a52fdd840cc3f98$export$41648724724d056c extends (0, $7e21dc7b5ad8cb11$ex
         //     style: |
         //       ha-card .card-content { padding: 0; }
         //       ha-card #states > * { margin: 0; }
+        // .mdc-text-field--filled {
+        //   height: 3em;
+        // }
         return (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
       <div class="root">
         <hui-entities-card
@@ -2175,6 +2178,13 @@ class $6a52fdd840cc3f98$export$41648724724d056c extends (0, $7e21dc7b5ad8cb11$ex
                 }
             ]
         });
+        const sheet = new CSSStyleSheet();
+        sheet.replaceSync(`
+      :host ::slotted(.card-content) {
+          padding: 16px;
+      }
+    `);
+        element.shadowRoot?.adoptedStyleSheets.push(sheet);
     }
 }
 (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([

@@ -26,6 +26,9 @@ export class AreaClimatePanel extends LitElement {
     //     style: |
     //       ha-card .card-content { padding: 0; }
     //       ha-card #states > * { margin: 0; }
+    // .mdc-text-field--filled {
+    //   height: 3em;
+    // }
 
     return html`
       <div class="root">
@@ -56,5 +59,14 @@ export class AreaClimatePanel extends LitElement {
         { entity: `input_number.${this.key}_thermostat_comfort_setpoint`, name: 'Comfort' },
       ],
     });
+
+    const sheet = new CSSStyleSheet();
+    sheet.replaceSync(`
+      :host ::slotted(.card-content) {
+          padding: 16px;
+      }
+    `);
+    element.shadowRoot?.adoptedStyleSheets.push(sheet);
+
   }
 }
