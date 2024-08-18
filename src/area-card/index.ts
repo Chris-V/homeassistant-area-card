@@ -1,3 +1,4 @@
+import { LovelaceElement } from '../types';
 import './area-badge';
 import './area-card';
 import './area-climate-panel';
@@ -7,15 +8,11 @@ declare global {
   interface Window {
     customCards: Array<Object>;
     loadCardHelpers(): Promise<{
-      createCardElement(options: { type: string }): Element,
-      createRowElement(options: { type: string }): Element,
+      createCardElement(options: { type?: string, entity?: string }): LovelaceElement<any>,
+      createRowElement(options: { type?: string, entity?: string }): LovelaceElement<any>,
     }>;
   }
 }
-
-window.loadCardHelpers().then(({ createCardElement, createRowElement }) => {
-  createRowElement({ type: 'input-select' });
-});
 
 window.customCards = window.customCards || [];
 window.customCards.push({
