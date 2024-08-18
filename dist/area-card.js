@@ -1506,8 +1506,8 @@ class $c051df81d7afd129$export$179268f6da4a88b9 extends (0, $7e21dc7b5ad8cb11$ex
                   .entity=${badge.entity}
                   .icon=${badge.icon}
                   .name=${badge.name}
-                  .tap-action=${badge.tap_action}
-                  .hold-action=${badge.hold_action}
+                  .tap=${badge.tap_action}
+                  .hold=${badge.hold_action}
                 ></area-card-badge>
               `)}
             </div>
@@ -1523,8 +1523,8 @@ class $c051df81d7afd129$export$179268f6da4a88b9 extends (0, $7e21dc7b5ad8cb11$ex
                 .icon=${control.icon}
                 .tag=${control.tag}
                 .name=${control.name}
-                .tap-action=${control.tap_action}
-                .hold-action=${control.hold_action}
+                .tap=${control.tap_action}
+                .hold=${control.hold_action}
               ></area-card-control>
             `)}
           </div>
@@ -1837,11 +1837,11 @@ class $9a9ee115bc4281da$export$f3c9554892aa28ef extends (0, $7e21dc7b5ad8cb11$ex
             root: true,
             active: state.attributes["heating"] === true
         })}
-        tabindex=${this.tapAction?.action === "none" ? 0 : (0, $3046cc7e4ff866d4$export$45b790e32b2810ee)}
+        tabindex=${this.tap?.action === "none" ? 0 : (0, $3046cc7e4ff866d4$export$45b790e32b2810ee)}
         .title=${title}
         @action=${this.handleAction}
         .actionHandler=${(0, $ca2aeabc8e3b4e74$export$8a44987212de21b)({
-            hasHold: this.holdAction?.action !== "none"
+            hasHold: this.hold?.action !== "none"
         })}
       >
         <state-badge
@@ -1862,8 +1862,8 @@ class $9a9ee115bc4281da$export$f3c9554892aa28ef extends (0, $7e21dc7b5ad8cb11$ex
     }
     handleAction(event) {
         if (!this.hass) return;
-        const tap_action = (0, $9e338c437afcfa37$export$2249b8b14200eb6d)("more-info", this.entity, this.tapAction);
-        const hold_action = (0, $9e338c437afcfa37$export$2249b8b14200eb6d)("more-info", this.entity, this.holdAction);
+        const tap_action = (0, $9e338c437afcfa37$export$2249b8b14200eb6d)("more-info", this.entity, this.tap);
+        const hold_action = (0, $9e338c437afcfa37$export$2249b8b14200eb6d)("more-info", this.entity, this.hold);
         (0, $9e338c437afcfa37$export$6c6c3f4b7541eaf1)(this, this.hass, {
             tap_action: tap_action,
             hold_action: hold_action
@@ -1885,15 +1885,11 @@ class $9a9ee115bc4281da$export$f3c9554892aa28ef extends (0, $7e21dc7b5ad8cb11$ex
     (0, $63995b5a8f5ed880$export$d541bacb2bda4494)()
 ], $9a9ee115bc4281da$export$f3c9554892aa28ef.prototype, "name", void 0);
 (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
-    (0, $63995b5a8f5ed880$export$d541bacb2bda4494)({
-        attribute: "tap-action"
-    })
-], $9a9ee115bc4281da$export$f3c9554892aa28ef.prototype, "tapAction", void 0);
+    (0, $63995b5a8f5ed880$export$d541bacb2bda4494)()
+], $9a9ee115bc4281da$export$f3c9554892aa28ef.prototype, "tap", void 0);
 (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
-    (0, $63995b5a8f5ed880$export$d541bacb2bda4494)({
-        attribute: "hold-action"
-    })
-], $9a9ee115bc4281da$export$f3c9554892aa28ef.prototype, "holdAction", void 0);
+    (0, $63995b5a8f5ed880$export$d541bacb2bda4494)()
+], $9a9ee115bc4281da$export$f3c9554892aa28ef.prototype, "hold", void 0);
 $9a9ee115bc4281da$export$f3c9554892aa28ef = (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
     (0, $b291dcacc5787077$export$da64fc29f17f9d0e)("area-card-badge")
 ], $9a9ee115bc4281da$export$f3c9554892aa28ef);
@@ -1948,11 +1944,11 @@ class $b1213ca84b9afd3c$export$4db1c1d4d2d55651 extends (0, $7e21dc7b5ad8cb11$ex
         return (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
       <div
         class="root"
-        tabindex=${this.tapAction?.action === "none" ? 0 : (0, $3046cc7e4ff866d4$export$45b790e32b2810ee)}
+        tabindex=${this.tap?.action === "none" ? 0 : (0, $3046cc7e4ff866d4$export$45b790e32b2810ee)}
         .title=${title}
         @action=${this.handleAction}
         .actionHandler=${(0, $ca2aeabc8e3b4e74$export$8a44987212de21b)({
-            hasHold: this.holdAction?.action !== "none"
+            hasHold: this.hold?.action !== "none"
         })}
       >
         <state-badge
@@ -1968,8 +1964,8 @@ class $b1213ca84b9afd3c$export$4db1c1d4d2d55651 extends (0, $7e21dc7b5ad8cb11$ex
     }
     handleAction(event) {
         if (!this.hass) return;
-        const tap_action = (0, $9e338c437afcfa37$export$2249b8b14200eb6d)("toggle", this.entity, this.tapAction);
-        const hold_action = (0, $9e338c437afcfa37$export$2249b8b14200eb6d)("more-info", this.entity, this.holdAction);
+        const tap_action = (0, $9e338c437afcfa37$export$2249b8b14200eb6d)("toggle", this.entity, this.tap);
+        const hold_action = (0, $9e338c437afcfa37$export$2249b8b14200eb6d)("more-info", this.entity, this.hold);
         (0, $9e338c437afcfa37$export$6c6c3f4b7541eaf1)(this, this.hass, {
             tap_action: tap_action,
             hold_action: hold_action
@@ -1994,15 +1990,11 @@ class $b1213ca84b9afd3c$export$4db1c1d4d2d55651 extends (0, $7e21dc7b5ad8cb11$ex
     (0, $63995b5a8f5ed880$export$d541bacb2bda4494)()
 ], $b1213ca84b9afd3c$export$4db1c1d4d2d55651.prototype, "tag", void 0);
 (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
-    (0, $63995b5a8f5ed880$export$d541bacb2bda4494)({
-        attribute: "tap-action"
-    })
-], $b1213ca84b9afd3c$export$4db1c1d4d2d55651.prototype, "tapAction", void 0);
+    (0, $63995b5a8f5ed880$export$d541bacb2bda4494)()
+], $b1213ca84b9afd3c$export$4db1c1d4d2d55651.prototype, "tap", void 0);
 (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
-    (0, $63995b5a8f5ed880$export$d541bacb2bda4494)({
-        attribute: "hold-action"
-    })
-], $b1213ca84b9afd3c$export$4db1c1d4d2d55651.prototype, "holdAction", void 0);
+    (0, $63995b5a8f5ed880$export$d541bacb2bda4494)()
+], $b1213ca84b9afd3c$export$4db1c1d4d2d55651.prototype, "hold", void 0);
 $b1213ca84b9afd3c$export$4db1c1d4d2d55651 = (0, $69d0b3211cd6ff55$export$29e00dfd3077644b)([
     (0, $b291dcacc5787077$export$da64fc29f17f9d0e)("area-card-control")
 ], $b1213ca84b9afd3c$export$4db1c1d4d2d55651);

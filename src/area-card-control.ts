@@ -13,8 +13,8 @@ export class AreaCardControl extends LitElement {
   @property() icon?: string;
   @property() name?: string;
   @property() tag?: string;
-  @property({ attribute: 'tap-action' }) tapAction?: ActionConfig;
-  @property({ attribute: 'hold-action' }) holdAction?: ActionConfig;
+  @property() tap?: ActionConfig;
+  @property() hold?: ActionConfig;
 
   static styles = styles;
 
@@ -35,10 +35,10 @@ export class AreaCardControl extends LitElement {
     return html`
       <div
         class="root"
-        tabindex=${this.tapAction?.action === 'none' ? 0 : nothing}
+        tabindex=${this.tap?.action === 'none' ? 0 : nothing}
         .title=${title}
         @action=${this.handleAction}
-        .actionHandler=${actionHandler({ hasHold: this.holdAction?.action !== 'none' })}
+        .actionHandler=${actionHandler({ hasHold: this.hold?.action !== 'none' })}
       >
         <state-badge
           .hass=${this.hass}
@@ -57,8 +57,8 @@ export class AreaCardControl extends LitElement {
       return;
     }
 
-    const tap_action = createDefaultAction('toggle', this.entity, this.tapAction);
-    const hold_action = createDefaultAction('more-info', this.entity, this.holdAction);
+    const tap_action = createDefaultAction('toggle', this.entity, this.tap);
+    const hold_action = createDefaultAction('more-info', this.entity, this.hold);
 
     handleAction(this, this.hass, { tap_action, hold_action }, event.detail.action);
   }

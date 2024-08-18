@@ -88,8 +88,8 @@ export class AreaCard extends LitElement implements LovelaceCard<AreaCardConfig>
                   .entity=${badge.entity}
                   .icon=${badge.icon}
                   .name=${badge.name}
-                  .tap-action=${badge.tap_action}
-                  .hold-action=${badge.hold_action}
+                  .tap=${badge.tap_action}
+                  .hold=${badge.hold_action}
                 ></area-card-badge>
               `)}
             </div>
@@ -105,8 +105,8 @@ export class AreaCard extends LitElement implements LovelaceCard<AreaCardConfig>
                 .icon=${control.icon}
                 .tag=${control.tag}
                 .name=${control.name}
-                .tap-action=${control.tap_action}
-                .hold-action=${control.hold_action}
+                .tap=${control.tap_action}
+                .hold=${control.hold_action}
               ></area-card-control>
             `)}
           </div>
