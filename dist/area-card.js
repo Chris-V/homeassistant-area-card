@@ -2181,7 +2181,7 @@ class $6a52fdd840cc3f98$export$41648724724d056c extends (0, $7e21dc7b5ad8cb11$ex
         const sheet = new CSSStyleSheet();
         sheet.replaceSync(`
       :host ::slotted(.card-content) {
-          padding: 16px;
+          padding: 0;
       }
     `);
         element.shadowRoot?.adoptedStyleSheets.push(sheet);
