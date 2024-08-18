@@ -2271,12 +2271,13 @@ class $6a52fdd840cc3f98$export$41648724724d056c extends (0, $7e21dc7b5ad8cb11$ex
         });
         return (0, $d33915c68ab82e80$export$a40009bd2c363351)(rowPromise, (0, $3046cc7e4ff866d4$export$45b790e32b2810ee));
     }
-    onClimateCardUpdated(card) {
+    async onClimateCardUpdated(card) {
         if (!card) return;
         card.setConfig({
             entity: `climate.${this.key}_thermostat`,
             name: ""
         });
+        await new Promise((r)=>setTimeout(r, 0)); // Paint
         if (card.shadowRoot) {
             const stylesheet = new CSSStyleSheet();
             stylesheet.replaceSync(`

@@ -71,7 +71,7 @@ export class AreaClimatePanel extends LitElement {
     return until(rowPromise, nothing);
   }
 
-  private onClimateCardUpdated(card?: Element) {
+  private async onClimateCardUpdated(card?: Element) {
     if (!card) {
       return;
     }
@@ -81,6 +81,7 @@ export class AreaClimatePanel extends LitElement {
       name: '',
     });
 
+    await new Promise((r) => setTimeout(r, 0)); // Paint
     if (card.shadowRoot) {
       const stylesheet = new CSSStyleSheet();
       stylesheet.replaceSync(`
