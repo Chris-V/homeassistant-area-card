@@ -1735,8 +1735,6 @@ var $3961852dcf45b56f$export$2e2bcd8739ae039 = (0, $8b70d0323444ddea$export$dbf3
 ha-card {
   position: relative;
 
-  min-width: 500px;
-  min-height: 280px;
   overflow: hidden;
 
   --area-accent-color: #00363A;
@@ -1878,16 +1876,16 @@ class $76271178badb5a82$export$179268f6da4a88b9 extends (0, $7e21dc7b5ad8cb11$ex
         this.config = config;
     }
     getCardSize() {
-        return 7;
+        return 8;
     }
-    getLayoutOptions() {
-        return {
-            grid_rows: 7,
-            grid_columns: 5,
-            grid_min_rows: 7,
-            grid_max_rows: 7
-        };
-    }
+    // getLayoutOptions() {
+    //   return {
+    //     grid_rows: 7,
+    //     grid_columns: 5,
+    //     grid_min_rows: 7,
+    //     grid_max_rows: 7,
+    //   };
+    // }
     render() {
         if (!this.config || !this.hass) return 0, $3046cc7e4ff866d4$export$45b790e32b2810ee;
         const area = this.hass.areas[this.config.area];

@@ -4,8 +4,6 @@ export default css`
 ha-card {
   position: relative;
 
-  min-width: 500px;
-  min-height: 280px;
   overflow: hidden;
 
   --area-accent-color: #00363A;
