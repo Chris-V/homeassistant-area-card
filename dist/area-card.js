@@ -1899,7 +1899,7 @@ class $76271178badb5a82$export$179268f6da4a88b9 extends (0, $7e21dc7b5ad8cb11$ex
             "--area-accent-color": this.config?.color
         })}>
         ${(0, $e723a6ede290d350$export$a55877ca9db47377)(picture, ()=>(0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
-          <hui-image .hass=${this.hass} .image=${picture} .fitMode="fill"></hui-image>
+          <hui-image .hass=${this.hass} .image=${picture} .fitMode=${"fill"}></hui-image>
         `)}
 
         <div class="root">
@@ -2254,6 +2254,10 @@ var $96c74620be612612$export$2e2bcd8739ae039 = (0, $8b70d0323444ddea$export$dbf3
 
 .settings {
   grid-area: 1 / 1 / 2 / 2;
+}
+
+.setting-row + .setting-row {
+  margin-top: -5px;
 }
 
 .thermostat {

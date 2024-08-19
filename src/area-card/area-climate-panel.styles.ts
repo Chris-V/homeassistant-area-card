@@ -38,6 +38,10 @@ export default css`
   grid-area: 1 / 1 / 2 / 2;
 }
 
+.setting-row + .setting-row {
+  margin-top: -5px;
+}
+
 .thermostat {
   grid-area: 1 / 2 / 2 / 3;
 }
