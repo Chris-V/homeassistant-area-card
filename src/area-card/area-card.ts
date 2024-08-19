@@ -75,7 +75,7 @@ export class AreaCard extends LitElement implements LovelaceCard<AreaCardConfig>
     return html`
       <ha-card style=${styleMap({ '--area-accent-color': this.config?.color })}>
         ${when(picture, () => html`
-          <hui-image .hass=${this.hass} .image=${picture} .aspectRatio=${1.5} .fitMode=${"fill"}></hui-image>
+          <hui-image .hass=${this.hass} .image=${picture} .aspectRatio=${"1.5:1"} .fitMode=${"fill"}></hui-image>
         `)}
 
         <div class="root">
