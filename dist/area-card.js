@@ -1884,8 +1884,8 @@ class $76271178badb5a82$export$179268f6da4a88b9 extends (0, $7e21dc7b5ad8cb11$ex
         return {
             grid_rows: 7,
             grid_columns: 5,
-            grid_min_rows: 6,
-            grid_max_rows: 6
+            grid_min_rows: 7,
+            grid_max_rows: 7
         };
     }
     render() {
@@ -2253,6 +2253,8 @@ var $96c74620be612612$export$2e2bcd8739ae039 = (0, $8b70d0323444ddea$export$dbf3
 
 .settings {
   grid-area: 1 / 1 / 2 / 2;
+
+  --ha-select-height: 34px;
 }
 
 .thermostat {

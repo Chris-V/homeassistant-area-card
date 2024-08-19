@@ -65,8 +65,8 @@ export class AreaCard extends LitElement implements LovelaceCard<AreaCardConfig>
     return {
       grid_rows: 7,
       grid_columns: 5,
-      grid_min_rows: 6,
-      grid_max_rows: 6,
+      grid_min_rows: 7,
+      grid_max_rows: 7,
     };
   }
 
