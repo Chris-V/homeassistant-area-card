@@ -36,6 +36,8 @@ export default css`
 
 .settings {
   grid-area: 1 / 1 / 2 / 2;
+
+  --ha-textfield-input-width: 3em;
 }
 
 .setting-row + .setting-row {

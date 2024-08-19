@@ -2254,6 +2254,8 @@ var $96c74620be612612$export$2e2bcd8739ae039 = (0, $8b70d0323444ddea$export$dbf3
 
 .settings {
   grid-area: 1 / 1 / 2 / 2;
+
+  --ha-textfield-input-width: 3em;
 }
 
 .setting-row + .setting-row {
