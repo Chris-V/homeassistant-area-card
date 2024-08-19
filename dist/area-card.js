@@ -1737,6 +1737,7 @@ ha-card {
 
   overflow: hidden;
   min-height: 265px;
+  min-width: 390px;
 
   --area-accent-color: #333333;
   --header-footer-height: 42px;
