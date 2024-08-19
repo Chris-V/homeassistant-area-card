@@ -43,6 +43,8 @@ ha-card {
 
 .section.header, .section.footer {
   height: var(--header-footer-height);
+
+  --mdc-icon-size: calc(var(--header-footer-height) - 10px);
 }
 
 .section.header {
@@ -58,8 +60,6 @@ ha-card {
 .section.header .title {
   font-size: 1.6em;
   font-weight: 500;
-
-  --mdc-icon-size: var(--header-footer-height);
 }
 
 .section.header .title state-badge {
@@ -100,7 +100,6 @@ ha-card {
 
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
 
   --mdc-icon-size: 24px;
 }
