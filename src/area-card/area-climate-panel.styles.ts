@@ -28,7 +28,7 @@ export default css`
   box-sizing: border-box;
 
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: calc(55% - 5px) 45%;
   grid-template-rows: 100%;
   grid-column-gap: 5px;
   grid-row-gap: 0px;
