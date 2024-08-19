@@ -1412,6 +1412,10 @@ var $058bbce60b728e89$export$2e2bcd8739ae039 = (0, $8b70d0323444ddea$export$dbf3
   --mdc-icon-size: 24px;
 }
 
+.root.has-label {
+  --mdc-icon-size: 18px;
+}
+
 .root.active {
   --primary-text-color: var(--paper-item-icon-active-color);
   --paper-item-icon-color: var(--paper-item-icon-active-color);
@@ -1620,6 +1624,7 @@ class $d583f77606fa125b$export$e77ce2c28c640c4f extends (0, $7e21dc7b5ad8cb11$ex
       <div
         class=${(0, $cf1c38459c5a422a$export$56cc687933817664)({
             root: true,
+            "has-label": showLabel,
             active: state.attributes["heating"] === true
         })}
         tabindex=${this.tap?.action === "none" ? 0 : (0, $3046cc7e4ff866d4$export$45b790e32b2810ee)}
@@ -1873,11 +1878,11 @@ class $76271178badb5a82$export$179268f6da4a88b9 extends (0, $7e21dc7b5ad8cb11$ex
         this.config = config;
     }
     getCardSize() {
-        return 6;
+        return 7;
     }
     getLayoutOptions() {
         return {
-            grid_rows: 6,
+            grid_rows: 7,
             grid_columns: 5,
             grid_min_rows: 6,
             grid_max_rows: 6
@@ -2269,6 +2274,10 @@ class $6a52fdd840cc3f98$export$41648724724d056c extends (0, $7e21dc7b5ad8cb11$ex
     }
     render() {
         if (!this.key || !this.#hass) return 0, $3046cc7e4ff866d4$export$45b790e32b2810ee;
+        // .mdc-text-field--filled {
+        //   height: 34px;
+        // }
+        // --ha-select-height: 34px;
         const mode = this.createSettingRowTemplate({
             type: "input-select-entity",
             entity: `input_select.${this.key}_thermostat_mode`,

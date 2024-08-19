@@ -14,6 +14,10 @@ export default css`
   --mdc-icon-size: 24px;
 }
 
+.root.has-label {
+  --mdc-icon-size: 18px;
+}
+
 .root.active {
   --primary-text-color: var(--paper-item-icon-active-color);
   --paper-item-icon-color: var(--paper-item-icon-active-color);
