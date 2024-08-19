@@ -58,7 +58,7 @@ export class AreaCard extends LitElement implements LovelaceCard<AreaCardConfig>
   }
 
   getCardSize(): number {
-    return 8;
+    return 6;
   }
 
   protected render() {
