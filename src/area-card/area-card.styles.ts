@@ -7,6 +7,7 @@ ha-card {
   overflow: hidden;
 
   --area-accent-color: #00363A;
+  --header-footer-height: 42px;
 
   --primary-text-color: #DADADB;
   --secondary-text-color: #DADADB;
@@ -35,10 +36,16 @@ ha-card {
 .section {
   position: relative;
 
+  box-sizing: border-box;
   padding: 5px;
+  border: 0;
 }
 
-.header {
+.section.header, .section.footer {
+  height: var(--header-footer-height);
+}
+
+.section.header {
   order: 1;
 
   display: flex;
@@ -48,18 +55,20 @@ ha-card {
   background-color: color-mix(in srgb, var(--area-accent-color) 90%, transparent);
 }
 
-.header .title {
+.section.header .title {
   font-size: 1.6em;
   font-weight: 500;
 
-  --mdc-icon-size: 32px;
+  --mdc-icon-size: var(--header-footer-height);
 }
 
-.title state-badge {
+.section.header .title state-badge {
   cursor: pointer;
+  height: var(--mdc-icon-size);
+  line-height: var(--mdc-icon-size);
 }
 
-.header .sensors {
+.section.header .sensors {
   height: 100%;
   flex-grow: 1;
 
@@ -69,7 +78,7 @@ ha-card {
   gap: 0.5em;
 }
 
-.footer {
+.section.footer {
   order: 3;
 
   display: flex;

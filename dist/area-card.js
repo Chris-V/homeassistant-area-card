@@ -1738,6 +1738,7 @@ ha-card {
   overflow: hidden;
 
   --area-accent-color: #00363A;
+  --header-footer-height: 42px;
 
   --primary-text-color: #DADADB;
   --secondary-text-color: #DADADB;
@@ -1766,10 +1767,16 @@ ha-card {
 .section {
   position: relative;
 
+  box-sizing: border-box;
   padding: 5px;
+  border: 0;
 }
 
-.header {
+.section.header, .section.footer {
+  height: var(--header-footer-height);
+}
+
+.section.header {
   order: 1;
 
   display: flex;
@@ -1779,18 +1786,20 @@ ha-card {
   background-color: color-mix(in srgb, var(--area-accent-color) 90%, transparent);
 }
 
-.header .title {
+.section.header .title {
   font-size: 1.6em;
   font-weight: 500;
 
-  --mdc-icon-size: 32px;
+  --mdc-icon-size: var(--header-footer-height);
 }
 
-.title state-badge {
+.section.header .title state-badge {
   cursor: pointer;
+  height: var(--mdc-icon-size);
+  line-height: var(--mdc-icon-size);
 }
 
-.header .sensors {
+.section.header .sensors {
   height: 100%;
   flex-grow: 1;
 
@@ -1800,7 +1809,7 @@ ha-card {
   gap: 0.5em;
 }
 
-.footer {
+.section.footer {
   order: 3;
 
   display: flex;
@@ -1878,14 +1887,6 @@ class $76271178badb5a82$export$179268f6da4a88b9 extends (0, $7e21dc7b5ad8cb11$ex
     getCardSize() {
         return 8;
     }
-    // getLayoutOptions() {
-    //   return {
-    //     grid_rows: 7,
-    //     grid_columns: 5,
-    //     grid_min_rows: 7,
-    //     grid_max_rows: 7,
-    //   };
-    // }
     render() {
         if (!this.config || !this.hass) return 0, $3046cc7e4ff866d4$export$45b790e32b2810ee;
         const area = this.hass.areas[this.config.area];
