@@ -28,7 +28,7 @@ export default css`
   box-sizing: border-box;
 
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: 100%;
   grid-column-gap: 5px;
   grid-row-gap: 0px;
@@ -36,8 +36,6 @@ export default css`
 
 .settings {
   grid-area: 1 / 1 / 2 / 2;
-
-  --ha-select-height: 34px;
 }
 
 .thermostat {

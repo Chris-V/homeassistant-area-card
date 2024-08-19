@@ -5,8 +5,9 @@ ha-card {
   position: relative;
 
   overflow: hidden;
+  min-height: 265px;
 
-  --area-accent-color: #00363A;
+  --area-accent-color: #333333;
   --header-footer-height: 42px;
 
   --primary-text-color: #DADADB;

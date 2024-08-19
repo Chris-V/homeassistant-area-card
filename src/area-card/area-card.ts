@@ -73,8 +73,10 @@ export class AreaCard extends LitElement implements LovelaceCard<AreaCardConfig>
     const state = this.config.entity ? this.hass.states[this.config.entity] : undefined;
 
     return html`
-      <ha-card style=${styleMap({ '--area-accent-color': this.config?.color || '#000' })}>
-        ${when(picture, () => html`<hui-image .hass=${this.hass} .image="${picture}"></hui-image>`)}
+      <ha-card style=${styleMap({ '--area-accent-color': this.config?.color })}>
+        ${when(picture, () => html`
+          <hui-image .hass=${this.hass} .image=${picture} .fitMode="fill"></hui-image>
+        `)}
 
         <div class="root">
           <div class="section header">

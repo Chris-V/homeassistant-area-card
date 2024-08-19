@@ -28,11 +28,6 @@ export class AreaClimatePanel extends LitElement {
       return nothing;
     }
 
-    // .mdc-text-field--filled {
-    //   height: 34px;
-    // }
-    // --ha-select-height: 34px;
-
     const mode = this.createSettingRowTemplate({
       type: 'input-select-entity',
       entity: `input_select.${this.key}_thermostat_mode`,

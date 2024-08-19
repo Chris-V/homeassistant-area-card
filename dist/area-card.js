@@ -1736,8 +1736,9 @@ ha-card {
   position: relative;
 
   overflow: hidden;
+  min-height: 265px;
 
-  --area-accent-color: #00363A;
+  --area-accent-color: #333333;
   --header-footer-height: 42px;
 
   --primary-text-color: #DADADB;
@@ -1895,9 +1896,11 @@ class $76271178badb5a82$export$179268f6da4a88b9 extends (0, $7e21dc7b5ad8cb11$ex
         const state = this.config.entity ? this.hass.states[this.config.entity] : undefined;
         return (0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
       <ha-card style=${(0, $1fb9c1ac67aad079$export$1e5b4ce2fa884e6a)({
-            "--area-accent-color": this.config?.color || "#000"
+            "--area-accent-color": this.config?.color
         })}>
-        ${(0, $e723a6ede290d350$export$a55877ca9db47377)(picture, ()=>(0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`<hui-image .hass=${this.hass} .image="${picture}"></hui-image>`)}
+        ${(0, $e723a6ede290d350$export$a55877ca9db47377)(picture, ()=>(0, $3046cc7e4ff866d4$export$c0bb0b647f701bb5)`
+          <hui-image .hass=${this.hass} .image=${picture} .fitMode="fill"></hui-image>
+        `)}
 
         <div class="root">
           <div class="section header">
@@ -2243,7 +2246,7 @@ var $96c74620be612612$export$2e2bcd8739ae039 = (0, $8b70d0323444ddea$export$dbf3
   box-sizing: border-box;
 
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: 100%;
   grid-column-gap: 5px;
   grid-row-gap: 0px;
@@ -2251,8 +2254,6 @@ var $96c74620be612612$export$2e2bcd8739ae039 = (0, $8b70d0323444ddea$export$dbf3
 
 .settings {
   grid-area: 1 / 1 / 2 / 2;
-
-  --ha-select-height: 34px;
 }
 
 .thermostat {
@@ -2274,10 +2275,6 @@ class $6a52fdd840cc3f98$export$41648724724d056c extends (0, $7e21dc7b5ad8cb11$ex
     }
     render() {
         if (!this.key || !this.#hass) return 0, $3046cc7e4ff866d4$export$45b790e32b2810ee;
-        // .mdc-text-field--filled {
-        //   height: 34px;
-        // }
-        // --ha-select-height: 34px;
         const mode = this.createSettingRowTemplate({
             type: "input-select-entity",
             entity: `input_select.${this.key}_thermostat_mode`,
