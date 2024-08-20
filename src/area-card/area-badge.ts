@@ -36,7 +36,7 @@ export class AreaBadge extends LitElement {
     return html`
       <div
         class=${classMap({ root: true, 'has-label': showLabel, active: state.attributes['heating'] === true })}
-        tabindex=${this.tap?.action === 'none' ? 0 : nothing}
+        tabindex=${this.tap?.action !== 'none' ? 0 : nothing}
         .title=${title}
         @action=${this.handleAction}
         .actionHandler=${actionHandler({ hasHold: this.hold?.action !== 'none' })}

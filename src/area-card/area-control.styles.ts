@@ -26,4 +26,8 @@ state-badge {
 
   --mdc-icon-size: 16px;
 }
+
+.active .tag {
+  --paper-item-icon-color: var(--state-acti ve-color);
+}
 `;
