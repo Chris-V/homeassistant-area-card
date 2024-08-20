@@ -1,0 +1,28 @@
+name: Validate
+
+on:
+  push:
+    branches:
+      - "main"
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  hacs:
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: "actions/checkout@v4"
+      - uses: "hacs/action@main"
+        with:
+          category: "plugin"
+          ignore: "topics issues images"
+
+  type-check:
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: "actions/checkout@v4"
+      - uses: "actions/setup-node@v4"
+        with:
+          node-version-file: ".tool-versions"
+      - run: "yarn install --frozen-lockfile"
+      - run: "yarn run type-check"

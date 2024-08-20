@@ -1,17 +1,19 @@
-import { AreaCard } from "./card";
+import './area-card';
+import { LovelaceElement } from './types';
 
 declare global {
+  interface LovelaceCardOptions {
+    type?: string;
+    entity?: string;
+    name?: string;
+    icon?: string;
+  }
+
   interface Window {
     customCards: Array<Object>;
+    loadCardHelpers(): Promise<{
+      createCardElement(options: LovelaceCardOptions): LovelaceElement<any>;
+      createRowElement(options: LovelaceCardOptions): LovelaceElement<any>;
+    }>;
   }
 }
-
-customElements.define("area-card", AreaCard);
-
-window.customCards = window.customCards || [];
-window.customCards.push({
-  type: "area-card",
-  name: "Turn an entity on and off",
-  description: "A pretty card with everything related to an area.",
-});
-

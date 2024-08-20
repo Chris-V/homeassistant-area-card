@@ -1,3 +1,6 @@
+.dist
+.parcel-cache
+
 .yarn/*
 !.yarn/patches
 !.yarn/plugins

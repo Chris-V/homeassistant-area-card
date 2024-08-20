@@ -1,9 +1,16 @@
 {
   "compilerOptions": {
-    "target": "es2020",
+    "target": "es2022",
     "moduleResolution": "node",
     "experimentalDecorators": true,
     "useDefineForClassFields": false,
-    "strict": true
-  }
+    "strict": true,
+    "lib": [
+      "DOM",
+      "ES2022",
+    ]
+  },
+  "include": [
+    "src/"
+  ]
 }

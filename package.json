@@ -2,15 +2,15 @@
   "name": "homeassistant-area-card",
   "packageManager": "yarn@4.4.0",
   "source": "src/index.ts",
-  "module": "dist/card.js",
+  "module": "dist/card-collection.js",
   "targets": {
     "module": {
       "includeNodeModules": true
     }
   },
   "scripts": {
-    "watch": "parcel watch",
-    "build": "parcel build"
+    "build": "parcel build",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "home-assistant-js-websocket": "^9.4.0",
