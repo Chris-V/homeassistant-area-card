@@ -28,6 +28,6 @@ state-badge {
 }
 
 .active .tag {
-  --paper-item-icon-color: var(--state-active-color);
+  color: var(--state-active-color);
 }
 `;
