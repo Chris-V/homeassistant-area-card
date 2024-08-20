@@ -1,10 +1,11 @@
 import { html, LitElement, nothing } from "lit";
 import { customElement, property } from "lit/decorators";
+import { classMap } from "lit/directives/class-map";
 import { when } from "lit/directives/when";
-import styles from './area-control.styles';
 import { ActionConfig, createDefaultAction, handleAction } from "../helpers/action-handler";
 import { actionHandler, ActionHandlerEvent } from "../helpers/action-handler-directive";
 import { HomeAssistant } from "../types";
+import styles from './area-control.styles';
 
 @customElement('area-control')
 export class AreaControl extends LitElement {
@@ -34,7 +35,7 @@ export class AreaControl extends LitElement {
 
     return html`
       <div
-        class="root"
+        class=${classMap({ root: true, active: state.state === 'on' })}
         tabindex=${this.tap?.action !== 'none' ? 0 : nothing}
         .title=${title}
         @action=${this.handleAction}
