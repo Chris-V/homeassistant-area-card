@@ -1,6 +1,6 @@
 {
-  "name": "Area Card",
+  "name": "Card Collection",
   "render_readme": true,
-  "filename": "area-card.js",
+  "filename": "card-collection.js",
   "content_in_root": false
 }
