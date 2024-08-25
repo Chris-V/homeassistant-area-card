@@ -1,4 +1,5 @@
 import './area-card';
+import './terrrium-card';
 import { LovelaceElement } from './types';
 
 declare global {
