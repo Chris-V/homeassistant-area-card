@@ -31,14 +31,14 @@ jobs:
           allowUpdates: true
           artifactErrorsFailBuild: true
           artifacts: dist/card-collection.js,dist/card-collection.js.map
-          commit: "${github.sha}"
+          commit: "${github.ref}"
           draft: false
           makeLatest: false
           name: Snapshot
           omitBody: true
           prerelease: true
           removeArtifacts: true
-          tag: snapshot
+          tag: refs/tags/snapshot
 
       - name: "Release"
         uses: "softprops/action-gh-release@v2"
