@@ -32,4 +32,5 @@ jobs:
             dist/card-collection.js \
             dist/card-collection.js.map \
             --prerelease \
+            --latest \
             --title Snapshot
