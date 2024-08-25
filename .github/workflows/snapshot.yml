@@ -22,3 +22,4 @@ jobs:
           custom_tag: snapshot
           default_bump: false
           default_prerelease_bump: false
+          github_token: ${{ secrets.GITHUB_TOKEN }}
