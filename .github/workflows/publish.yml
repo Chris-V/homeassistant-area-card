@@ -25,22 +25,24 @@ jobs:
       - run: "yarn run build"
 
       - name: "Snapshot"
-        uses: "softprops/action-gh-release@v2"
-        if: "github.ref_type == 'branch'"
+        uses: "ncipollo/release-action@v1"
+        if: "!startsWith(github.ref, 'refs/tags/')"
         with:
+          allowUpdates: true
+          artifactErrorsFailBuild: true
+          artifacts: dist/card-collection.js,dist/card-collection.js.map
+          commit: "${github.sha}"
+          draft: false
+          makeLatest: false
           name: Snapshot
-          tag_name: snapshot
+          omitBody: true
           prerelease: true
-          make_latest: false
-          target_commitish: "${github.sha}"
-          fail_on_unmatched_files: true
-          files: |
-            dist/card-collection.js
-            dist/card-collection.js.map
+          removeArtifacts: true
+          tag: snapshot
 
       - name: "Release"
         uses: "softprops/action-gh-release@v2"
-        if: "github.ref_type == 'tag'"
+        if: "startsWith(github.ref, 'refs/tags/')"
         with:
           fail_on_unmatched_files: true
           files: |
