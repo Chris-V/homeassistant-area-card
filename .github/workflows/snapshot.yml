@@ -4,10 +4,6 @@ on:
   push:
     branches:
       - "main"
-      - "terrarium-card"
-    tags:
-      - "v*.*.*"
-  workflow_dispatch:
 
 permissions:
   contents: write
@@ -24,23 +20,8 @@ jobs:
 
       - run: "yarn run build"
 
-      - name: "Snapshot"
-        uses: "softprops/action-gh-release@v2"
-        if: "github.ref_type == 'branch'"
-        with:
-          name: Snapshot
-          tag_name: snapshot
-          prerelease: true
-          make_latest: false
-          target_commitish: "${github.sha}"
-          fail_on_unmatched_files: true
-          files: |
-            dist/card-collection.js
-            dist/card-collection.js.map
-
       - name: "Release"
         uses: "softprops/action-gh-release@v2"
-        if: "github.ref_type == 'tag'"
         with:
           fail_on_unmatched_files: true
           files: |
