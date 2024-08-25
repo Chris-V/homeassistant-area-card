@@ -31,5 +31,6 @@ jobs:
             snapshot \
             dist/card-collection.js \
             dist/card-collection.js.map \
-            --prerelease \
-            --title Snapshot
+            --target ${{ github.sha }} \
+            --title Snapshot \
+            --prerelease
