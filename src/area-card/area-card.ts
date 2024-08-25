@@ -1,15 +1,11 @@
-import { HassEntity } from 'home-assistant-js-websocket';
 import { html, LitElement, nothing, TemplateResult } from 'lit';
 import { customElement, property, state } from 'lit/decorators';
 import { styleMap } from 'lit/directives/style-map';
 import { when } from 'lit/directives/when';
 import { ActionConfig, handleAction } from '../helpers/action-handler';
 import { actionHandler, ActionHandlerEvent } from '../helpers/action-handler-directive';
-import { HomeAssistant, LovelaceCard, LovelaceCardConfig, } from '../types';
+import { AreaRegistryEntry, HomeAssistant, LovelaceCard, LovelaceCardConfig, } from '../types';
 import styles from './area-card.styles';
-
-const UNKNOWN_AREA_ICON = 'mdi:help-circle';
-const UNKNOWN_AREA_NAME = 'Unknown';
 
 export interface AreaCardBadgeConfig {
   entity: string;
@@ -41,11 +37,20 @@ export interface AreaCardConfig extends LovelaceCardConfig {
   controls?: AreaCardControlConfig[];
 }
 
+const STUB_AREA: AreaRegistryEntry = {
+  area_id: '',
+  icon: 'mdi:help-circle',
+  name: 'Unknown',
+  created_at: 0,
+  modified_at: 0,
+};
+
 @customElement('area-card')
 export class AreaCard extends LitElement implements LovelaceCard<AreaCardConfig> {
-  @property({ attribute: false }) hass?: HomeAssistant
+  @property({ attribute: false }) hass!: HomeAssistant;
 
-  @state() private config?: AreaCardConfig;
+  @state() private config!: AreaCardConfig;
+  private area: AreaRegistryEntry = STUB_AREA;
 
   static styles = styles;
 
@@ -66,23 +71,19 @@ export class AreaCard extends LitElement implements LovelaceCard<AreaCardConfig>
       return nothing;
     }
 
-    const area = this.hass.areas[this.config.area];
-    const icon = area?.icon || UNKNOWN_AREA_ICON;
-    const name = area?.name || UNKNOWN_AREA_NAME;
-    const picture = area?.picture || null;
-    const state = this.config.entity ? this.hass.states[this.config.entity] : undefined;
+    this.area = this.hass.areas[this.config.area] || STUB_AREA;
 
     return html`
       <ha-card style=${styleMap({ '--area-accent-color': this.config?.color })}>
-        ${when(picture, () => html`
-          <hui-image .hass=${this.hass} .image=${picture} .aspectRatio=${"1.5:1"}></hui-image>
+        ${when(this.area.picture, () => html`
+          <hui-image .hass=${this.hass} .image=${this.area.picture} .aspectRatio=${"1.5:1"}></hui-image>
         `)}
 
         <div class="root">
           <div class="section header">
             <div class="title">
-              ${this.iconTemplateResult(state, icon)}
-              ${name}
+              ${this.iconTemplateResult()}
+              ${this.area.name}
             </div>
 
             <div class="sensors">
@@ -127,9 +128,11 @@ export class AreaCard extends LitElement implements LovelaceCard<AreaCardConfig>
     `;
   }
 
-  private iconTemplateResult(state: HassEntity | undefined, icon: string): TemplateResult {
+  private iconTemplateResult(): TemplateResult {
+    const state = this.config.entity ? this.hass.states[this.config.entity] : undefined;
+
     return when(
-      this.config?.entity,
+      this.config.entity,
       () => state ? html`
         <state-badge
           tabindex="0"
@@ -141,7 +144,7 @@ export class AreaCard extends LitElement implements LovelaceCard<AreaCardConfig>
           .actionHandler=${actionHandler()}
         ></state-badge>
       ` : html`<hui-warning-element></hui-warning-element>`,
-      () => html`<ha-icon .icon="${icon}"></ha-icon>`
+      () => html`<ha-icon .icon="${this.area.icon}"></ha-icon>`
     );
   }
 
