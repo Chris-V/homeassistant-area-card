@@ -26,6 +26,10 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release delete snapshot -y --cleanup-tag || true
-          gh release create snapshot --prerelease --title Snapshot
-          gh release upload snapshot dist/card-collection.js dist/card-collection.js.map --clobber
+          gh release delete snapshot -y --cleanup-tag
+          gh release create \
+            snapshot \
+            dist/card-collection.js \
+            dist/card-collection.js.map \
+            --prerelease \
+            --title Snapshot
