@@ -23,7 +23,6 @@ export class TerrariumCard extends LitElement implements LovelaceCard<TerrariumC
   @property({ attribute: false }) hass!: HomeAssistant
 
   @state() private config!: TerrariumCardConfig;
-  private area: AreaRegistryEntry = STUB_AREA;
 
   static styles = styles;
 
@@ -44,25 +43,14 @@ export class TerrariumCard extends LitElement implements LovelaceCard<TerrariumC
       return nothing;
     }
 
-    this.area = this.hass.areas[this.config.area] || STUB_AREA;
-
     return html`
-      <ha-card style=${styleMap({ '--area-accent-color': this.config?.color })}>
-        ${when(this.area.picture, () => html`
-          <hui-image .hass=${this.hass} .image=${this.area.picture} .aspectRatio=${"1.5:1"}></hui-image>
-        `)}
-
-        <div class="root">
-          <div class="section panels">
-            <div class="panel empty-panel"></div>
-            <div class="panel"></div>
-            <div class="panel"></div>
-          </div>
-
-          <div class="section footer">
-          </div>
-        </div>
-      </ha-card>
+      <area-card-layout
+        .hass=${this.hass}
+        .areaId=${this.config.area}
+        .color=${this.config.color}
+        .header=${false}
+      >
+      </area-card-layout>
     `;
   }
 }
