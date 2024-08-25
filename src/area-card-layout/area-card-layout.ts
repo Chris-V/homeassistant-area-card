@@ -49,6 +49,7 @@ export class AreaCardLayout extends LitElement {
               </div>
 
               <div class="badges">
+                <slot name="badges"></slot>
               </div>
             </div>
           `)};
@@ -56,9 +57,11 @@ export class AreaCardLayout extends LitElement {
 
           <div class="section panels">
             <div class="panel empty-panel"></div>
+            <slot></slot>
           </div>
 
           <div class="section footer">
+            <slot name="controls"></slot>
           </div>
         </div>
       </ha-card>
