@@ -105,7 +105,7 @@ ha-card {
   --mdc-icon-size: 24px;
 }
 
-.panel {
+.panels > ::slotted(*), .panels > .empty-panel {
   position: relative;
   height: 100%;
   width: 100%;
@@ -120,7 +120,7 @@ ha-card {
   scroll-snap-align: start;
 }
 
-.panel.empty-panel {
+.panels > .empty-panel {
   background: none;
 }
 
