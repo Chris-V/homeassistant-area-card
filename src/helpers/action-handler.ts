@@ -140,7 +140,7 @@ export async function handleAction(
   }
 }
 
-export function createDefaultAction(
+export function createDefaultActionConfig(
   action: ActionConfig['action'],
   entity: string | undefined,
   optionalConfig: ActionConfig | undefined,

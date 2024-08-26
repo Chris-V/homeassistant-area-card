@@ -2,7 +2,7 @@ import { html, LitElement, nothing } from "lit";
 import { customElement, property } from "lit/decorators";
 import { classMap } from "lit/directives/class-map";
 import { when } from "lit/directives/when";
-import { ActionConfig, createDefaultAction, handleAction } from "../helpers/action-handler";
+import { ActionConfig, createDefaultActionConfig, handleAction } from "../helpers/action-handler";
 import { actionHandler, ActionHandlerEvent } from "../helpers/action-handler-directive";
 import { HomeAssistant } from "../types";
 import styles from './area-control.styles';
@@ -67,8 +67,11 @@ export class AreaControl extends LitElement {
       return;
     }
 
-    const tap_action = createDefaultAction('toggle', this.entity, this.tap);
-    const hold_action = createDefaultAction('more-info', this.entity, this.hold);
+    const tap_action =
+      this.entity?.startsWith('sensor.') || this.entity?.startsWith('binary_sensor.')
+        ? createDefaultActionConfig('more-info', this.entity, this.tap)
+        : createDefaultActionConfig('toggle', this.entity, this.tap);
+    const hold_action = createDefaultActionConfig('more-info', this.entity, this.hold);
 
     handleAction(this, this.hass, { tap_action, hold_action }, event.detail.action);
   }
