@@ -1,7 +1,5 @@
-import './area-badge';
 import './area-card';
 import './area-climate-panel';
-import './area-control';
 
 window.customCards = window.customCards || [];
 window.customCards.push({

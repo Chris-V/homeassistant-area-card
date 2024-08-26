@@ -7,6 +7,7 @@ import styles from './area-card.styles';
 export interface AreaCardBadgeConfig {
   entity: string;
   icon?: string;
+  tag?: string;
   name?: string;
   tap_action?: ActionConfig;
   hold_action?: ActionConfig;
@@ -67,19 +68,20 @@ export class AreaCard extends LitElement implements LovelaceCard<AreaCardConfig>
         .entity=${this.config.entity}
       >
         ${this.config.badges?.map((badge) => html`
-          <area-control
+          <entity-state-icon
             slot="badges"
             .hass=${this.hass}
             .entity=${badge.entity}
             .icon=${badge.icon}
+            .tag=${badge.tag}
             .name=${badge.name}
             .tap=${badge.tap_action}
             .hold=${badge.hold_action}
-          ></area-badge>
+          ></entity-state-icon>
         `)}
 
         ${this.config.controls?.map((control) => html`
-          <area-control
+          <entity-state-icon
             slot="controls"
             .hass=${this.hass}
             .entity=${control.entity}
@@ -88,7 +90,7 @@ export class AreaCard extends LitElement implements LovelaceCard<AreaCardConfig>
             .name=${control.name}
             .tap=${control.tap_action}
             .hold=${control.hold_action}
-          ></area-control>
+          ></entity-state-icon>
         `)}
 
         ${this.config.climate ? html`
