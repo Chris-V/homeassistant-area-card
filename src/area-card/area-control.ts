@@ -37,7 +37,7 @@ export class AreaControl extends LitElement {
 
     return html`
       <div
-        class=${classMap({ root: true, active: isActive })}
+        class=${classMap({ root: true, 'has-label': showLabel, active: isActive })}
         tabindex=${this.tap?.action !== 'none' ? 0 : nothing}
         .title=${title}
         .actionHandler=${actionHandler({ hasHold: this.hold?.action !== 'none' })}

@@ -67,7 +67,7 @@ export class AreaCard extends LitElement implements LovelaceCard<AreaCardConfig>
         .entity=${this.config.entity}
       >
         ${this.config.badges?.map((badge) => html`
-          <area-badge
+          <area-control
             slot="badges"
             .hass=${this.hass}
             .entity=${badge.entity}
