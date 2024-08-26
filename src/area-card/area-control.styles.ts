@@ -7,8 +7,6 @@ export default css`
 
 .root {
   position: relative;
-
-  --mdc-icon-size: 32px;
 }
 
 state-badge {
@@ -24,7 +22,7 @@ state-badge {
 
   margin: 0px;
 
-  --mdc-icon-size: 16px;
+  --mdc-icon-size: calc(var(--icon-size) / 2);
 }
 
 .active .tag {

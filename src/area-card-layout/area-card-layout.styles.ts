@@ -45,7 +45,8 @@ ha-card {
 .section.header, .section.footer {
   height: var(--header-footer-height);
 
-  --mdc-icon-size: calc(var(--header-footer-height) - 10px);
+  --icon-size: calc(var(--header-footer-height) - 10px);
+  --mdc-icon-size: var(--icon-size);
 }
 
 .section.header {
@@ -65,8 +66,8 @@ ha-card {
 
 .section.header .title state-badge {
   cursor: pointer;
-  height: var(--mdc-icon-size);
-  line-height: var(--mdc-icon-size);
+  height: var(--icon-size);
+  line-height: var(--icon-size);
 }
 
 .section.header .badges {
@@ -102,7 +103,8 @@ ha-card {
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
 
-  --mdc-icon-size: 24px;
+  --icon-size: 24px;
+  --mdc-icon-size: var(--icon-size);
 }
 
 .panels > ::slotted(*), .panels > .empty-panel {

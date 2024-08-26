@@ -10,12 +10,10 @@ export default css`
   align-items: center;
   flex-direction: column;
   justify-content: flex-end;
-
-  --mdc-icon-size: 24px;
 }
 
 .root.has-label {
-  --mdc-icon-size: 18px;
+  --mdc-icon-size: calc(var(--icon-size) - 1em);
 }
 
 .root.active {
@@ -33,5 +31,6 @@ state-badge {
   color: var(--primary-text-color);
   font-size: 0.8em;
   white-space: nowrap;
+  line-height: 1.2em;
 }
 `;
