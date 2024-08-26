@@ -52,8 +52,7 @@ export class AreaCardLayout extends LitElement {
                 <slot name="badges"></slot>
               </div>
             </div>
-          `)};
-
+          `)}
 
           <div class="section panels">
             <div class="panel empty-panel"></div>
