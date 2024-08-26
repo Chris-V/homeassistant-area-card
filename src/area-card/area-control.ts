@@ -31,17 +31,20 @@ export class AreaControl extends LitElement {
       return html`<hui-warning-element></hui-warning-element>`;
     }
 
+    const showLabel = this.entity.startsWith('sensor.');
     const title = this.name || state.attributes.friendly_name || this.entity;
+    const isActive = state.state === 'on' || state.attributes['heating'] === true;
 
     return html`
       <div
-        class=${classMap({ root: true, active: state.state === 'on' })}
+        class=${classMap({ root: true, active: isActive })}
         tabindex=${this.tap?.action !== 'none' ? 0 : nothing}
         .title=${title}
-        @action=${this.handleAction}
         .actionHandler=${actionHandler({ hasHold: this.hold?.action !== 'none' })}
+        @action=${this.handleAction}
       >
         <state-badge
+          class="icon"
           .hass=${this.hass}
           .stateObj=${state}
           .overrideIcon=${this.icon}
@@ -49,6 +52,12 @@ export class AreaControl extends LitElement {
         ></state-badge>
 
         ${when(this.tag, () => html`<ha-icon class="tag" .icon="${this.tag}"></ha-icon>`)}
+
+        ${when(showLabel, () => html`
+          <div class="label">
+            ${this.hass?.formatEntityState(state)}
+          </div>
+        `)}
       </div>
     `;
   }

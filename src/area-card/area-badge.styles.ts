@@ -31,6 +31,6 @@ state-badge {
   color: var(--primary-text-color);
   font-size: 0.8em;
   white-space: nowrap;
-  line-height: 1.2em;
+  line-height: 1.6em;
 }
 `;

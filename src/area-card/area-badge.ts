@@ -30,7 +30,7 @@ export class AreaBadge extends LitElement {
       return html`<hui-warning-element></hui-warning-element>`;
     }
 
-    const showLabel = !this.entity.startsWith('binary_sensor.');
+    const showLabel = this.entity.startsWith('sensor.');
     const title = this.name || state.attributes.friendly_name || this.entity;
 
     return html`
@@ -38,8 +38,8 @@ export class AreaBadge extends LitElement {
         class=${classMap({ root: true, 'has-label': showLabel, active: state.attributes['heating'] === true })}
         tabindex=${this.tap?.action !== 'none' ? 0 : nothing}
         .title=${title}
-        @action=${this.handleAction}
         .actionHandler=${actionHandler({ hasHold: this.hold?.action !== 'none' })}
+        @action=${this.handleAction}
       >
         <state-badge
           class="icon"
