@@ -50,6 +50,8 @@ export class TerrariumCard extends LitElement implements LovelaceCard<TerrariumC
         .color=${this.config.color}
         .header=${false}
       >
+      <div>AAAAA</div>
+      <div>BBBBB</div>
       </area-card-layout>
     `;
   }
