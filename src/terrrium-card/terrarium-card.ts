@@ -70,7 +70,7 @@ export class TerrariumCard extends LitElement implements LovelaceCard<TerrariumC
           <div style="background-color: red">C</div>
           <div style="background-color: blue">D</div>
           <div style="background-color: orange">E</div>
-          <div style="background-color: fushia">F</div>
+          <div style="background-color: tomato">F</div>
           <div style="background-color: green">G</div>
         </div>
         <div>BBBBB</div>

@@ -1,14 +1,26 @@
 import { css } from "lit";
 
 export default css`
-.controls {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    gap: 4px;
+:host {
+  --controls-count: 3;
 }
 
-.controls > div:nth-child(n + 4) {
+.controls {
+  display: grid;
+  grid-template-columns: repeat(calc(3 * 4), 1fr);
+  grid-auto-rows: 40px;
+  gap: 4px;
+}
+
+.controls > div:first-child {
+  grid-column: 3 / span 4;
+}
+.controls > div:nth-child(2) {
+  grid-column: 7 / span 4;
+}
+
+.controls > div:nth-child(n + 3) {
   grid-row-start: 2;
+  grid-column: span 4;
 }
 `;
