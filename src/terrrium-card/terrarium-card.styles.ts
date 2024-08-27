@@ -14,11 +14,11 @@ export default css`
 }
 
 .controls.count7, .controls.count8 {
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: repeat(16, 1fr);
 }
 
 .controls.count9, .controls.count10 {
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: repeat(20, 1fr);
 }
 
 .controls > div {
