@@ -14,7 +14,7 @@ export default css`
 }
 
 .root.has-label {
-  --mdc-icon-size: calc(var(--icon-size) - 1em);
+  --mdc-icon-size: calc(var(--icon-size, 24px) - 1em);
 }
 
 .root.active {
@@ -26,6 +26,8 @@ state-badge {
   width: unset;
   height: unset;
   line-height: unset;
+
+  --mdc-icon-size: var(--icon-size, 24px);
 }
 
 .tag {
@@ -35,7 +37,7 @@ state-badge {
 
   margin: 0px;
 
-  --mdc-icon-size: calc(var(--icon-size) / 2);
+  --mdc-icon-size: calc(var(--icon-size, 24px) / 2);
 }
 
 .active .tag {
