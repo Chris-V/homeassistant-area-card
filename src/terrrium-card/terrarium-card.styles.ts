@@ -29,15 +29,19 @@ export default css`
   grid-column-start: 3;
 }
 
-.controls:is(.count5, .count6) > div:nth-child(n + 3) {
+.controls.count5 > div:nth-child(n + 3) {
   grid-row-start: 2;
 }
 
-.controls:is(.count7, .count8) > div:nth-child(n + 4) {
+.controls:is(.count6, .count7) > div:nth-child(n + 4) {
   grid-row-start: 2;
 }
 
-.controls:is(.count9, .count10) > div:nth-child(n + 5) {
+.controls:is(.count8, .count9) > div:nth-child(n + 5) {
+  grid-row-start: 2;
+}
+
+.controls.count10 > div:nth-child(n + 6) {
   grid-row-start: 2;
 }
 `;
