@@ -64,14 +64,22 @@ export class TerrariumCard extends LitElement implements LovelaceCard<TerrariumC
           ></entity-state-icon>
         `)}
 
-        <div class="controls" style="--controls-count: 5">
+        <div class="controls count5">
           <div style="background-color: yellow">A</div>
           <div style="background-color: purple">B</div>
           <div style="background-color: red">C</div>
           <div style="background-color: blue">D</div>
           <div style="background-color: orange">E</div>
         </div>
-        <div class="controls" style="--controls-count: 7">
+        <div class="controls count6">
+          <div style="background-color: yellow">A</div>
+          <div style="background-color: purple">B</div>
+          <div style="background-color: red">C</div>
+          <div style="background-color: blue">D</div>
+          <div style="background-color: orange">E</div>
+          <div style="background-color: tomato">F</div>
+        </div>
+        <div class="controls count7">
           <div style="background-color: yellow">A</div>
           <div style="background-color: purple">B</div>
           <div style="background-color: red">C</div>
@@ -80,7 +88,27 @@ export class TerrariumCard extends LitElement implements LovelaceCard<TerrariumC
           <div style="background-color: tomato">F</div>
           <div style="background-color: green">G</div>
         </div>
-        <div>BBBBB</div>
+        <div class="controls count8">
+          <div style="background-color: yellow">A</div>
+          <div style="background-color: purple">B</div>
+          <div style="background-color: red">C</div>
+          <div style="background-color: blue">D</div>
+          <div style="background-color: orange">E</div>
+          <div style="background-color: tomato">F</div>
+          <div style="background-color: green">G</div>
+          <div style="background-color: green">H</div>
+        </div>
+        <div class="controls count9">
+          <div style="background-color: yellow">A</div>
+          <div style="background-color: purple">B</div>
+          <div style="background-color: red">C</div>
+          <div style="background-color: blue">D</div>
+          <div style="background-color: orange">E</div>
+          <div style="background-color: tomato">F</div>
+          <div style="background-color: green">G</div>
+          <div style="background-color: green">H</div>
+          <div style="background-color: green">I</div>
+        </div>
       </area-card-layout>
     `;
   }
