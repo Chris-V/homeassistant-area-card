@@ -64,7 +64,14 @@ export class TerrariumCard extends LitElement implements LovelaceCard<TerrariumC
           ></entity-state-icon>
         `)}
 
-        <div class="controls">
+        <div class="controls" style="--controls-count: 5">
+          <div style="background-color: yellow">A</div>
+          <div style="background-color: purple">B</div>
+          <div style="background-color: red">C</div>
+          <div style="background-color: blue">D</div>
+          <div style="background-color: orange">E</div>
+        </div>
+        <div class="controls" style="--controls-count: 7">
           <div style="background-color: yellow">A</div>
           <div style="background-color: purple">B</div>
           <div style="background-color: red">C</div>
