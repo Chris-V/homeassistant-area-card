@@ -1,26 +1,8 @@
 import { html, LitElement, nothing } from 'lit';
 import { customElement, property, state } from 'lit/decorators';
-import { ActionConfig } from '../helpers/action-handler';
+import { EntityStateIconConfig } from '../area-card-layout';
 import { HomeAssistant, LovelaceCard, LovelaceCardConfig } from '../types';
 import styles from './area-card.styles';
-
-export interface AreaCardBadgeConfig {
-  entity: string;
-  icon?: string;
-  tag?: string;
-  name?: string;
-  tap_action?: ActionConfig;
-  hold_action?: ActionConfig;
-}
-
-export interface AreaCardControlConfig {
-  entity: string;
-  icon?: string;
-  tag?: string;
-  name?: string;
-  tap_action?: ActionConfig;
-  hold_action?: ActionConfig;
-}
 
 export interface AreaCardClimateConfig {
   room_key: string;
@@ -31,8 +13,8 @@ export interface AreaCardConfig extends LovelaceCardConfig {
   climate?: AreaCardClimateConfig;
   color?: string;
   entity?: string;
-  badges?: AreaCardBadgeConfig[];
-  controls?: AreaCardControlConfig[];
+  badges?: EntityStateIconConfig[];
+  controls?: EntityStateIconConfig[];
 }
 
 @customElement('area-card')

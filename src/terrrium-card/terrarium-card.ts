@@ -1,21 +1,19 @@
 import { html, LitElement, nothing } from 'lit';
 import { customElement, property, state } from 'lit/decorators';
-import { styleMap } from 'lit/directives/style-map';
-import { when } from 'lit/directives/when';
-import { AreaRegistryEntry, HomeAssistant, LovelaceCard, LovelaceCardConfig, } from '../types';
+import { EntityStateIconConfig } from '../area-card-layout';
+import { HomeAssistant, LovelaceCard, LovelaceCardConfig } from '../types';
 import styles from './terrarium-card.styles';
 
-const STUB_AREA: AreaRegistryEntry = {
-  area_id: '',
-  icon: 'mdi:help-circle',
-  name: 'Unknown',
-  created_at: 0,
-  modified_at: 0,
-};
+export interface TerrariumControlConfig extends EntityStateIconConfig {
+  footer?: boolean;
+  energy_entity?: string;
+  power_entity?: string;
+}
 
 export interface TerrariumCardConfig extends LovelaceCardConfig {
   area: string;
   color?: string;
+  controls?: TerrariumControlConfig[];
 }
 
 @customElement('terrarium-card')
@@ -43,6 +41,9 @@ export class TerrariumCard extends LitElement implements LovelaceCard<TerrariumC
       return nothing;
     }
 
+    const controls = this.config.controls
+      ?.filter((control) => !!control.footer) || [];
+
     return html`
       <area-card-layout
         .hass=${this.hass}
@@ -50,8 +51,29 @@ export class TerrariumCard extends LitElement implements LovelaceCard<TerrariumC
         .color=${this.config.color}
         .header=${false}
       >
-      <div>AAAAA</div>
-      <div>BBBBB</div>
+        ${controls.map((control) => html`
+          <entity-state-icon
+            slot="controls"
+            .hass=${this.hass}
+            .entity=${control.entity}
+            .icon=${control.icon}
+            .tag=${control.tag}
+            .name=${control.name}
+            .tap=${control.tap_action}
+            .hold=${control.hold_action}
+          ></entity-state-icon>
+        `)}
+
+        <div class="controls">
+          <div style="background-color: yellow">A</div>
+          <div style="background-color: purple">B</div>
+          <div style="background-color: red">C</div>
+          <div style="background-color: blue">D</div>
+          <div style="background-color: orange">E</div>
+          <div style="background-color: fushia">F</div>
+          <div style="background-color: green">G</div>
+        </div>
+        <div>BBBBB</div>
       </area-card-layout>
     `;
   }
