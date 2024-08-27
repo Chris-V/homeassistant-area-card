@@ -41,8 +41,8 @@ export class TerrariumCard extends LitElement implements LovelaceCard<TerrariumC
       return nothing;
     }
 
-    const controls = this.config.controls
-      ?.filter((control) => !!control.footer) || [];
+    const controls = this.config.controls || [];
+    const footer = controls.filter((control) => control.footer);
 
     return html`
       <area-card-layout
@@ -51,7 +51,7 @@ export class TerrariumCard extends LitElement implements LovelaceCard<TerrariumC
         .color=${this.config.color}
         .header=${false}
       >
-        ${controls.map((control) => html`
+        ${footer.map((control) => html`
           <entity-state-icon
             slot="controls"
             .hass=${this.hass}
@@ -65,49 +65,20 @@ export class TerrariumCard extends LitElement implements LovelaceCard<TerrariumC
         `)}
 
         <div class="controls count5">
-          <div style="background-color: yellow">A</div>
-          <div style="background-color: purple">B</div>
-          <div style="background-color: red">C</div>
-          <div style="background-color: blue">D</div>
-          <div style="background-color: orange">E</div>
+          ${controls.map((control) => html`
+            <entity-state-icon
+              .hass=${this.hass}
+              .entity=${control.entity}
+              .icon=${control.icon}
+              .tag=${control.tag}
+              .name=${control.name}
+              .tap=${control.tap_action}
+              .hold=${control.hold_action}
+            ></entity-state-icon>
+          `)}
         </div>
-        <div class="controls count6">
-          <div style="background-color: yellow">A</div>
-          <div style="background-color: purple">B</div>
-          <div style="background-color: red">C</div>
-          <div style="background-color: blue">D</div>
-          <div style="background-color: orange">E</div>
-          <div style="background-color: tomato">F</div>
-        </div>
-        <div class="controls count7">
-          <div style="background-color: yellow">A</div>
-          <div style="background-color: purple">B</div>
-          <div style="background-color: red">C</div>
-          <div style="background-color: blue">D</div>
-          <div style="background-color: orange">E</div>
-          <div style="background-color: tomato">F</div>
-          <div style="background-color: green">G</div>
-        </div>
-        <div class="controls count8">
-          <div style="background-color: yellow">A</div>
-          <div style="background-color: purple">B</div>
-          <div style="background-color: red">C</div>
-          <div style="background-color: blue">D</div>
-          <div style="background-color: orange">E</div>
-          <div style="background-color: tomato">F</div>
-          <div style="background-color: green">G</div>
-          <div style="background-color: green">H</div>
-        </div>
-        <div class="controls count9">
-          <div style="background-color: yellow">A</div>
-          <div style="background-color: purple">B</div>
-          <div style="background-color: red">C</div>
-          <div style="background-color: blue">D</div>
-          <div style="background-color: orange">E</div>
-          <div style="background-color: tomato">F</div>
-          <div style="background-color: green">G</div>
-          <div style="background-color: green">H</div>
-          <div style="background-color: green">I</div>
+
+        <div class="settings">
         </div>
       </area-card-layout>
     `;
