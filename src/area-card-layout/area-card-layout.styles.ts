@@ -42,14 +42,14 @@ ha-card {
   border: 0;
 }
 
-.section.header, .section.footer {
+.header, .footer {
   height: var(--header-footer-height);
 
   --icon-size: calc(var(--header-footer-height) - 10px);
   --mdc-icon-size: var(--icon-size);
 }
 
-.section.header {
+.header {
   order: 1;
 
   display: flex;
@@ -59,18 +59,18 @@ ha-card {
   background-color: color-mix(in srgb, var(--area-accent-color) 90%, transparent);
 }
 
-.section.header .title {
+.header .title {
   font-size: 1.6em;
   font-weight: 500;
 }
 
-.section.header .title state-badge {
+.header .title state-badge {
   cursor: pointer;
   height: var(--icon-size);
   line-height: var(--icon-size);
 }
 
-.section.header .badges {
+.header .badges {
   height: 100%;
   flex-grow: 1;
 
@@ -80,7 +80,7 @@ ha-card {
   gap: 0.5em;
 }
 
-.section.footer {
+.footer {
   order: 3;
 
   display: flex;
@@ -91,7 +91,7 @@ ha-card {
   background-color: rgba(0, 0, 0, 0.6);
 }
 
-.section.panels {
+.panels {
   order: 2;
   flex-grow: 1;
   flex-shrink: 1;
@@ -103,8 +103,7 @@ ha-card {
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
 
-  --icon-size: 24px;
-  --mdc-icon-size: var(--icon-size);
+  --mdc-icon-size: var(--icon-size, 24px);
 }
 
 .panels > ::slotted(*), .panels > .empty-panel {
