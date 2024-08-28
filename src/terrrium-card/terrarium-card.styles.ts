@@ -8,7 +8,9 @@ export default css`
   display: grid;
   gap: 4px;
 
-  --icon-size: 55px;
+  --icon-size: 85px;
+  --name-size: 14px;
+  --label-size: 14px;
 }
 
 .controls.count5, .controls.count6 {
