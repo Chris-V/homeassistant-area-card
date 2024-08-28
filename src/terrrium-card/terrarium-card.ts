@@ -3,6 +3,8 @@ import { customElement, property, state } from 'lit/decorators';
 import { EntityStateIconConfig } from '../area-card-layout';
 import { HomeAssistant, LovelaceCard, LovelaceCardConfig } from '../types';
 import styles from './terrarium-card.styles';
+import { until } from 'lit/directives/until';
+import { when } from 'lit/directives/when';
 
 export interface TerrariumControlConfig extends EntityStateIconConfig {
   footer?: boolean;
@@ -14,6 +16,7 @@ export interface TerrariumCardConfig extends LovelaceCardConfig {
   area: string;
   color?: string;
   controls?: TerrariumControlConfig[];
+  settings?: { entity: string, name?: string, icon?: string }[];
 }
 
 @customElement('terrarium-card')
@@ -64,12 +67,15 @@ export class TerrariumCard extends LitElement implements LovelaceCard<TerrariumC
           ></entity-state-icon>
         `)}
 
-        <div class="controls count${Math.min(controls.length, 9)}">
+        <div class="control-panel count${Math.min(controls.length, 9)}">
           ${controls.map((control) => this.createControlTemplate(control))}
         </div>
 
-        <div class="settings">
-        </div>
+        ${when(this.config.settings?.length, () => html`
+          <div class="settings-panel">
+            ${this.config.settings?.map((setting) => this.createSettingRowTemplate({ ...setting }))}
+          </div>
+        `)}
       </area-card-layout>
     `;
   }
@@ -98,13 +104,12 @@ export class TerrariumCard extends LitElement implements LovelaceCard<TerrariumC
     `;
   }
 
-  private formatEnergyStates(control: TerrariumControlConfig): string {
-    const powerState = control.power_entity && this.hass?.states[control.power_entity];
-    const energyState = control.energy_entity && this.hass?.states[control.energy_entity];
-
-    return [
-      powerState && this.hass?.formatEntityState(powerState),
-      energyState && this.hass?.formatEntityState(energyState),
-    ].filter(x => !!x).join(' ⁓ ');
+  private createSettingRowTemplate(options: LovelaceCardOptions) {
+    const rowPromise = window.loadCardHelpers().then(({ createRowElement }) => {
+      const row = createRowElement(options);
+      row.hass = this.hass;
+      return html`<div class="setting-row">${row}</div>`;
+    });
+    return until(rowPromise, nothing);
   }
 }
