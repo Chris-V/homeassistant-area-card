@@ -65,22 +65,7 @@ export class TerrariumCard extends LitElement implements LovelaceCard<TerrariumC
         `)}
 
         <div class="controls count5">
-          ${controls.map((control) => {
-            return html`
-            <entity-state-icon
-              .hass=${this.hass}
-              .entity=${control.entity}
-              .icon=${control.icon}
-              .tag=${control.tag}
-              .name=${control.name}
-              .showName=${true}
-              .showState=${true}
-              .state=${this.formatEnergyStates(control)}
-              .tap=${control.tap_action}
-              .hold=${control.hold_action}
-            ></entity-state-icon>
-          `;
-          })}
+          ${controls.map((control) => this.createControlTemplate(control))}
         </div>
 
         <div class="settings">

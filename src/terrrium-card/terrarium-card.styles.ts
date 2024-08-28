@@ -8,7 +8,7 @@ export default css`
   display: grid;
   gap: 4px;
 
-  --icon-size: 85px;
+  --icon-size: 70px;
   --name-size: 14px;
   --label-size: 14px;
 }
