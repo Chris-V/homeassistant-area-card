@@ -12,6 +12,11 @@ export default css`
   --state-size: 0.8em;
 }
 
+.problem-detected {
+  --ha-card-border-color: var(--error-color);
+  --ha-card-border-width: 2px;
+}
+
 .control-panel.count7, .control-panel.count8 {
   grid-template-columns: repeat(16, 1fr);
 }

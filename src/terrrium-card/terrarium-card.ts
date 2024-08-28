@@ -10,12 +10,14 @@ export interface TerrariumControlConfig extends EntityStateIconConfig {
   footer?: boolean;
   energy_entity?: string;
   power_entity?: string;
+  problem_key?: string;
 }
 
 export interface TerrariumCardConfig extends LovelaceCardConfig {
   area: string;
   color?: string;
   controls?: TerrariumControlConfig[];
+  problems?: string;
   settings?: { entity: string, name?: string, icon?: string }[];
 }
 
