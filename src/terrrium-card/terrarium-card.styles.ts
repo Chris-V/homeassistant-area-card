@@ -8,13 +8,11 @@ export default css`
   display: grid;
   gap: 4px;
 
+  grid-template-columns: repeat(12, 1fr);
+
   --icon-size: 4.5em;
   --name-size: 1em;
   --state-size: 0.8em;
-}
-
-.controls.count5, .controls.count6 {
-  grid-template-columns: repeat(12, 1fr);
 }
 
 .controls.count7, .controls.count8 {

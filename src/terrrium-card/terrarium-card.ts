@@ -64,7 +64,7 @@ export class TerrariumCard extends LitElement implements LovelaceCard<TerrariumC
           ></entity-state-icon>
         `)}
 
-        <div class="controls count5">
+        <div class="controls count${Math.min(controls.length, 9)}">
           ${controls.map((control) => this.createControlTemplate(control))}
         </div>
 

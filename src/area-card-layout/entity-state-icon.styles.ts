@@ -29,7 +29,6 @@ export default css`
 
 .root.active {
   --primary-text-color: var(--paper-item-icon-active-color);
-  --paper-item-icon-color: var(--paper-item-icon-active-color);
 }
 
 state-badge {
@@ -66,7 +65,11 @@ state-badge {
   line-height: calc(var(--state-size, 0.8em) * 2);
 }
 
-.name + .state {
+.active .state {
+  color: var(--state-active-color);
+}
+
+.name + .state, .active .name + .state {
   color: var(--secondary-text-color);
 }
 `;

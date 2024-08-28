@@ -37,7 +37,8 @@ export class EntityStateIcon extends LitElement {
     const showName = !!this.showName;
     const showState = this.showState ?? this.entity.startsWith('sensor.');
     const name = this.name || state.attributes.friendly_name || this.entity;
-    const isActive = state.state === 'on' || state.attributes['heating'] === true;
+    const isActive = this.state &&
+    state.state === 'on' || state.attributes['heating'] === true;
 
     return html`
       <div
