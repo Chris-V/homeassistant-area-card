@@ -13,7 +13,7 @@ export default css`
   justify-content: flex-end;
 }
 
-.root.has-label {
+.root.has-state {
   --mdc-icon-size: calc(var(--icon-size, 24px) - 1em);
 }
 
@@ -44,8 +44,15 @@ state-badge {
   color: var(--state-active-color);
 }
 
-.label {
+.name {
   color: var(--primary-text-color);
+  font-size: 0.8em;
+  white-space: nowrap;
+  line-height: 1.6em;
+}
+
+.state {
+  color: var(--secondary-text-color);
   font-size: 0.8em;
   white-space: nowrap;
   line-height: 1.6em;

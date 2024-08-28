@@ -13,6 +13,9 @@ export class EntityStateIcon extends LitElement {
   @property() entity?: string;
   @property() icon?: string;
   @property() name?: string;
+  @property() showName?: boolean;
+  @property() showState?: boolean;
+  @property() state?: string;
   @property() tag?: string;
   @property({ attribute: false }) tap?: ActionConfig;
   @property({ attribute: false }) hold?: ActionConfig;
@@ -31,15 +34,16 @@ export class EntityStateIcon extends LitElement {
       return html`<hui-warning-element></hui-warning-element>`;
     }
 
-    const showLabel = this.entity.startsWith('sensor.');
-    const title = this.name || state.attributes.friendly_name || this.entity;
+    const showName = !!this.showName;
+    const showState = this.showState ?? this.entity.startsWith('sensor.');
+    const name = this.name || state.attributes.friendly_name || this.entity;
     const isActive = state.state === 'on' || state.attributes['heating'] === true;
 
     return html`
       <div
-        class=${classMap({ root: true, 'has-label': showLabel, active: isActive })}
+        class=${classMap({ root: true, 'has-name': showName, 'has-state': showState, active: isActive })}
         tabindex=${this.tap?.action !== 'none' ? 0 : nothing}
-        .title=${title}
+        .title=${name}
         .actionHandler=${actionHandler({ hasHold: this.hold?.action !== 'none' })}
         @action=${this.handleAction}
       >
@@ -53,9 +57,15 @@ export class EntityStateIcon extends LitElement {
 
         ${when(this.tag, () => html`<ha-icon class="tag" .icon="${this.tag}"></ha-icon>`)}
 
-        ${when(showLabel, () => html`
-          <div class="label">
-            ${this.hass?.formatEntityState(state)}
+        ${when(showName, () => html`
+          <div class="name">
+            ${name}
+          </div>
+        `)}
+
+        ${when(showState, () => html`
+          <div class="state">
+            ${this.state ?? this.hass?.formatEntityState(state)}
           </div>
         `)}
       </div>

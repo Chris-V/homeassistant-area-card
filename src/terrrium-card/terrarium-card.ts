@@ -72,6 +72,7 @@ export class TerrariumCard extends LitElement implements LovelaceCard<TerrariumC
               .icon=${control.icon}
               .tag=${control.tag}
               .name=${control.name}
+              .showName=${true}
               .tap=${control.tap_action}
               .hold=${control.hold_action}
             ></entity-state-icon>
