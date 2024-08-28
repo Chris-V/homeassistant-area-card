@@ -66,7 +66,7 @@ state-badge {
   line-height: calc(var(--state-size, 0.8em) * 2);
 }
 
-.state + .name {
+.name + .state {
   color: var(--secondary-text-color);
 }
 `;
