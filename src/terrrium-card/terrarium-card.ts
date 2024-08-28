@@ -1,4 +1,4 @@
-import { html, LitElement, nothing } from 'lit';
+import { html, LitElement, nothing, TemplateResult } from 'lit';
 import { customElement, property, state } from 'lit/decorators';
 import { EntityStateIconConfig } from '../area-card-layout';
 import { HomeAssistant, LovelaceCard, LovelaceCardConfig } from '../types';
@@ -65,7 +65,8 @@ export class TerrariumCard extends LitElement implements LovelaceCard<TerrariumC
         `)}
 
         <div class="controls count5">
-          ${controls.map((control) => html`
+          ${controls.map((control) => {
+            return html`
             <entity-state-icon
               .hass=${this.hass}
               .entity=${control.entity}
@@ -73,15 +74,52 @@ export class TerrariumCard extends LitElement implements LovelaceCard<TerrariumC
               .tag=${control.tag}
               .name=${control.name}
               .showName=${true}
+              .showState=${true}
+              .state=${this.formatEnergyStates(control)}
               .tap=${control.tap_action}
               .hold=${control.hold_action}
             ></entity-state-icon>
-          `)}
+          `;
+          })}
         </div>
 
         <div class="settings">
         </div>
       </area-card-layout>
     `;
+  }
+
+  private createControlTemplate(control: TerrariumControlConfig): TemplateResult {
+    const powerState = control.power_entity && this.hass?.states[control.power_entity];
+    const energyState = control.energy_entity && this.hass?.states[control.energy_entity];
+    const stateLabel = [
+      powerState && this.hass?.formatEntityState(powerState),
+      energyState && this.hass?.formatEntityState(energyState),
+    ].filter(x => !!x).join(' ⁓ ');
+
+    return html`
+      <entity-state-icon
+        .hass=${this.hass}
+        .entity=${control.entity}
+        .icon=${control.icon}
+        .tag=${control.tag}
+        .name=${control.name}
+        .showName=${true}
+        .showState=${!!stateLabel}
+        .state=${stateLabel}
+        .tap=${control.tap_action}
+        .hold=${control.hold_action}
+      ></entity-state-icon>
+    `;
+  }
+
+  private formatEnergyStates(control: TerrariumControlConfig): string {
+    const powerState = control.power_entity && this.hass?.states[control.power_entity];
+    const energyState = control.energy_entity && this.hass?.states[control.energy_entity];
+
+    return [
+      powerState && this.hass?.formatEntityState(powerState),
+      energyState && this.hass?.formatEntityState(energyState),
+    ].filter(x => !!x).join(' ⁓ ');
   }
 }
