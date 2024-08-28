@@ -27,10 +27,6 @@ export default css`
   --mdc-icon-size: calc(var(--icon-size, 24px) - var(--name-size, 0.8em) - var(--state-size, 0.8em) - 0.2em);
 }
 
-.root.active {
-  --primary-text-color: var(--paper-item-icon-active-color);
-}
-
 state-badge {
   width: unset;
   height: unset;
