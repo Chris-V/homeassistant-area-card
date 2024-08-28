@@ -11,7 +11,7 @@ ha-card {
   --header-footer-height: 42px;
 
   --primary-text-color: #DADADB;
-  --secondary-text-color: #DADADB;
+  --secondary-text-color: #BDBDBD;
   --paper-item-icon-color: #DADADB;
   --mdc-theme-primary: #DADADB;
 }
