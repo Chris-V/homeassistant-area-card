@@ -15,15 +15,15 @@ export default css`
   --mdc-icon-size: var(--icon-size, 24px);
 }
 
-.root.has-name {
+.root:has(.name) {
   --mdc-icon-size: calc(var(--icon-size, 24px) - var(--name-size, 0.8em) - 0.2em);
 }
 
-.root.has-state {
+.root:has(.state) {
   --mdc-icon-size: calc(var(--icon-size, 24px) - var(--state-size, 0.8em) - 0.2em);
 }
 
-.root.has-state.has-name {
+.root:has(.state):has(.name) {
   --mdc-icon-size: calc(var(--icon-size, 24px) - var(--name-size, 0.8em) - var(--state-size, 0.8em) - 0.2em);
 }
 
@@ -60,13 +60,13 @@ state-badge {
 }
 
 .state {
-  color: var(--secondary-text-color);
+  color: var(--primary-text-color);
   font-size: var(--state-size, 0.8em);
   white-space: nowrap;
   line-height: calc(var(--state-size, 0.8em) * 2);
 }
 
-:not(.has-name) .state {
-  color: var(--primary-text-color);
+.state + .name {
+  color: var(--secondary-text-color);
 }
 `;

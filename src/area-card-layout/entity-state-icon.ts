@@ -41,7 +41,7 @@ export class EntityStateIcon extends LitElement {
 
     return html`
       <div
-        class=${classMap({ root: true, 'has-name': showName, 'has-state': showState, active: isActive })}
+        class=${classMap({ root: true, active: isActive })}
         tabindex=${this.tap?.action !== 'none' ? 0 : nothing}
         .title=${name}
         .actionHandler=${actionHandler({ hasHold: this.hold?.action !== 'none' })}
@@ -57,11 +57,7 @@ export class EntityStateIcon extends LitElement {
 
         ${when(this.tag, () => html`<ha-icon class="tag" .icon="${this.tag}"></ha-icon>`)}
 
-        ${when(showName, () => html`
-          <div class="name">
-            ${name}
-          </div>
-        `)}
+        ${when(showName, () => html`<div class="name">${name}</div>`)}
 
         ${when(showState, () => html`
           <div class="state">

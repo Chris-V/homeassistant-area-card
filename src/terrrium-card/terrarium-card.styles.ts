@@ -8,9 +8,9 @@ export default css`
   display: grid;
   gap: 4px;
 
-  --icon-size: 70px;
-  --name-size: 14px;
-  --label-size: 14px;
+  --icon-size: 4.5em;
+  --name-size: 1em;
+  --state-size: 0.8em;
 }
 
 .controls.count5, .controls.count6 {
@@ -25,6 +25,7 @@ export default css`
   display: block;
 
   grid-column-end: span 4;
+  place-self: center;
 }
 
 .controls:is(.count5, .count7, .count9) > *:first-child {
