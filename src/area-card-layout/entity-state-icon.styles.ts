@@ -13,8 +13,16 @@ export default css`
   justify-content: flex-end;
 }
 
+.root.has-name {
+  --mdc-icon-size: calc(var(--icon-size, 24px) - var(--name-size, 0.8em) - 0.2em);
+}
+
 .root.has-state {
-  --mdc-icon-size: calc(var(--icon-size, 24px) - 1em);
+  --mdc-icon-size: calc(var(--icon-size, 24px) - var(--state-size, 0.8em) - 0.2em);
+}
+
+.root.has-state.has-name {
+  --mdc-icon-size: calc(var(--icon-size, 24px) - var(--name-size, 0.8em) - var(--state-size, 0.8em) - 0.2em);
 }
 
 .root.active {
@@ -46,15 +54,19 @@ state-badge {
 
 .name {
   color: var(--primary-text-color);
-  font-size: 0.8em;
+  font-size: var(--name-size, 0.8em);
   white-space: nowrap;
-  line-height: 1.6em;
+  line-height: calc(var(--name-size, 0.8em) * 2);
 }
 
 .state {
   color: var(--secondary-text-color);
-  font-size: 0.8em;
+  font-size: var(--state-size, 0.8em);
   white-space: nowrap;
-  line-height: 1.6em;
+  line-height: calc(var(--state-size, 0.8em) * 2);
+}
+
+:not(.has-name) .state {
+  color: var(--primary-text-color);
 }
 `;
