@@ -11,6 +11,8 @@ export default css`
   align-items: center;
   flex-direction: column;
   justify-content: flex-end;
+
+  --mdc-icon-size: var(--icon-size, 24px);
 }
 
 .root.has-name {
@@ -34,8 +36,6 @@ state-badge {
   width: unset;
   height: unset;
   line-height: unset;
-
-  --mdc-icon-size: var(--icon-size, 24px);
 }
 
 .tag {

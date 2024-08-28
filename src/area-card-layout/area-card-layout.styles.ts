@@ -67,6 +67,7 @@ ha-card {
   cursor: pointer;
   height: var(--icon-size, 24px);
   line-height: var(--icon-size, 24px);
+  vertical-align: baseline;
 }
 
 .header .badges {
