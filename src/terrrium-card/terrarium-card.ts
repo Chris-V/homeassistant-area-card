@@ -6,6 +6,7 @@ import styles from './terrarium-card.styles';
 import { until } from 'lit/directives/until';
 import { when } from 'lit/directives/when';
 import { classMap } from 'lit/directives/class-map';
+import { createRowElement } from '../helpers/lazy-load-elements';
 
 export interface TerrariumControlConfig extends EntityStateIconConfig {
   footer?: boolean;
@@ -53,7 +54,7 @@ export class TerrariumCard extends LitElement implements LovelaceCard<TerrariumC
     const controls = this.config.controls || [];
     const footer = controls.filter((control) => control.footer);
     const problemsEntity = this.config.problems ? this._hass.states[this.config.problems] : undefined;
-    const hasProblems = problemsEntity?.state == 'off';
+    const hasProblems = problemsEntity?.state == 'on';
 
     return html`
       <area-card-layout
@@ -94,7 +95,7 @@ export class TerrariumCard extends LitElement implements LovelaceCard<TerrariumC
 
         ${when(this.config.settings?.length, () => html`
           <div class="settings-panel">
-            ${this.config.settings?.map((setting) => this.createSettingRowTemplate({ ...setting }))}
+            ${this.config.settings?.map((setting) => createRowElement(this._hass!, setting))}
           </div>
         `)}
       </area-card-layout>
