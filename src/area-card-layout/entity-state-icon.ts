@@ -23,13 +23,12 @@ export class EntityStateIcon extends LitElement {
   static styles = styles;
 
   protected render() {
-    if (!this.entity || !this.hass) {
+    const hass = this.hass;
+    if (!this.entity || !hass) {
       return nothing;
     }
 
-    const hass = this.hass;
     const state = hass.states[this.entity];
-
     if (!state) {
       return html`<hui-warning-element></hui-warning-element>`;
     }
@@ -49,7 +48,7 @@ export class EntityStateIcon extends LitElement {
       >
         <state-badge
           class="icon"
-          .hass=${this.hass}
+          .hass=${hass}
           .stateObj=${state}
           .overrideIcon=${this.icon}
           .stateColor=${true}
@@ -61,7 +60,7 @@ export class EntityStateIcon extends LitElement {
 
         ${when(showState, () => html`
           <div class="state">
-            ${this.state ?? this.hass?.formatEntityState(state)}
+            ${this.state ?? hass.formatEntityState(state)}
           </div>
         `)}
       </div>
