@@ -13,6 +13,10 @@ export default css`
   justify-content: flex-end;
 }
 
+.problems-state-icon {
+  color: var(--error-color);
+}
+
 .control-panel {
   display: grid;
   gap: 4px;
