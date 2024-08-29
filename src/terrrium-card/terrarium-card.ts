@@ -108,7 +108,7 @@ export class TerrariumCard extends LitElement implements LovelaceCard<TerrariumC
       energyState && this.hass?.formatEntityState(energyState),
     ].filter(x => !!x).join(' ⁓ ');
 
-    const hasProblem = control.problem_key && problemsEntity && problemsEntity.attributes[control.problem_key] === false;
+    const hasProblem = control.problem_key && problemsEntity && problemsEntity.attributes[control.problem_key] === true;
 
     return html`
       <entity-state-icon
