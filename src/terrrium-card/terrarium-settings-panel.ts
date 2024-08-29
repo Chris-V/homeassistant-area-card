@@ -23,7 +23,7 @@ export class AreaClimatePanel extends LitElement {
   }
 
   protected render() {
-    if (!this.hass || !this.entities?.length) {
+    if (!this.#hass || !this.entities?.length) {
       return nothing;
     }
 
