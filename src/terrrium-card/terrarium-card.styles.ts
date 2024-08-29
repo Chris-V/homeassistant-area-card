@@ -1,6 +1,14 @@
 import { css } from "lit";
 
 export default css`
+.has-problems {
+  --ha-card-border-color: var(--error-color);
+  --ha-card-border-width: 2px;
+}
+
+.badges {
+}
+
 .control-panel {
   display: grid;
   gap: 4px;
@@ -10,11 +18,6 @@ export default css`
   --icon-size: 4.5em;
   --name-size: 1em;
   --state-size: 0.8em;
-}
-
-.problem-detected {
-  --ha-card-border-color: var(--error-color);
-  --ha-card-border-width: 2px;
 }
 
 .control-panel.count7, .control-panel.count8 {

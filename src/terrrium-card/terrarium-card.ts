@@ -5,6 +5,7 @@ import { HomeAssistant, LovelaceCard, LovelaceCardConfig } from '../types';
 import styles from './terrarium-card.styles';
 import { until } from 'lit/directives/until';
 import { when } from 'lit/directives/when';
+import { classMap } from 'lit/directives/class-map';
 
 export interface TerrariumControlConfig extends EntityStateIconConfig {
   footer?: boolean;
@@ -48,9 +49,11 @@ export class TerrariumCard extends LitElement implements LovelaceCard<TerrariumC
 
     const controls = this.config.controls || [];
     const footer = controls.filter((control) => control.footer);
+    const hasProblems = true;
 
     return html`
       <area-card-layout
+        class=${classMap({ 'has-problems': hasProblems })}
         .hass=${this.hass}
         .areaId=${this.config.area}
         .color=${this.config.color}
@@ -68,6 +71,10 @@ export class TerrariumCard extends LitElement implements LovelaceCard<TerrariumC
             .hold=${control.hold_action}
           ></entity-state-icon>
         `)}
+
+        <div slot="controls" class="badges">
+
+        </div>
 
         <div class="control-panel count${Math.min(controls.length, 9)}">
           ${controls.map((control) => this.createControlTemplate(control))}
