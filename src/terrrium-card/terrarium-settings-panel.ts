@@ -12,7 +12,7 @@ export interface TerrariumSettingConfig {
 }
 
 @customElement('terrarium-settings-panel')
-export class AreaClimatePanel extends LitElement {
+export class TerrariumSettingsPanel extends LitElement {
   @property({ attribute: false }) entities?: TerrariumSettingConfig[];
   @property({ attribute: false }) hass?: HomeAssistant;
 
@@ -23,7 +23,7 @@ export class AreaClimatePanel extends LitElement {
       return nothing;
     }
 
-    html`
+    return html`
       ${repeat(this.entities, (entity) => entity.entity, (entity) => html`
         ${createRowElement(this.hass!, entity)}
       `)}
