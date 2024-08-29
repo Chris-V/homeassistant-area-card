@@ -1,8 +1,7 @@
 import { html, LitElement, nothing } from "lit";
 import { customElement, property } from "lit/decorators";
-import { repeat } from "lit/directives/repeat";
 import { createRowElement } from "../helpers/lazy-load-elements";
-import { HomeAssistant } from "../types";
+import { HomeAssistant, LovelaceElement } from "../types";
 import styles from './terrarium-settings-panel.styles';
 
 export interface TerrariumSettingConfig {
@@ -12,21 +11,30 @@ export interface TerrariumSettingConfig {
 }
 
 @customElement('terrarium-settings-panel')
-export class TerrariumSettingsPanel extends LitElement {
+export class AreaClimatePanel extends LitElement {
   @property({ attribute: false }) entities?: TerrariumSettingConfig[];
-  @property({ attribute: false }) hass?: HomeAssistant;
+
+  #hass?: HomeAssistant;
+
+  set hass(hass: HomeAssistant) {
+    this.#hass = hass;
+
+    this.shadowRoot
+      ?.querySelectorAll(":host > *")
+      ?.forEach((element: unknown) => {
+        (element as LovelaceElement<any>).hass = hass;
+      });
+  }
 
   static styles = styles;
 
   protected render() {
-    if (!this.hass || !this.entities?.length) {
+    if (!this.#hass || !this.entities?.length) {
       return nothing;
     }
 
     return html`
-      ${repeat(this.entities, (entity) => entity.entity, (entity) => html`
-        ${createRowElement(this.hass!, entity)}
-      `)}
+      ${this.entities.map((setting) => createRowElement(this.#hass!, setting))}
     `;
   }
 }
