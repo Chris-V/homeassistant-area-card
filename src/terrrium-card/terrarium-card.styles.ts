@@ -11,10 +11,8 @@ export default css`
 
   display: flex;
   justify-content: flex-end;
-}
 
-.problems-state-icon {
-  color: var(--error-color);
+  --state-binary_sensor-problem-on-color: var(--error-color);
 }
 
 .control-panel {

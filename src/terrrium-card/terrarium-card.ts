@@ -50,7 +50,7 @@ export class TerrariumCard extends LitElement implements LovelaceCard<TerrariumC
     const controls = this.config.controls || [];
     const footer = controls.filter((control) => control.footer);
     const problemsEntity = this.config.problems ? this.hass.states[this.config.problems] : undefined;
-    const hasProblems = problemsEntity?.state == 'off';
+    const hasProblems = problemsEntity?.state == 'on';
 
     return html`
       <area-card-layout
@@ -79,7 +79,6 @@ export class TerrariumCard extends LitElement implements LovelaceCard<TerrariumC
               slot="controls"
               icon="mdi:alert-circle"
               name="Problems"
-              class="problems-state-icon"
               .hass=${this.hass}
               .entity=${this.config.problems}
             ></entity-state-icon>
@@ -90,11 +89,9 @@ export class TerrariumCard extends LitElement implements LovelaceCard<TerrariumC
           ${controls.map((control) => this.createControlTemplate(control))}
         </div>
 
-        ${when(this.config.settings?.length, () => html`
-          <div class="settings-panel">
-            ${this.config.settings?.map((setting) => this.createSettingRowTemplate({ ...setting }))}
-          </div>
-        `)}
+        <div class="settings-panel">
+          ${this.config.settings?.map((setting) => this.createSettingRowTemplate({ ...setting }))}
+        </div>
       </area-card-layout>
     `;
   }
