@@ -80,6 +80,7 @@ export class TerrariumCard extends LitElement implements LovelaceCard<TerrariumC
               .hass=${this.hass}
               .entity=${this.config.problems}
               .name=${'Problems'}
+              .icon="mdi:alert-circle"
             ></entity-state-icon>
           `)}
         </div>

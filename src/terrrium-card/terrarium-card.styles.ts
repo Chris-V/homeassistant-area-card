@@ -7,6 +7,10 @@ export default css`
 }
 
 .badges {
+  flex-grow: 1;
+
+  display: flex;
+  justify-content: flex-end;
 }
 
 .control-panel {
