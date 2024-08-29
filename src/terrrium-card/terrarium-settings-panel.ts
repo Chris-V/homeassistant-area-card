@@ -1,5 +1,6 @@
 import { html, LitElement, nothing } from "lit";
 import { customElement, property } from "lit/decorators";
+import { repeat } from "lit/directives/repeat";
 import { createRowElement } from "../helpers/lazy-load-elements";
 import { HomeAssistant } from "../types";
 import styles from './terrarium-settings-panel.styles';
@@ -22,6 +23,10 @@ export class AreaClimatePanel extends LitElement {
       return nothing;
     }
 
-    return html`${this.entities.map((setting) => html`${createRowElement(this.hass!, setting)}`)}`;
+    html`
+      ${repeat(this.entities, (entity) => entity.entity, (entity) => html`
+        ${createRowElement(this.hass!, entity)}
+      `)}
+    `;
   }
 }
