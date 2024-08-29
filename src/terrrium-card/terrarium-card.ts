@@ -1,3 +1,4 @@
+import { HassEntity } from 'home-assistant-js-websocket';
 import { html, LitElement, nothing, TemplateResult } from 'lit';
 import { customElement, property, state } from 'lit/decorators';
 import { classMap } from 'lit/directives/class-map';
@@ -86,7 +87,7 @@ export class TerrariumCard extends LitElement implements LovelaceCard<TerrariumC
         </div>
 
         <div class="control-panel count${Math.min(controls.length, 9)}">
-          ${controls.map((control) => this.createControlTemplate(control))}
+          ${controls.map((control) => this.createControlTemplate(control, problemsEntity))}
         </div>
 
         ${this.config.settings?.length ? html`
@@ -99,7 +100,7 @@ export class TerrariumCard extends LitElement implements LovelaceCard<TerrariumC
     `;
   }
 
-  private createControlTemplate(control: TerrariumControlConfig): TemplateResult {
+  private createControlTemplate(control: TerrariumControlConfig, problemsEntity?: HassEntity): TemplateResult {
     const powerState = control.power_entity && this.hass?.states[control.power_entity];
     const energyState = control.energy_entity && this.hass?.states[control.energy_entity];
     const stateLabel = [
@@ -107,12 +108,14 @@ export class TerrariumCard extends LitElement implements LovelaceCard<TerrariumC
       energyState && this.hass?.formatEntityState(energyState),
     ].filter(x => !!x).join(' ⁓ ');
 
+    const hasProblem = control.problem_key && problemsEntity && problemsEntity.attributes[control.problem_key] === false;
+
     return html`
       <entity-state-icon
         .hass=${this.hass}
         .entity=${control.entity}
         .icon=${control.icon}
-        .tag=${control.tag}
+        .tag=${hasProblem ? 'mdi:alert-circle' : control.tag || nothing}
         .name=${control.name}
         .showName=${true}
         .showState=${!!stateLabel}
