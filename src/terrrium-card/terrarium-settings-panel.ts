@@ -27,6 +27,6 @@ export class AreaClimatePanel extends LitElement {
       return nothing;
     }
 
-    return html`${this.entities.map((setting) => createRowElement(this.hass!, { type: 'input-datetime-entity', ...setting }))}`;
+    return html`${this.entities.map((setting) => createRowElement(this.#hass!, setting))}`;
   }
 }
