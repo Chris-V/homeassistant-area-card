@@ -43,10 +43,6 @@ state-badge {
   --mdc-icon-size: calc(var(--icon-size, 24px) / 2);
 }
 
-.active .tag {
-  color: var(--state-active-color);
-}
-
 .name {
   color: var(--primary-text-color);
   font-size: var(--name-size, 0.8em);

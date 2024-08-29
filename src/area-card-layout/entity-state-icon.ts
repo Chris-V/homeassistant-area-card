@@ -54,7 +54,15 @@ export class EntityStateIcon extends LitElement {
           .stateColor=${true}
         ></state-badge>
 
-        ${when(this.tag, () => html`<ha-icon class="tag" .icon="${this.tag}"></ha-icon>`)}
+        ${when(this.tag, () => html`
+          <state-badge
+            class="tag"
+            .hass=${hass}
+            .stateObj=${state}
+            .overrideIcon=${this.tag}
+            .stateColor=${true}
+          ></state-badge>
+        `)}
 
         ${when(showName, () => html`<div class="name">${name}</div>`)}
 
