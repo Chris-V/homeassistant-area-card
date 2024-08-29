@@ -49,7 +49,8 @@ export class TerrariumCard extends LitElement implements LovelaceCard<TerrariumC
 
     const controls = this.config.controls || [];
     const footer = controls.filter((control) => control.footer);
-    const hasProblems = true;
+    const problemsEntity = this.config.problems && this.hass.states[this.config.problems];
+    const hasProblems = !!problemsEntity;
 
     return html`
       <area-card-layout
@@ -73,7 +74,14 @@ export class TerrariumCard extends LitElement implements LovelaceCard<TerrariumC
         `)}
 
         <div slot="controls" class="badges">
-
+          ${when(hasProblems, () => html`
+            <entity-state-icon
+              slot="controls"
+              .hass=${this.hass}
+              .entity=${this.config.problems}
+              .name=${'Problems'}
+            ></entity-state-icon>
+          `)}
         </div>
 
         <div class="control-panel count${Math.min(controls.length, 9)}">
