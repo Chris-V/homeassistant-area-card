@@ -13,15 +13,20 @@ export interface TerrariumSettingConfig {
 @customElement('terrarium-settings-panel')
 export class AreaClimatePanel extends LitElement {
   @property({ attribute: false }) entities?: TerrariumSettingConfig[];
-  @property({ attribute: false }) hass?: HomeAssistant;
+
+  #hass?: HomeAssistant;
 
   static styles = styles;
+
+  set hass(hass: HomeAssistant) {
+    this.#hass = hass;
+  }
 
   protected render() {
     if (!this.hass || !this.entities?.length) {
       return nothing;
     }
 
-    return html`${this.entities.map((setting) => createRowElement(this.hass!, setting))}`;
+    return html`${this.entities.map((setting) => createRowElement(this.hass!, { type: 'input-datetime-entity', ...setting }))}`;
   }
 }
