@@ -1,4 +1,5 @@
 import './terrarium-card';
+import './terrarium-settings-panel';
 
 window.customCards = window.customCards || [];
 window.customCards.push({

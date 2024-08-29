@@ -1,12 +1,11 @@
 import { html, LitElement, nothing, TemplateResult } from 'lit';
-import { customElement, property, state } from 'lit/decorators';
+import { customElement, state } from 'lit/decorators';
+import { classMap } from 'lit/directives/class-map';
+import { when } from 'lit/directives/when';
 import { EntityStateIconConfig } from '../area-card-layout';
 import { HomeAssistant, LovelaceCard, LovelaceCardConfig } from '../types';
 import styles from './terrarium-card.styles';
-import { until } from 'lit/directives/until';
-import { when } from 'lit/directives/when';
-import { classMap } from 'lit/directives/class-map';
-import { createRowElement } from '../helpers/lazy-load-elements';
+import { TerrariumSettingConfig } from './terrarium-settings-panel';
 
 export interface TerrariumControlConfig extends EntityStateIconConfig {
   footer?: boolean;
@@ -20,7 +19,7 @@ export interface TerrariumCardConfig extends LovelaceCardConfig {
   color?: string;
   controls?: TerrariumControlConfig[];
   problems?: string;
-  settings?: { entity: string, name?: string, icon?: string }[];
+  settings?: TerrariumSettingConfig[];
 }
 
 @customElement('terrarium-card')
@@ -94,9 +93,11 @@ export class TerrariumCard extends LitElement implements LovelaceCard<TerrariumC
         </div>
 
         ${this.config.settings?.length ? html`
-          <div class="settings-panel">
-            ${this.config.settings?.map((setting) => createRowElement(this._hass!, setting))}
-          </div>
+          <terrarium-settings-panel
+            .hass=${this._hass}
+            .entities=${this.config.settings}
+          >
+          </terrarium-settings-panel>
         ` : nothing}
       </area-card-layout>
     `;
