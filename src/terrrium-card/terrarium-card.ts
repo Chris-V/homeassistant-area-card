@@ -93,11 +93,11 @@ export class TerrariumCard extends LitElement implements LovelaceCard<TerrariumC
           ${controls.map((control) => this.createControlTemplate(control))}
         </div>
 
-        ${when(this.config.settings?.length, () => html`
+        ${this.config.settings?.length ? html`
           <div class="settings-panel">
             ${this.config.settings?.map((setting) => createRowElement(this._hass!, setting))}
           </div>
-        `)}
+        ` : nothing}
       </area-card-layout>
     `;
   }
@@ -124,14 +124,5 @@ export class TerrariumCard extends LitElement implements LovelaceCard<TerrariumC
         .hold=${control.hold_action}
       ></entity-state-icon>
     `;
-  }
-
-  private createSettingRowTemplate(options: LovelaceCardOptions) {
-    const rowPromise = window.loadCardHelpers().then(({ createRowElement }) => {
-      const row = createRowElement(options);
-      row.hass = this._hass;
-      return html`<div class="setting-row">${row}</div>`;
-    });
-    return until(rowPromise, nothing);
   }
 }
