@@ -8,12 +8,12 @@ export interface RegistryEntry {
 
 export interface AreaRegistryEntry extends RegistryEntry {
   area_id: string;
-  floor_id: string | null;
+  floor_id?: string | null;
   name: string;
-  picture: string | null;
-  icon: string | null;
-  labels: string[];
-  aliases: string[];
+  picture?: string | null;
+  icon?: string | null;
+  labels?: string[];
+  aliases?: string[];
 }
 
 export interface DeviceRegistryEntry extends RegistryEntry {
