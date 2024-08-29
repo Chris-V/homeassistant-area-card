@@ -1,5 +1,5 @@
 import { html, LitElement, nothing, TemplateResult } from 'lit';
-import { customElement, state } from 'lit/decorators';
+import { customElement, property, state } from 'lit/decorators';
 import { classMap } from 'lit/directives/class-map';
 import { when } from 'lit/directives/when';
 import { EntityStateIconConfig } from '../area-card-layout';
@@ -24,14 +24,11 @@ export interface TerrariumCardConfig extends LovelaceCardConfig {
 
 @customElement('terrarium-card')
 export class TerrariumCard extends LitElement implements LovelaceCard<TerrariumCardConfig> {
-  @state() _hass?: HomeAssistant
+  @property({ attribute: false }) hass!: HomeAssistant;
+
   @state() private config!: TerrariumCardConfig;
 
   static styles = styles;
-
-  set hass(hass: HomeAssistant) {
-    this._hass = hass;
-  }
 
   setConfig(config: TerrariumCardConfig): void {
     if (!config.area) {
@@ -46,19 +43,19 @@ export class TerrariumCard extends LitElement implements LovelaceCard<TerrariumC
   }
 
   protected render() {
-    if (!this.config || !this._hass) {
+    if (!this.config || !this.hass) {
       return nothing;
     }
 
     const controls = this.config.controls || [];
     const footer = controls.filter((control) => control.footer);
-    const problemsEntity = this.config.problems ? this._hass.states[this.config.problems] : undefined;
+    const problemsEntity = this.config.problems ? this.hass.states[this.config.problems] : undefined;
     const hasProblems = problemsEntity?.state == 'on';
 
     return html`
       <area-card-layout
         class=${classMap({ 'has-problems': hasProblems })}
-        .hass=${this._hass}
+        .hass=${this.hass}
         .areaId=${this.config.area}
         .color=${this.config.color}
         .header=${false}
@@ -66,7 +63,7 @@ export class TerrariumCard extends LitElement implements LovelaceCard<TerrariumC
         ${footer.map((control) => html`
           <entity-state-icon
             slot="controls"
-            .hass=${this._hass}
+            .hass=${this.hass}
             .entity=${control.entity}
             .icon=${control.icon}
             .tag=${control.tag}
@@ -82,7 +79,7 @@ export class TerrariumCard extends LitElement implements LovelaceCard<TerrariumC
               slot="controls"
               icon="mdi:alert-circle"
               name="Problems"
-              .hass=${this._hass}
+              .hass=${this.hass}
               .entity=${this.config.problems}
             ></entity-state-icon>
           `)}
@@ -94,26 +91,25 @@ export class TerrariumCard extends LitElement implements LovelaceCard<TerrariumC
 
         ${this.config.settings?.length ? html`
           <terrarium-settings-panel
-            .hass=${this._hass}
+            .hass=${this.hass}
             .entities=${this.config.settings}
-          >
-          </terrarium-settings-panel>
+          ></terrarium-settings-panel>
         ` : nothing}
       </area-card-layout>
     `;
   }
 
   private createControlTemplate(control: TerrariumControlConfig): TemplateResult {
-    const powerState = control.power_entity && this._hass?.states[control.power_entity];
-    const energyState = control.energy_entity && this._hass?.states[control.energy_entity];
+    const powerState = control.power_entity && this.hass?.states[control.power_entity];
+    const energyState = control.energy_entity && this.hass?.states[control.energy_entity];
     const stateLabel = [
-      powerState && this._hass?.formatEntityState(powerState),
-      energyState && this._hass?.formatEntityState(energyState),
+      powerState && this.hass?.formatEntityState(powerState),
+      energyState && this.hass?.formatEntityState(energyState),
     ].filter(x => !!x).join(' ⁓ ');
 
     return html`
       <entity-state-icon
-        .hass=${this._hass}
+        .hass=${this.hass}
         .entity=${control.entity}
         .icon=${control.icon}
         .tag=${control.tag}
