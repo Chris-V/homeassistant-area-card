@@ -40,7 +40,8 @@ state-badge {
 
   margin: 0px;
 
-  --mdc-icon-size: calc(var(--icon-size, 24px) / 2);
+  --icon-primary-color: var(--tag-color, currentColor);
+  --mdc-icon-size: var(--tag-size, calc(var(--icon-size, 24px) / 2));
 }
 
 .name {

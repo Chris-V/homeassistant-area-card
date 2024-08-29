@@ -4,6 +4,7 @@ export default css`
 .has-problems {
   --ha-card-border-color: var(--error-color);
   --ha-card-border-width: 2px;
+  --state-binary_sensor-problem-on-color: var(--error-color);
 }
 
 .badges {
@@ -11,8 +12,6 @@ export default css`
 
   display: flex;
   justify-content: flex-end;
-
-  --state-binary_sensor-problem-on-color: var(--error-color);
 }
 
 .control-panel {
@@ -22,6 +21,8 @@ export default css`
   grid-template-columns: repeat(12, 1fr);
 
   --icon-size: 4.5em;
+  --tag-color: var(--error-color);
+  --tag-size: 1.5em;
   --name-size: 1em;
   --state-size: 0.8em;
 }
