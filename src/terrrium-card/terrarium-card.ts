@@ -40,7 +40,16 @@ export class TerrariumCard extends LitElement implements LovelaceCard<TerrariumC
   }
 
   getCardSize(): number {
-    return 6;
+    return 4;
+  }
+
+  getLayoutOptions() {
+    return {
+      grid_columns: 4,
+      grid_min_columns: 4,
+      grid_rows: 4,
+      grid_min_rows: 4,
+    };
   }
 
   protected render() {

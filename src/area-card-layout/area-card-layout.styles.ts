@@ -5,7 +5,12 @@ ha-card {
   position: relative;
 
   overflow: hidden;
-  min-height: 265px;
+  height: 100%;
+
+  border: none;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 
   --area-accent-color: #333333;
   --header-footer-height: 42px;

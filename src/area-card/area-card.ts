@@ -34,7 +34,16 @@ export class AreaCard extends LitElement implements LovelaceCard<AreaCardConfig>
   }
 
   getCardSize(): number {
-    return 6;
+    return 4;
+  }
+
+  getLayoutOptions() {
+    return {
+      grid_columns: 4,
+      grid_min_columns: 4,
+      grid_rows: 4,
+      grid_min_rows: 4,
+    };
   }
 
   protected render() {
