@@ -1,6 +1,6 @@
 import { html, LitElement, nothing, TemplateResult } from 'lit';
 import { customElement, property } from 'lit/decorators';
-import { styleMap } from 'lit/directives/style-map';
+import { StyleInfo, styleMap } from 'lit/directives/style-map';
 import { when } from 'lit/directives/when';
 import { handleAction } from '../helpers/action-handler';
 import { actionHandler, ActionHandlerEvent } from '../helpers/action-handler-directive';
@@ -34,12 +34,16 @@ export class AreaCardLayout extends LitElement {
 
     this.area = this.areaId && this.hass.areas[this.areaId] || STUB_AREA;
 
-    return html`
-      <ha-card style=${styleMap({ '--area-accent-color': this?.color })}>
-        ${when(this.area.picture, () => html`
-          <hui-image .hass=${this.hass} .image=${this.area.picture} .aspectRatio=${"1.5:1"}></hui-image>
-        `)}
+    let cardStyles: StyleInfo = { '--area-accent-color': this?.color };
+    if (this.area.picture) {
+      cardStyles = {
+        ...cardStyles,
+        'background-image': `url(${this.area.picture})`,
+      };
+    }
 
+    return html`
+      <ha-card style=${styleMap(cardStyles)}>
         <div class="root">
           ${when(this.header ?? true, () => html`
             <div class="section header">

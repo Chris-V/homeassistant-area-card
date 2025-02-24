@@ -1,6 +1,6 @@
 {
   "name": "homeassistant-area-card",
-  "packageManager": "yarn@4.4.0",
+  "packageManager": "yarn@4.6.0",
   "source": "src/index.ts",
   "module": "dist/card-collection.js",
   "targets": {
@@ -14,12 +14,12 @@
   },
   "dependencies": {
     "home-assistant-js-websocket": "^9.4.0",
-    "lit": "^3.2.0"
+    "lit": "^3.2.1"
   },
   "devDependencies": {
-    "@parcel/core": "^2.12.0",
-    "@parcel/transformer-inline-string": "^2.12.0",
-    "parcel": "^2.12.0",
-    "typescript": "^5.5.4"
+    "@parcel/core": "^2.13.3",
+    "@parcel/transformer-inline-string": "^2.13.3",
+    "parcel": "^2.13.3",
+    "typescript": "^5.7.3"
   }
 }
